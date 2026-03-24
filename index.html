@@ -29,6 +29,9 @@
   </div>
 </div>
 
+<!-- ── Windows (wrapped for mobile flow) ─── -->
+<div id="win-container">
+
 <!-- ── Window: About ─────────────────────── -->
 <div class="win active" id="win-about" style="top:60px;left:80px;width:380px;">
   <div class="win-titlebar">
@@ -182,6 +185,8 @@
   <div class="win-resize"></div>
 </div>
 
+</div><!-- /#win-container -->
+
 <!-- ── Start Menu ────────────────────────── -->
 <div id="start-menu">
   <div class="start-banner">Emery Reszka</div>
@@ -313,11 +318,14 @@ function maximizeWin(id) {
 }
 
 // ── Dragging ───────────────────────────────
+const isMobile = () => window.innerWidth <= 700;
+
 document.querySelectorAll('.win-titlebar').forEach(bar => {
   let dragging = false, ox = 0, oy = 0;
   const win = bar.closest('.win');
 
   bar.addEventListener('mousedown', e => {
+    if (isMobile()) return;
     if (e.target.classList.contains('win-btn')) return;
     if (win.classList.contains('maximized')) return;
     dragging = true;
@@ -346,6 +354,7 @@ document.querySelectorAll('.win-resize').forEach(handle => {
   const win = handle.closest('.win');
 
   handle.addEventListener('mousedown', e => {
+    if (isMobile()) return;
     if (win.classList.contains('maximized')) return;
     resizing = true;
     startX = e.clientX; startY = e.clientY;

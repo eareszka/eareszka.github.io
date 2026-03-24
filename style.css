@@ -8,15 +8,19 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { width: 100%; height: 100%; overflow: hidden; }
 
+@keyframes grid-scroll {
+  from { background-position: 0 0; }
+  to   { background-position: 40px 40px; }
+}
+
 body {
   font-family: 'VT323', monospace;
-  background-color: #1a0533;
+  background-color: #000;
   background-image:
-    linear-gradient(rgba(255,50,255,.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,50,255,.12) 1px, transparent 1px),
-    radial-gradient(ellipse 120% 60% at 50% 100%, #ff2dce33 0%, transparent 60%),
-    linear-gradient(180deg, #0d001a 0%, #1a0533 40%, #008080 40%, #008080 100%);
-  background-size: 40px 40px, 40px 40px, 100% 100%, 100% 100%;
+    linear-gradient(rgba(0,255,255,.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,255,.5) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: grid-scroll 1s linear infinite;
   cursor: default;
   user-select: none;
 }
@@ -297,7 +301,7 @@ body::after {
 
 .skill-cat-label {
   font-family: 'Press Start 2P', monospace;
-   cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='20' viewBox='0 0 16 20'%3E%3Cpolygon points='0,0 0,14 4,10 7,17 9,16 6,9 11,9' fill='%23ff2dce' stroke='%23000' stroke-width='1.2' stroke-linejoin='round'/%3E%3C/svg%3E") 0 0, default; font-size: .46rem;
+  font-size: .46rem;
   background: linear-gradient(90deg, #7b00d4, #ff2dce);
   color: #fff;
   padding: 3px 7px;
@@ -333,4 +337,104 @@ body::after {
   width: 12px; height: 12px;
   cursor: se-resize;
   background: linear-gradient(135deg, transparent 40%, #808080 40%, #808080 50%, #c0c0c0 50%, #c0c0c0 60%, #808080 60%, #808080 70%, #c0c0c0 70%, #c0c0c0 80%, #808080 80%);
+}
+
+a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn {
+  cursor: pointer;
+}
+
+/* ═══════════════════════════════════════════════
+   MOBILE — stack windows vertically, kill dragging
+   Breakpoint: anything under 700px
+═══════════════════════════════════════════════ */
+@media (max-width: 700px) {
+
+  /* Let the page scroll normally */
+  html, body { overflow: auto; height: auto; }
+
+  /* Desktop becomes a normal flow container */
+  #desktop {
+    position: relative;
+    inset: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 16px 8px 8px;
+    gap: 8px;
+    background: transparent;
+  }
+
+  /* Icons slightly larger tap targets */
+  .icon { width: 80px; padding: 10px 6px; }
+  .icon-img { font-size: 2.4rem; }
+  .icon-label { font-size: 1rem; }
+
+  /* Windows: full width, static flow (not absolute) */
+  .win {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 0 12px 0;
+    display: flex !important;
+  }
+
+  /* Never hide windows on mobile — show all stacked */
+  .win.minimized { display: flex !important; }
+
+  /* Disable drag cursor on title bar */
+  .win-titlebar { cursor: default; }
+
+  /* Hide resize handle — not useful on mobile */
+  .win-resize { display: none; }
+
+  /* Hide minimize/maximize — replaced by always-visible stack */
+  .win-controls .win-btn:nth-child(1),
+  .win-controls .win-btn:nth-child(2) { display: none; }
+
+  /* Win body: natural height, no scroll trap */
+  .win-body {
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  /* Bigger tap targets on buttons */
+  .btn95 { font-size: 1.1rem; padding: 6px 14px; }
+  .win-btn { width: 24px; height: 22px; font-size: 1rem; }
+
+  /* Taskbar: shrink for small screens */
+  #taskbar { height: 44px; padding: 4px; gap: 4px; }
+  #start-btn { font-size: .42rem; padding: 2px 8px 2px 4px; }
+
+  /* Hide taskbar app buttons on mobile — redundant when all windows are visible */
+  .taskbar-apps { display: none; }
+  .taskbar-divider { display: none; }
+
+  /* Start menu full-width on mobile */
+  #start-menu { width: 100%; }
+
+  /* Larger text for readability on small screens */
+  .hero-name { font-size: .7rem; }
+  .project-name { font-size: .48rem; }
+  .contact-row { padding: 12px 8px; font-size: 1.15rem; }
+  .skill-pill { font-size: 1rem; padding: 3px 10px; }
+
+  /* Wrap the About window buttons */
+  .win-body div[style*="display:flex"] {
+    flex-wrap: wrap;
+  }
+}
+
+/* Win container — mobile flow wrapper */
+#win-container {
+  position: contents; /* transparent on desktop */
+}
+
+@media (max-width: 700px) {
+  #win-container {
+    display: block;
+    padding: 0 8px 60px;
+  }
 }
