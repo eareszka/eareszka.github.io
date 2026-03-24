@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emery Reszka — Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💎</text></svg>">
+</head>
+<body>
+
+<!-- ── Desktop ────────────────────────────── -->
+<div id="desktop">
+  <div class="icon" ondblclick="openWin('win-about')">
+    <div class="icon-img">💎</div>
+    <div class="icon-label">About Me</div>
+  </div>
+  <div class="icon" ondblclick="openWin('win-projects')">
+    <div class="icon-img">📁</div>
+    <div class="icon-label">Projects</div>
+  </div>
+  <div class="icon" ondblclick="openWin('win-skills')">
+    <div class="icon-img">💾</div>
+    <div class="icon-label">Skills</div>
+  </div>
+  <div class="icon" ondblclick="openWin('win-contact')">
+    <div class="icon-img">📧</div>
+    <div class="icon-label">Contact</div>
+  </div>
+</div>
+
+<!-- ── Window: About ─────────────────────── -->
+<div class="win active" id="win-about" style="top:60px;left:80px;width:380px;">
+  <div class="win-titlebar">
+    <span class="win-title">💎 Emery Reszka — Portfolio</span>
+    <div class="win-controls">
+      <div class="win-btn" onclick="minimizeWin('win-about')">_</div>
+      <div class="win-btn" onclick="maximizeWin('win-about')">□</div>
+      <div class="win-btn" onclick="closeWin('win-about')">✕</div>
+    </div>
+  </div>
+  <div class="win-body">
+    <div class="panel">
+      <div class="hero-name">EMERY RESZKA</div>
+      <div class="hero-sub">Multi-Discipline Creator &amp; Builder</div>
+      <div class="hero-desc">
+        Turning ideas into tangible things — from code to concept, strategy to execution. Welcome to my digital space.
+      </div>
+    </div>
+    <div style="display:flex;gap:6px;margin-top:4px;">
+      <button class="btn95" onclick="openWin('win-projects')">📁 Projects</button>
+      <button class="btn95" onclick="openWin('win-skills')">💾 Skills</button>
+      <button class="btn95" onclick="openWin('win-contact')">📧 Contact</button>
+    </div>
+  </div>
+  <div class="win-resize"></div>
+</div>
+
+<!-- ── Window: Projects ──────────────────── -->
+<div class="win" id="win-projects" style="top:80px;left:500px;width:360px;">
+  <div class="win-titlebar">
+    <span class="win-title">📁 Projects</span>
+    <div class="win-controls">
+      <div class="win-btn" onclick="minimizeWin('win-projects')">_</div>
+      <div class="win-btn" onclick="maximizeWin('win-projects')">□</div>
+      <div class="win-btn" onclick="closeWin('win-projects')">✕</div>
+    </div>
+  </div>
+  <div class="win-body">
+
+    <div class="panel project-item">
+      <div class="project-num">001</div>
+      <div class="project-name">PROJECT ALPHA</div>
+      <div class="project-desc">Clean systems thinking applied to a complex problem. Built with intention and sharp focus on usability.</div>
+      <div>
+        <span class="tag">Research</span>
+        <span class="tag">Design</span>
+        <span class="tag">Dev</span>
+      </div>
+    </div>
+
+    <div class="panel project-item">
+      <div class="project-num">002</div>
+      <div class="project-name">PROJECT BETA</div>
+      <div class="project-desc">Visual communication bridging raw data and human-readable narrative. Data tells a story here.</div>
+      <div>
+        <span class="tag">Data</span>
+        <span class="tag">Viz</span>
+        <span class="tag">Writing</span>
+      </div>
+    </div>
+
+    <div class="panel project-item">
+      <div class="project-num">003</div>
+      <div class="project-name">PROJECT GAMMA</div>
+      <div class="project-desc">Juggling scope, timeline, and cross-functional teams. Delivered on time, under pressure.</div>
+      <div>
+        <span class="tag">Strategy</span>
+        <span class="tag">Collab</span>
+        <span class="tag">Delivery</span>
+      </div>
+    </div>
+
+  </div>
+  <div class="win-resize"></div>
+</div>
+
+<!-- ── Window: Skills ────────────────────── -->
+<div class="win" id="win-skills" style="top:320px;left:80px;width:340px;">
+  <div class="win-titlebar">
+    <span class="win-title">💾 Skills.exe</span>
+    <div class="win-controls">
+      <div class="win-btn" onclick="minimizeWin('win-skills')">_</div>
+      <div class="win-btn" onclick="maximizeWin('win-skills')">□</div>
+      <div class="win-btn" onclick="closeWin('win-skills')">✕</div>
+    </div>
+  </div>
+  <div class="win-body">
+    <div class="panel">
+      <div class="skill-cat-label">Technical</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">HTML &amp; CSS</span>
+        <span class="skill-pill">JavaScript</span>
+        <span class="skill-pill">SQL</span>
+        <span class="skill-pill">Git</span>
+      </div>
+
+      <div class="skill-cat-label">Creative</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Visual Design</span>
+        <span class="skill-pill">Copywriting</span>
+        <span class="skill-pill">Illustration</span>
+        <span class="skill-pill">Photography</span>
+      </div>
+
+      <div class="skill-cat-label">Strategy</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Proj. Mgmt</span>
+        <span class="skill-pill">User Research</span>
+        <span class="skill-pill">Systems Thinking</span>
+      </div>
+
+      <div class="skill-cat-label">Tools</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Figma</span>
+        <span class="skill-pill">VS Code</span>
+        <span class="skill-pill">Notion</span>
+        <span class="skill-pill">Adobe CC</span>
+      </div>
+    </div>
+  </div>
+  <div class="win-resize"></div>
+</div>
+
+<!-- ── Window: Contact ───────────────────── -->
+<div class="win" id="win-contact" style="top:320px;left:460px;width:280px;">
+  <div class="win-titlebar">
+    <span class="win-title">📧 Contact Me</span>
+    <div class="win-controls">
+      <div class="win-btn" onclick="minimizeWin('win-contact')">_</div>
+      <div class="win-btn" onclick="maximizeWin('win-contact')">□</div>
+      <div class="win-btn" onclick="closeWin('win-contact')">✕</div>
+    </div>
+  </div>
+  <div class="win-body">
+    <div class="panel">
+      <div class="contact-row" onclick="window.open('https://github.com/eareszka','_blank')">
+        <span class="contact-icon">🐙</span> GitHub
+      </div>
+      <div class="contact-row" onclick="window.open('https://www.linkedin.com/in/emery-reszka-a18336251/','_blank')">
+        <span class="contact-icon">💼</span> LinkedIn
+      </div>
+      <div class="contact-row" onclick="window.open('https://twitter.com','_blank')">
+        <span class="contact-icon">🐦</span> Twitter / X
+      </div>
+      <div class="contact-row" onclick="window.location='mailto:eareszka@uwm.edu'">
+        <span class="contact-icon">📨</span> eareszka@uwm.edu
+      </div>
+    </div>
+  </div>
+  <div class="win-resize"></div>
+</div>
+
+<!-- ── Start Menu ────────────────────────── -->
+<div id="start-menu">
+  <div class="start-banner">Emery Reszka</div>
+  <div class="start-items">
+    <div class="start-item" onclick="openWin('win-about');closeStartMenu()">💎 <span>About Me</span></div>
+    <div class="start-item" onclick="openWin('win-projects');closeStartMenu()">📁 <span>Projects</span></div>
+    <div class="start-item" onclick="openWin('win-skills');closeStartMenu()">💾 <span>Skills</span></div>
+    <div class="start-item" onclick="openWin('win-contact');closeStartMenu()">📧 <span>Contact</span></div>
+    <div class="start-sep"></div>
+    <div class="start-item" onclick="closeStartMenu()">🔌 <span>Close Menu</span></div>
+  </div>
+</div>
+
+<!-- ── Taskbar ───────────────────────────── -->
+<div id="taskbar">
+  <button class="btn95" id="start-btn" onclick="toggleStartMenu()">
+    <span class="start-icon">💻</span> Start
+  </button>
+  <div class="taskbar-divider"></div>
+  <div class="taskbar-apps" id="taskbar-apps"></div>
+  <div class="clock" id="clock">00:00</div>
+</div>
+
+<script>
+// ── Clock ──────────────────────────────────
+function updateClock() {
+  const now = new Date();
+  const h = String(now.getHours()).padStart(2,'0');
+  const m = String(now.getMinutes()).padStart(2,'0');
+  document.getElementById('clock').textContent = h + ':' + m;
+}
+updateClock();
+setInterval(updateClock, 10000);
+
+// ── Window management ──────────────────────
+const wins = document.querySelectorAll('.win');
+const taskbarApps = document.getElementById('taskbar-apps');
+
+const winMeta = {
+  'win-about':    { icon: '💎', label: 'About Me' },
+  'win-projects': { icon: '📁', label: 'Projects' },
+  'win-skills':   { icon: '💾', label: 'Skills.exe' },
+  'win-contact':  { icon: '📧', label: 'Contact' },
+};
+
+function buildTaskbar() {
+  taskbarApps.innerHTML = '';
+  wins.forEach(win => {
+    const meta = winMeta[win.id];
+    if (!meta) return;
+    const btn = document.createElement('button');
+    btn.className = 'btn95 taskbar-app' + (win.classList.contains('active') ? ' active' : '');
+    btn.id = 'tb-' + win.id;
+    btn.innerHTML = meta.icon + ' ' + meta.label;
+    btn.onclick = () => toggleWin(win.id);
+    taskbarApps.appendChild(btn);
+  });
+}
+buildTaskbar();
+
+function focusWin(id) {
+  wins.forEach(w => {
+    w.classList.remove('active');
+    document.getElementById('tb-' + w.id)?.classList.remove('active');
+  });
+  const win = document.getElementById(id);
+  win.classList.add('active');
+  document.getElementById('tb-' + id)?.classList.add('active');
+}
+
+function openWin(id) {
+  const win = document.getElementById(id);
+  win.classList.remove('minimized');
+  focusWin(id);
+}
+
+function closeWin(id) {
+  document.getElementById(id).classList.add('minimized');
+  document.getElementById('tb-' + id)?.classList.remove('active');
+}
+
+function minimizeWin(id) {
+  const win = document.getElementById(id);
+  win.classList.add('minimized');
+  document.getElementById('tb-' + id)?.classList.remove('active');
+}
+
+function toggleWin(id) {
+  const win = document.getElementById(id);
+  if (win.classList.contains('minimized')) {
+    openWin(id);
+  } else if (win.classList.contains('active')) {
+    minimizeWin(id);
+  } else {
+    focusWin(id);
+  }
+}
+
+wins.forEach(win => {
+  win.addEventListener('mousedown', () => focusWin(win.id));
+});
+
+// ── Maximize / Restore ─────────────────────
+const winPrev = {};
+
+function maximizeWin(id) {
+  const win = document.getElementById(id);
+  if (win.classList.contains('maximized')) {
+    const prev = winPrev[id];
+    win.style.left   = prev.left;
+    win.style.top    = prev.top;
+    win.style.width  = prev.width;
+    win.style.height = prev.height;
+    win.classList.remove('maximized');
+  } else {
+    winPrev[id] = {
+      left:   win.style.left   || win.offsetLeft   + 'px',
+      top:    win.style.top    || win.offsetTop    + 'px',
+      width:  win.style.width  || win.offsetWidth  + 'px',
+      height: win.style.height || win.offsetHeight + 'px',
+    };
+    win.style.left   = '0px';
+    win.style.top    = '0px';
+    win.style.width  = window.innerWidth + 'px';
+    win.style.height = (window.innerHeight - 40) + 'px';
+    win.classList.add('maximized');
+  }
+  focusWin(id);
+}
+
+// ── Dragging ───────────────────────────────
+document.querySelectorAll('.win-titlebar').forEach(bar => {
+  let dragging = false, ox = 0, oy = 0;
+  const win = bar.closest('.win');
+
+  bar.addEventListener('mousedown', e => {
+    if (e.target.classList.contains('win-btn')) return;
+    if (win.classList.contains('maximized')) return;
+    dragging = true;
+    ox = e.clientX - win.offsetLeft;
+    oy = e.clientY - win.offsetTop;
+    focusWin(win.id);
+    e.preventDefault();
+  });
+
+  document.addEventListener('mousemove', e => {
+    if (!dragging) return;
+    let nx = e.clientX - ox;
+    let ny = e.clientY - oy;
+    nx = Math.max(0, Math.min(nx, window.innerWidth - win.offsetWidth));
+    ny = Math.max(0, Math.min(ny, window.innerHeight - 40 - win.offsetHeight));
+    win.style.left = nx + 'px';
+    win.style.top  = ny + 'px';
+  });
+
+  document.addEventListener('mouseup', () => { dragging = false; });
+});
+
+// ── Resize ─────────────────────────────────
+document.querySelectorAll('.win-resize').forEach(handle => {
+  let resizing = false, startX, startY, startW, startH;
+  const win = handle.closest('.win');
+
+  handle.addEventListener('mousedown', e => {
+    if (win.classList.contains('maximized')) return;
+    resizing = true;
+    startX = e.clientX; startY = e.clientY;
+    startW = win.offsetWidth; startH = win.offsetHeight;
+    focusWin(win.id);
+    e.preventDefault();
+    e.stopPropagation();
+  });
+
+  document.addEventListener('mousemove', e => {
+    if (!resizing) return;
+    const nw = Math.max(240, startW + e.clientX - startX);
+    const nh = Math.max(120, startH + e.clientY - startY);
+    win.style.width  = nw + 'px';
+    win.style.height = nh + 'px';
+  });
+
+  document.addEventListener('mouseup', () => { resizing = false; });
+});
+
+// ── Start menu ─────────────────────────────
+const startMenu = document.getElementById('start-menu');
+function toggleStartMenu() { startMenu.classList.toggle('open'); }
+function closeStartMenu()  { startMenu.classList.remove('open'); }
+
+document.addEventListener('click', e => {
+  if (!startMenu.contains(e.target) && !document.getElementById('start-btn').contains(e.target)) {
+    closeStartMenu();
+  }
+});
+
+// ── Desktop icon click ─────────────────────
+document.querySelectorAll('.icon').forEach(icon => {
+  icon.addEventListener('click', () => {
+    document.querySelectorAll('.icon').forEach(i => i.classList.remove('selected'));
+    icon.classList.add('selected');
+  });
+});
+</script>
+</body>
+</html>
