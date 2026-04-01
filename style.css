@@ -349,55 +349,60 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
 ═══════════════════════════════════════════════ */
 @media (max-width: 700px) {
 
-  /* Let the page scroll normally */
-  html, body { overflow: auto; height: auto; }
-
-  /* Desktop becomes a normal flow container */
+  /* Desktop fills screen above taskbar — acts as the home/app grid */
   #desktop {
-    position: relative;
-    inset: auto;
+    position: fixed;
+    inset: 0 0 44px 0;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 16px 8px 8px;
-    gap: 8px;
+    align-content: flex-start;
+    padding: 24px 8px 8px;
+    gap: 16px;
     background: transparent;
   }
 
-  /* Icons slightly larger tap targets */
+  /* Icons: larger tap targets */
   .icon { width: 80px; padding: 10px 6px; }
   .icon-img { font-size: 2.4rem; }
   .icon-label { font-size: 1rem; }
 
-  /* Windows: full width, static flow (not absolute) */
-  .win {
-    position: relative !important;
-    left: auto !important;
-    top: auto !important;
-    width: 100% !important;
-    height: auto !important;
-    max-height: none !important;
-    margin: 0 0 12px 0;
+  /* Hide all windows by default — show icon grid only */
+  .win { display: none !important; }
+  .win.minimized { display: none !important; }
+
+  /* When an app is open: show the active window full-screen */
+  body.mobile-app-open .win.active:not(.minimized) {
     display: flex !important;
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    margin: 0;
+    z-index: 500;
   }
 
-  /* Never hide windows on mobile — show all stacked */
-  .win.minimized { display: flex !important; }
+  /* Hide icon grid and taskbar when app is open */
+  body.mobile-app-open #desktop { display: none; }
+  body.mobile-app-open #taskbar { display: none; }
 
   /* Disable drag cursor on title bar */
   .win-titlebar { cursor: default; }
 
-  /* Hide resize handle — not useful on mobile */
+  /* Hide resize handle */
   .win-resize { display: none; }
 
-  /* Hide minimize/maximize — replaced by always-visible stack */
+  /* Hide minimize/maximize — X is the only control */
   .win-controls .win-btn:nth-child(1),
   .win-controls .win-btn:nth-child(2) { display: none; }
 
-  /* Win body: natural height, no scroll trap */
+  /* Win body: scrollable */
   .win-body {
     max-height: none;
-    overflow-y: visible;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
   }
 
   /* Bigger tap targets on buttons */
@@ -408,12 +413,12 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
   #taskbar { height: 44px; padding: 4px; gap: 4px; }
   #start-btn { font-size: .42rem; padding: 2px 8px 2px 4px; }
 
-  /* Hide taskbar app buttons on mobile — redundant when all windows are visible */
+  /* Hide taskbar app buttons and divider — not needed on mobile */
   .taskbar-apps { display: none; }
   .taskbar-divider { display: none; }
 
   /* Start menu full-width on mobile */
-  #start-menu { width: 100%; }
+  #start-menu { width: 100%; bottom: 44px; }
 
   /* Larger text for readability on small screens */
   .hero-name { font-size: .7rem; }
@@ -435,6 +440,6 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
 @media (max-width: 700px) {
   #win-container {
     display: block;
-    padding: 0 8px 60px;
+    padding: 0;
   }
 }

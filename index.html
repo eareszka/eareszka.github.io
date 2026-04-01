@@ -11,19 +11,19 @@
 
 <!-- ── Desktop ────────────────────────────── -->
 <div id="desktop">
-  <div class="icon" ondblclick="openWin('win-about')">
+  <div class="icon" ondblclick="openWin('win-about')" onclick="if(isMobile())openWin('win-about')">
     <div class="icon-img">💎</div>
     <div class="icon-label">About Me</div>
   </div>
-  <div class="icon" ondblclick="openWin('win-projects')">
+  <div class="icon" ondblclick="openWin('win-projects')" onclick="if(isMobile())openWin('win-projects')">
     <div class="icon-img">📁</div>
     <div class="icon-label">Projects</div>
   </div>
-  <div class="icon" ondblclick="openWin('win-skills')">
+  <div class="icon" ondblclick="openWin('win-skills')" onclick="if(isMobile())openWin('win-skills')">
     <div class="icon-img">💾</div>
     <div class="icon-label">Skills</div>
   </div>
-  <div class="icon" ondblclick="openWin('win-contact')">
+  <div class="icon" ondblclick="openWin('win-contact')" onclick="if(isMobile())openWin('win-contact')">
     <div class="icon-img">📧</div>
     <div class="icon-label">Contact</div>
   </div>
@@ -79,9 +79,12 @@
       <div class="project-num">001</div>
       <div class="project-name">PROJECT ALPHA</div>
       <div class="project-desc">An ambitious turn-based JRPG in GameMaker Studio 2, featuring my real-life friends as characters—currently on the backburner, but far from forgotten.</div>
-      <div>
-        <span class="tag">Game Dev</span>
-        <span class="tag">GML</span>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;">
+        <div>
+          <span class="tag">Game Dev</span>
+          <span class="tag">GML</span>
+        </div>
+        <button class="btn95" onclick="window.open('https://gamejolt.com/games/ProjectEmerald/880548','_blank')">🎮 Download</button>
       </div>
     </div>
 
@@ -264,11 +267,13 @@ function openWin(id) {
   const win = document.getElementById(id);
   win.classList.remove('minimized');
   focusWin(id);
+  if (isMobile()) document.body.classList.add('mobile-app-open');
 }
 
 function closeWin(id) {
   document.getElementById(id).classList.add('minimized');
   document.getElementById('tb-' + id)?.classList.remove('active');
+  if (isMobile()) document.body.classList.remove('mobile-app-open');
 }
 
 function minimizeWin(id) {
@@ -320,8 +325,13 @@ function maximizeWin(id) {
   focusWin(id);
 }
 
-// ── Dragging ───────────────────────────────
+// ── Mobile detection ───────────────────────
 const isMobile = () => window.innerWidth <= 700;
+
+// On mobile: start with all windows hidden (show icon grid only)
+if (isMobile()) wins.forEach(w => w.classList.add('minimized'));
+
+// ── Dragging ───────────────────────────────
 
 document.querySelectorAll('.win-titlebar').forEach(bar => {
   let dragging = false, ox = 0, oy = 0;
