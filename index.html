@@ -267,13 +267,21 @@ function openWin(id) {
   const win = document.getElementById(id);
   win.classList.remove('minimized');
   focusWin(id);
-  if (isMobile()) document.body.classList.add('mobile-app-open');
+  if (isMobile()) {
+    wins.forEach(w => w.classList.remove('mobile-visible'));
+    win.classList.add('mobile-visible');
+    document.getElementById('desktop').style.display = 'none';
+  }
 }
 
 function closeWin(id) {
-  document.getElementById(id).classList.add('minimized');
+  const win = document.getElementById(id);
+  win.classList.add('minimized');
+  win.classList.remove('mobile-visible');
   document.getElementById('tb-' + id)?.classList.remove('active');
-  if (isMobile()) document.body.classList.remove('mobile-app-open');
+  if (isMobile()) {
+    document.getElementById('desktop').style.display = '';
+  }
 }
 
 function minimizeWin(id) {

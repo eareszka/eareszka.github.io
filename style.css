@@ -349,10 +349,14 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
 ═══════════════════════════════════════════════ */
 @media (max-width: 700px) {
 
-  /* Desktop fills screen above taskbar — acts as the home/app grid */
+  /* No taskbar on mobile */
+  #taskbar { display: none !important; }
+  #start-menu { display: none !important; }
+
+  /* Desktop fills full screen — acts as the home/app grid */
   #desktop {
     position: fixed;
-    inset: 0 0 44px 0;
+    inset: 0;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
@@ -369,10 +373,9 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
 
   /* Hide all windows by default — show icon grid only */
   .win { display: none !important; }
-  .win.minimized { display: none !important; }
 
-  /* When an app is open: show the active window full-screen */
-  body.mobile-app-open .win.active:not(.minimized) {
+  /* Show a window full-screen when explicitly opened on mobile */
+  .win.mobile-visible {
     display: flex !important;
     position: fixed !important;
     inset: 0 !important;
@@ -382,10 +385,6 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
     margin: 0;
     z-index: 500;
   }
-
-  /* Hide icon grid and taskbar when app is open */
-  body.mobile-app-open #desktop { display: none; }
-  body.mobile-app-open #taskbar { display: none; }
 
   /* Disable drag cursor on title bar */
   .win-titlebar { cursor: default; }
@@ -408,17 +407,6 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
   /* Bigger tap targets on buttons */
   .btn95 { font-size: 1.1rem; padding: 6px 14px; }
   .win-btn { width: 24px; height: 22px; font-size: 1rem; }
-
-  /* Taskbar: shrink for small screens */
-  #taskbar { height: 44px; padding: 4px; gap: 4px; }
-  #start-btn { font-size: .42rem; padding: 2px 8px 2px 4px; }
-
-  /* Hide taskbar app buttons and divider — not needed on mobile */
-  .taskbar-apps { display: none; }
-  .taskbar-divider { display: none; }
-
-  /* Start menu full-width on mobile */
-  #start-menu { width: 100%; bottom: 44px; }
 
   /* Larger text for readability on small screens */
   .hero-name { font-size: .7rem; }
