@@ -61,9 +61,23 @@ body::after {
   display: flex;
   flex-direction: column;
   z-index: 10;
+  transform-origin: center top;
+  transition: transform 0.18s cubic-bezier(0.34, 1.28, 0.64, 1), opacity 0.15s ease;
 }
 .win.active { z-index: 20; }
 .win.minimized { display: none; }
+
+/* Open/close animation states */
+.win.win-entering {
+  opacity: 0;
+  transform: scale(0.86);
+}
+.win.win-closing {
+  opacity: 0 !important;
+  transform: scale(0.92) !important;
+  transition: transform 0.1s ease-in, opacity 0.09s ease-in !important;
+  pointer-events: none;
+}
 
 .win-titlebar {
   display: flex;
@@ -549,6 +563,22 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
   line-height: 1.8;
 }
 .app-btn:active { opacity: .8; }
+
+.app-close-btn {
+  display: block;
+  width: calc(100% - 36px);
+  margin: 12px 18px 20px;
+  padding: 12px;
+  background: transparent;
+  border: 1px solid #555;
+  color: #888;
+  font-family: 'VT323', monospace;
+  font-size: 1.1rem;
+  cursor: pointer;
+  text-align: center;
+  letter-spacing: .12em;
+}
+.app-close-btn:active { color: #fff; border-color: #fff; }
 
 /* Win container — mobile flow wrapper */
 #win-container {

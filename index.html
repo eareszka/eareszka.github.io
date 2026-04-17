@@ -237,6 +237,7 @@
     <div class="app-action-row">
       <button class="app-btn" onclick="window.open('https://gamejolt.com/games/ProjectEmerald/880548','_blank')">🎮 Download on Game Jolt</button>
     </div>
+    <button class="app-close-btn" onclick="closeWin('win-proj-alpha')">✕ Close</button>
   </div>
 </div>
 
@@ -271,6 +272,7 @@
     <div class="app-action-row">
       <button class="app-btn" onclick="window.open('https://pulse-sooty-pi.vercel.app/frontend/src/pages/index.html','_blank')">↗ Open Live Site</button>
     </div>
+    <button class="app-close-btn" onclick="closeWin('win-proj-pulse')">✕ Close</button>
   </div>
 </div>
 
@@ -301,6 +303,7 @@
         <span class="app-tag">Game Dev</span>
       </div>
     </div>
+    <button class="app-close-btn" onclick="closeWin('win-proj-beta')">✕ Close</button>
   </div>
 </div>
 
@@ -384,29 +387,41 @@ function openWin(id) {
   const meta = winMeta[id];
   if (meta && meta.mobileOnly && !isMobile()) return;
   const win = document.getElementById(id);
-  win.classList.remove('minimized');
-  focusWin(id);
+
+  win.classList.remove('minimized', 'win-closing');
   if (isMobile()) {
     wins.forEach(w => w.classList.remove('mobile-visible'));
     win.classList.add('mobile-visible');
     document.getElementById('desktop').style.display = 'none';
   }
+  focusWin(id);
+
+  win.classList.add('win-entering');
+  requestAnimationFrame(() => requestAnimationFrame(() => win.classList.remove('win-entering')));
 }
 
 function closeWin(id) {
   const win = document.getElementById(id);
-  win.classList.add('minimized');
-  win.classList.remove('mobile-visible');
   document.getElementById('tb-' + id)?.classList.remove('active');
-  if (isMobile()) {
-    document.getElementById('desktop').style.display = '';
-  }
+  win.classList.add('win-closing');
+
+  const finish = () => {
+    win.classList.remove('win-closing');
+    win.classList.add('minimized');
+    win.classList.remove('mobile-visible');
+    if (isMobile()) document.getElementById('desktop').style.display = '';
+  };
+  const t = setTimeout(finish, 200);
+  win.addEventListener('transitionend', () => { clearTimeout(t); finish(); }, { once: true });
 }
 
 function minimizeWin(id) {
   const win = document.getElementById(id);
-  win.classList.add('minimized');
   document.getElementById('tb-' + id)?.classList.remove('active');
+  win.classList.add('win-closing');
+  const finish = () => { win.classList.remove('win-closing'); win.classList.add('minimized'); };
+  const t = setTimeout(finish, 200);
+  win.addEventListener('transitionend', () => { clearTimeout(t); finish(); }, { once: true });
 }
 
 function toggleWin(id) {
