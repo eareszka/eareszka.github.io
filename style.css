@@ -353,6 +353,20 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
   .desktop-only { display: none !important; }
   .mobile-only  { display: flex !important; }
 
+  /* Enable mobile app windows */
+  .mobile-app-win { display: none !important; }
+  .mobile-app-win.mobile-visible {
+    display: flex !important;
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    margin: 0;
+    z-index: 500;
+  }
+  .mobile-app-win .win-body { overflow-y: auto; flex: 1; min-height: 0; }
+
   /* No taskbar on mobile */
   #taskbar { display: none !important; }
   #start-menu { display: none !important; }
@@ -426,6 +440,115 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
 
 /* Desktop/mobile icon visibility */
 .mobile-only { display: none; }
+
+/* Mobile app windows — hidden entirely on desktop */
+.mobile-app-win { display: none !important; }
+
+/* ── Mobile App Window Content ─────────────────── */
+.app-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  background: #0a0a0f;
+}
+
+.app-hero {
+  background: linear-gradient(160deg, var(--accent2, #7b00d4) 0%, #0a0a0f 70%);
+  padding: 32px 20px 24px;
+  text-align: center;
+  border-bottom: 2px solid var(--accent, #ff2dce);
+  box-shadow: 0 0 30px var(--accent, #ff2dce);
+  position: relative;
+}
+.app-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(to bottom, transparent 0px, transparent 3px, rgba(0,0,0,.12) 3px, rgba(0,0,0,.12) 4px);
+}
+
+.app-hero-num {
+  font-family: 'VT323', monospace;
+  font-size: 1rem;
+  color: var(--accent, #ff2dce);
+  opacity: .7;
+  letter-spacing: .2em;
+  margin-bottom: 4px;
+}
+.app-hero-icon {
+  font-size: 4rem;
+  line-height: 1;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 16px var(--accent, #ff2dce));
+}
+.app-hero-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: .7rem;
+  color: #fff;
+  text-shadow: 0 0 12px var(--accent, #ff2dce), 2px 2px 0 var(--accent2, #7b00d4);
+  line-height: 1.7;
+  margin-bottom: 6px;
+}
+.app-hero-sub {
+  font-family: 'VT323', monospace;
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+.app-section {
+  padding: 16px 18px 0;
+}
+.app-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: .4rem;
+  color: var(--accent, #ff2dce);
+  letter-spacing: .18em;
+  margin-bottom: 8px;
+  opacity: .85;
+}
+.app-desc {
+  font-family: 'VT323', monospace;
+  font-size: 1.15rem;
+  color: #ddd;
+  line-height: 1.55;
+}
+
+.app-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.app-tag {
+  font-family: 'VT323', monospace;
+  font-size: 1rem;
+  color: #fff;
+  background: transparent;
+  border: 1px solid var(--accent, #ff2dce);
+  box-shadow: 0 0 6px var(--accent, #ff2dce);
+  padding: 2px 10px;
+}
+
+.app-action-row {
+  padding: 20px 18px 24px;
+  margin-top: auto;
+}
+.app-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(90deg, var(--accent2, #7b00d4), var(--accent, #ff2dce));
+  border: none;
+  color: #fff;
+  font-family: 'Press Start 2P', monospace;
+  font-size: .5rem;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 0 16px var(--accent, #ff2dce);
+  letter-spacing: .05em;
+  line-height: 1.8;
+}
+.app-btn:active { opacity: .8; }
 
 /* Win container — mobile flow wrapper */
 #win-container {
