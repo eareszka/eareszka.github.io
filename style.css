@@ -450,10 +450,122 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
   .win-body div[style*="display:flex"] {
     flex-wrap: wrap;
   }
+
+  /* ── Mobile-only in-window elements ─────── */
+  .mob-el { display: block; }
+
+  /* Mobile hero header inside regular windows */
+  .mobile-win-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 20px 24px;
+    background: linear-gradient(160deg, var(--accent2, #7b00d4) 0%, #0a0a0f 70%);
+    border-bottom: 2px solid var(--accent, #ff2dce);
+    box-shadow: 0 0 30px var(--accent, #ff2dce);
+    position: relative;
+    flex-shrink: 0;
+  }
+  .mobile-win-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(to bottom, transparent 0px, transparent 3px, rgba(0,0,0,.12) 3px, rgba(0,0,0,.12) 4px);
+  }
+  .mwh-icon {
+    font-size: 4rem;
+    line-height: 1;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 16px var(--accent, #ff2dce));
+  }
+  .mwh-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: .65rem;
+    color: #fff;
+    text-shadow: 0 0 12px var(--accent, #ff2dce), 2px 2px 0 var(--accent2, #7b00d4);
+    line-height: 1.7;
+    margin-bottom: 6px;
+    text-align: center;
+  }
+  .mwh-sub {
+    font-family: 'VT323', monospace;
+    font-size: 1.15rem;
+    color: #ccc;
+  }
+
+  /* ── Dark vaporwave theme for mobile-visible windows ── */
+  .win.mobile-visible .win-body {
+    background: #0a0a0f;
+    padding: 0;
+  }
+  .win.mobile-visible .panel {
+    background: #111118;
+    box-shadow: none;
+    border: none;
+    border-bottom: 1px solid #1e1e2e;
+    padding: 18px;
+    margin-bottom: 0;
+  }
+  /* About — hide desktop name/sub (already in hero) */
+  .win.mobile-visible .hero-name,
+  .win.mobile-visible .hero-sub { display: none; }
+  .win.mobile-visible .hero-desc {
+    font-size: 1.12rem;
+    color: #ccc;
+    line-height: 1.6;
+  }
+  /* About — bottom nav buttons */
+  .win.mobile-visible div[style*="display:flex"] {
+    padding: 14px 18px 0;
+  }
+  .win.mobile-visible .btn95 {
+    background: transparent;
+    color: #ddd;
+    box-shadow: none;
+    border: 1px solid #7b00d4;
+    font-size: 1.05rem;
+    padding: 8px 14px;
+  }
+  .win.mobile-visible .btn95:active {
+    background: rgba(123,0,212,.3);
+    color: #fff;
+    box-shadow: none;
+    padding: 8px 14px;
+  }
+  /* Skills */
+  .win.mobile-visible .skill-cat-label {
+    font-size: .44rem;
+    margin-bottom: 10px;
+  }
+  .win.mobile-visible .skill-pill {
+    background: transparent;
+    box-shadow: none;
+    border: 1px solid #ff2dce;
+    color: #fff;
+    font-size: 1.05rem;
+    padding: 3px 12px;
+    text-shadow: 0 0 5px rgba(255,45,206,.5);
+  }
+  /* Contact */
+  .win.mobile-visible .contact-row {
+    border-bottom: 1px solid #1e1e2e;
+    padding: 16px 10px;
+    font-size: 1.2rem;
+    color: #ddd;
+  }
+  .win.mobile-visible .contact-row:hover {
+    background: linear-gradient(90deg, rgba(123,0,212,.3), rgba(255,45,206,.2));
+    color: #fff;
+  }
 }
 
 /* Desktop/mobile icon visibility */
 .mobile-only { display: none; }
+
+/* Mobile-only in-window elements (hero header, bottom close btn) */
+.mobile-win-hero { display: none; }
+.mob-el { display: none; }
 
 /* Mobile app windows — hidden entirely on desktop */
 .mobile-app-win { display: none !important; }

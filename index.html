@@ -11,10 +11,20 @@
 
 <!-- ── Desktop ────────────────────────────── -->
 <div id="desktop">
+  <!-- Row 1 on mobile: About / Skills / Contact -->
   <div class="icon" ondblclick="openWin('win-about')" onclick="if(isMobile())openWin('win-about')">
     <div class="icon-img">💎</div>
     <div class="icon-label">About Me</div>
   </div>
+  <div class="icon" ondblclick="openWin('win-skills')" onclick="if(isMobile())openWin('win-skills')">
+    <div class="icon-img">💾</div>
+    <div class="icon-label">Skills</div>
+  </div>
+  <div class="icon" ondblclick="openWin('win-contact')" onclick="if(isMobile())openWin('win-contact')">
+    <div class="icon-img">📧</div>
+    <div class="icon-label">Contact</div>
+  </div>
+  <!-- Row 2 on mobile: Projects (folder desktop / apps mobile) -->
   <div class="icon desktop-only" ondblclick="openWin('win-projects')" onclick="if(isMobile())openWin('win-projects')">
     <div class="icon-img">📁</div>
     <div class="icon-label">Projects</div>
@@ -30,14 +40,6 @@
   <div class="icon mobile-only" onclick="openWin('win-proj-beta')">
     <div class="icon-img">🐍</div>
     <div class="icon-label">Project Beta</div>
-  </div>
-  <div class="icon" ondblclick="openWin('win-skills')" onclick="if(isMobile())openWin('win-skills')">
-    <div class="icon-img">💾</div>
-    <div class="icon-label">Skills</div>
-  </div>
-  <div class="icon" ondblclick="openWin('win-contact')" onclick="if(isMobile())openWin('win-contact')">
-    <div class="icon-img">📧</div>
-    <div class="icon-label">Contact</div>
   </div>
 </div>
 
@@ -55,6 +57,11 @@
     </div>
   </div>
   <div class="win-body">
+    <div class="mobile-win-hero" style="--accent:#ff2dce;--accent2:#7b00d4;">
+      <div class="mwh-icon">💎</div>
+      <div class="mwh-title">EMERY RESZKA</div>
+      <div class="mwh-sub">Multi-Discipline Creator &amp; Builder</div>
+    </div>
     <div class="panel">
       <div class="hero-name">EMERY RESZKA</div>
       <div class="hero-sub">Multi-Discipline Creator &amp; Builder</div>
@@ -71,6 +78,7 @@
       <button class="btn95" onclick="openWin('win-skills')">💾 Skills</button>
       <button class="btn95" onclick="openWin('win-contact')">📧 Contact</button>
     </div>
+    <button class="app-close-btn mob-el" onclick="closeWin('win-about')">✕ Close</button>
   </div>
   <div class="win-resize"></div>
 </div>
@@ -141,6 +149,11 @@
     </div>
   </div>
   <div class="win-body">
+    <div class="mobile-win-hero" style="--accent:#00e5ff;--accent2:#7b00d4;">
+      <div class="mwh-icon">💾</div>
+      <div class="mwh-title">SKILLS.EXE</div>
+      <div class="mwh-sub">Tools &amp; Technologies</div>
+    </div>
     <div class="panel">
       <div class="skill-cat-label">Technical</div>
       <div class="skill-pills">
@@ -174,6 +187,7 @@
         <span class="skill-pill">Adobe CC</span>
       </div>
     </div>
+    <button class="app-close-btn mob-el" onclick="closeWin('win-skills')">✕ Close</button>
   </div>
   <div class="win-resize"></div>
 </div>
@@ -189,6 +203,11 @@
     </div>
   </div>
   <div class="win-body">
+    <div class="mobile-win-hero" style="--accent:#7b00d4;--accent2:#00e5ff;">
+      <div class="mwh-icon">📧</div>
+      <div class="mwh-title">CONTACT ME</div>
+      <div class="mwh-sub">Let's Connect</div>
+    </div>
     <div class="panel">
       <div class="contact-row" onclick="window.open('https://github.com/eareszka','_blank')">
         <span class="contact-icon">🐙</span> GitHub
@@ -203,6 +222,7 @@
         <span class="contact-icon">📨</span> eareszka@uwm.edu
       </div>
     </div>
+    <button class="app-close-btn mob-el" onclick="closeWin('win-contact')">✕ Close</button>
   </div>
   <div class="win-resize"></div>
 </div>
