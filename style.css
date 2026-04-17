@@ -62,7 +62,7 @@ body::after {
   flex-direction: column;
   z-index: 10;
   transform-origin: center top;
-  transition: transform 0.18s cubic-bezier(0.34, 1.28, 0.64, 1), opacity 0.15s ease;
+  transition: transform 0.16s ease-out, opacity 0.14s ease;
 }
 .win.active { z-index: 20; }
 .win.minimized { display: none; }
@@ -357,8 +357,87 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
   cursor: pointer;
 }
 
+/* ── Desktop retro video player ──────────── */
+.retro-player {
+  cursor: pointer;
+  margin-bottom: 4px;
+  border: 1px solid #808080;
+  box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #000;
+}
+.retro-player:hover .retro-screen { background: #0d0d0d; }
+
+.retro-screen {
+  background: #000;
+  position: relative;
+  padding: 18px 12px 14px;
+  text-align: center;
+  overflow: hidden;
+}
+.retro-scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px, transparent 3px,
+    rgba(255,255,255,.04) 3px, rgba(255,255,255,.04) 4px
+  );
+}
+.retro-play {
+  font-size: 2rem;
+  color: #ff2dce;
+  text-shadow: 0 0 12px #ff2dce, 0 0 24px #7b00d4;
+  line-height: 1;
+  margin-bottom: 6px;
+  position: relative;
+}
+.retro-channel {
+  font-family: 'VT323', monospace;
+  font-size: 1rem;
+  color: #00e5ff;
+  letter-spacing: .12em;
+  text-shadow: 0 0 8px #00e5ff;
+  position: relative;
+}
+.retro-controls {
+  background: #c0c0c0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3px 6px;
+  box-shadow: inset 0 1px 0 #fff;
+}
+.retro-label {
+  font-family: 'VT323', monospace;
+  font-size: .95rem;
+  color: #000;
+}
+
+/* Project screenshot expand panel */
+.view-more-panel {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 6px;
+}
+.view-more-panel.open { display: flex; }
+.proj-screenshot {
+  width: 100%;
+  display: block;
+  border: 1px solid #808080;
+  box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #000;
+}
+
 /* ═══════════════════════════════════════════════
-   MOBILE — stack windows vertically, kill dragging
+   DESKTOP DEFAULTS — hide mobile-specific elements
+═══════════════════════════════════════════════ */
+.mobile-only    { display: none; }
+.mobile-layout  { display: none; }
+.mobile-app-win { display: none !important; }
+#win-container  { position: contents; }
+
+/* ═══════════════════════════════════════════════
+   MOBILE — all mobile styles in one place
    Breakpoint: anything under 700px
 ═══════════════════════════════════════════════ */
 @media (max-width: 700px) {
@@ -367,7 +446,7 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
   .desktop-only { display: none !important; }
   .mobile-only  { display: flex !important; }
 
-  /* Enable mobile app windows */
+  /* Mobile app windows: hidden by default, shown full-screen when active */
   .mobile-app-win { display: none !important; }
   .mobile-app-win.mobile-visible {
     display: flex !important;
@@ -382,7 +461,7 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
   .mobile-app-win .win-body { overflow-y: auto; flex: 1; min-height: 0; }
 
   /* No taskbar on mobile */
-  #taskbar { display: none !important; }
+  #taskbar    { display: none !important; }
   #start-menu { display: none !important; }
 
   /* Desktop fills full screen — acts as the home/app grid */
@@ -403,10 +482,22 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
   .icon-img { font-size: 2.4rem; }
   .icon-label { font-size: 1rem; }
 
+  /* Icon order: row 1 = About/Skills/Contact, row 2 = projects */
+  #ico-about   { order: 1; }
+  #ico-skills  { order: 2; }
+  #ico-contact { order: 3; }
+  #ico-yt      { order: 4; }
+  #ico-alpha   { order: 5; }
+  #ico-pulse   { order: 6; }
+  #ico-beta    { order: 7; }
+
+  /* Hide titlebar X — bottom close button is the only exit */
+  .win-controls { display: none; }
+
   /* Hide all windows by default — show icon grid only */
   .win { display: none !important; }
 
-  /* Show a window full-screen when explicitly opened on mobile */
+  /* Show a window full-screen when explicitly opened */
   .win.mobile-visible {
     display: flex !important;
     position: fixed !important;
@@ -418,17 +509,9 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
     z-index: 500;
   }
 
-  /* Disable drag cursor on title bar */
   .win-titlebar { cursor: default; }
+  .win-resize   { display: none; }
 
-  /* Hide resize handle */
-  .win-resize { display: none; }
-
-  /* Hide minimize/maximize — X is the only control */
-  .win-controls .win-btn:nth-child(1),
-  .win-controls .win-btn:nth-child(2) { display: none; }
-
-  /* Win body: scrollable */
   .win-body {
     max-height: none;
     overflow-y: auto;
@@ -436,273 +519,214 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
     min-height: 0;
   }
 
-  /* Bigger tap targets on buttons */
-  .btn95 { font-size: 1.1rem; padding: 6px 14px; }
+  .btn95  { font-size: 1.1rem; padding: 6px 14px; }
   .win-btn { width: 24px; height: 22px; font-size: 1rem; }
-
-  /* Larger text for readability on small screens */
-  .hero-name { font-size: .7rem; }
   .project-name { font-size: .48rem; }
-  .contact-row { padding: 12px 8px; font-size: 1.15rem; }
-  .skill-pill { font-size: 1rem; padding: 3px 10px; }
 
-  /* Wrap the About window buttons */
-  .win-body div[style*="display:flex"] {
-    flex-wrap: wrap;
-  }
+  .win-body div[style*="display:flex"] { flex-wrap: wrap; }
 
-  /* ── Mobile-only in-window elements ─────── */
-  .win.mobile-visible .win-close-bottom { display: block; }
-  .win.mobile-visible .about-nav-row { display: none; }
-
-  /* Mobile hero header inside regular windows */
-  .mobile-win-hero {
+  /* Desktop/mobile layout swap */
+  .win.mobile-visible .mobile-layout {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 32px 20px 24px;
+    flex: 1;
+    min-height: 100%;
+  }
+  .win.mobile-visible .desktop-layout { display: none; }
+
+  #win-container { display: block; padding: 0; }
+
+  /* ── App window content styles ────────────── */
+
+  .app-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    background: #0a0a0f;
+  }
+
+  .app-hero {
     background: linear-gradient(160deg, var(--accent2, #7b00d4) 0%, #0a0a0f 70%);
+    padding: 32px 20px 24px;
+    text-align: center;
     border-bottom: 2px solid var(--accent, #ff2dce);
     box-shadow: 0 0 30px var(--accent, #ff2dce);
     position: relative;
-    flex-shrink: 0;
   }
-  .mobile-win-hero::after {
+  .app-hero::after {
     content: '';
     position: absolute;
     inset: 0;
     pointer-events: none;
     background: repeating-linear-gradient(to bottom, transparent 0px, transparent 3px, rgba(0,0,0,.12) 3px, rgba(0,0,0,.12) 4px);
   }
-  .mwh-icon {
+
+  .app-hero-num {
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    color: var(--accent, #ff2dce);
+    opacity: .7;
+    letter-spacing: .2em;
+    margin-bottom: 4px;
+  }
+  .app-hero-icon {
     font-size: 4rem;
     line-height: 1;
     margin-bottom: 10px;
     filter: drop-shadow(0 0 16px var(--accent, #ff2dce));
   }
-  .mwh-title {
+  .app-hero-title {
     font-family: 'Press Start 2P', monospace;
-    font-size: .65rem;
+    font-size: .7rem;
     color: #fff;
     text-shadow: 0 0 12px var(--accent, #ff2dce), 2px 2px 0 var(--accent2, #7b00d4);
     line-height: 1.7;
     margin-bottom: 6px;
-    text-align: center;
   }
-  .mwh-sub {
+  .app-hero-sub {
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    color: #ccc;
+  }
+
+  .app-section { padding: 16px 18px 0; }
+
+  .app-label {
+    font-family: 'Press Start 2P', monospace;
+    font-size: .4rem;
+    color: var(--accent, #ff2dce);
+    letter-spacing: .18em;
+    margin-bottom: 8px;
+    opacity: .85;
+  }
+  .app-desc {
     font-family: 'VT323', monospace;
     font-size: 1.15rem;
-    color: #ccc;
+    color: #ddd;
+    line-height: 1.55;
   }
 
-  /* ── Dark vaporwave theme for mobile-visible windows ── */
-  .win.mobile-visible .win-body {
-    background: #0a0a0f;
-    padding: 0;
+  .app-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .app-tag {
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    color: #fff;
+    background: transparent;
+    border: 1px solid var(--accent, #ff2dce);
+    box-shadow: 0 0 6px var(--accent, #ff2dce);
+    padding: 2px 10px;
   }
-  .win.mobile-visible .panel {
-    background: #111118;
-    box-shadow: none;
+
+  .app-contact-list { display: flex; flex-direction: column; }
+  .app-contact-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 0;
+    font-family: 'VT323', monospace;
+    font-size: 1.25rem;
+    color: #ddd;
+    border-bottom: 1px solid #1e1e2e;
+    cursor: pointer;
+  }
+  .app-contact-row:last-child { border-bottom: none; }
+  .app-contact-row:active { color: var(--accent, #ff2dce); }
+  .app-contact-icon { width: 28px; text-align: center; font-size: 1.4rem; }
+
+  .app-action-row { padding: 20px 18px 24px; margin-top: auto; }
+  .app-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(90deg, var(--accent2, #7b00d4), var(--accent, #ff2dce));
     border: none;
-    border-bottom: 1px solid #1e1e2e;
-    padding: 18px;
-    margin-bottom: 0;
-  }
-  /* About — hide desktop name/sub (already in hero) */
-  .win.mobile-visible .hero-name,
-  .win.mobile-visible .hero-sub { display: none; }
-  .win.mobile-visible .hero-desc {
-    font-size: 1.12rem;
-    color: #ccc;
-    line-height: 1.6;
-  }
-  /* About — bottom nav buttons (hidden on mobile, but keep padding if shown) */
-  .win.mobile-visible .about-nav-row {
-    padding: 14px 18px 0;
-  }
-  .win.mobile-visible .btn95 {
-    background: transparent;
-    color: #ddd;
-    box-shadow: none;
-    border: 1px solid #7b00d4;
-    font-size: 1.05rem;
-    padding: 8px 14px;
-  }
-  .win.mobile-visible .btn95:active {
-    background: rgba(123,0,212,.3);
     color: #fff;
-    box-shadow: none;
-    padding: 8px 14px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: .5rem;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 0 16px var(--accent, #ff2dce);
+    letter-spacing: .05em;
+    line-height: 1.8;
   }
-  /* Skills */
-  .win.mobile-visible .skill-cat-label {
-    font-size: .44rem;
-    margin-bottom: 10px;
-  }
-  .win.mobile-visible .skill-pill {
-    background: transparent;
-    box-shadow: none;
-    border: 1px solid #ff2dce;
-    color: #fff;
-    font-size: 1.05rem;
-    padding: 3px 12px;
-    text-shadow: 0 0 5px rgba(255,45,206,.5);
-  }
-  /* Contact */
-  .win.mobile-visible .contact-row {
-    border-bottom: 1px solid #1e1e2e;
-    padding: 16px 10px;
-    font-size: 1.2rem;
-    color: #ddd;
-  }
-  .win.mobile-visible .contact-row:hover {
-    background: linear-gradient(90deg, rgba(123,0,212,.3), rgba(255,45,206,.2));
-    color: #fff;
-  }
-}
+  .app-btn:active { opacity: .8; }
 
-/* Desktop/mobile icon visibility */
-.mobile-only { display: none; }
-
-/* Mobile-only in-window elements */
-.mobile-win-hero { display: none; }
-
-/* Mobile app windows — hidden entirely on desktop */
-.mobile-app-win { display: none !important; }
-
-/* ── Mobile App Window Content ─────────────────── */
-.app-body {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  padding: 0;
-  background: #0a0a0f;
-}
-
-.app-hero {
-  background: linear-gradient(160deg, var(--accent2, #7b00d4) 0%, #0a0a0f 70%);
-  padding: 32px 20px 24px;
-  text-align: center;
-  border-bottom: 2px solid var(--accent, #ff2dce);
-  box-shadow: 0 0 30px var(--accent, #ff2dce);
-  position: relative;
-}
-.app-hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: repeating-linear-gradient(to bottom, transparent 0px, transparent 3px, rgba(0,0,0,.12) 3px, rgba(0,0,0,.12) 4px);
-}
-
-.app-hero-num {
-  font-family: 'VT323', monospace;
-  font-size: 1rem;
-  color: var(--accent, #ff2dce);
-  opacity: .7;
-  letter-spacing: .2em;
-  margin-bottom: 4px;
-}
-.app-hero-icon {
-  font-size: 4rem;
-  line-height: 1;
-  margin-bottom: 10px;
-  filter: drop-shadow(0 0 16px var(--accent, #ff2dce));
-}
-.app-hero-title {
-  font-family: 'Press Start 2P', monospace;
-  font-size: .7rem;
-  color: #fff;
-  text-shadow: 0 0 12px var(--accent, #ff2dce), 2px 2px 0 var(--accent2, #7b00d4);
-  line-height: 1.7;
-  margin-bottom: 6px;
-}
-.app-hero-sub {
-  font-family: 'VT323', monospace;
-  font-size: 1.2rem;
-  color: #ccc;
-}
-
-.app-section {
-  padding: 16px 18px 0;
-}
-.app-label {
-  font-family: 'Press Start 2P', monospace;
-  font-size: .4rem;
-  color: var(--accent, #ff2dce);
-  letter-spacing: .18em;
-  margin-bottom: 8px;
-  opacity: .85;
-}
-.app-desc {
-  font-family: 'VT323', monospace;
-  font-size: 1.15rem;
-  color: #ddd;
-  line-height: 1.55;
-}
-
-.app-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.app-tag {
-  font-family: 'VT323', monospace;
-  font-size: 1rem;
-  color: #fff;
-  background: transparent;
-  border: 1px solid var(--accent, #ff2dce);
-  box-shadow: 0 0 6px var(--accent, #ff2dce);
-  padding: 2px 10px;
-}
-
-.app-action-row {
-  padding: 20px 18px 24px;
-  margin-top: auto;
-}
-.app-btn {
-  width: 100%;
-  padding: 14px;
-  background: linear-gradient(90deg, var(--accent2, #7b00d4), var(--accent, #ff2dce));
-  border: none;
-  color: #fff;
-  font-family: 'Press Start 2P', monospace;
-  font-size: .5rem;
-  cursor: pointer;
-  text-align: center;
-  box-shadow: 0 0 16px var(--accent, #ff2dce);
-  letter-spacing: .05em;
-  line-height: 1.8;
-}
-.app-btn:active { opacity: .8; }
-
-.app-close-btn {
-  display: block;
-  width: calc(100% - 36px);
-  margin: 12px 18px 20px;
-  padding: 12px;
-  background: transparent;
-  border: 1px solid #555;
-  color: #888;
-  font-family: 'VT323', monospace;
-  font-size: 1.1rem;
-  cursor: pointer;
-  text-align: center;
-  letter-spacing: .12em;
-}
-.app-close-btn:active { color: #fff; border-color: #fff; }
-
-/* Hidden on desktop; shown only when window is mobile-visible */
-.win-close-bottom { display: none; }
-
-/* Win container — mobile flow wrapper */
-#win-container {
-  position: contents; /* transparent on desktop */
-}
-
-@media (max-width: 700px) {
-  #win-container {
+  .app-close-btn {
     display: block;
-    padding: 0;
+    width: calc(100% - 36px);
+    margin: 12px 18px 20px;
+    padding: 12px;
+    background: transparent;
+    border: 1px solid #555;
+    color: #888;
+    font-family: 'VT323', monospace;
+    font-size: 1.1rem;
+    cursor: pointer;
+    text-align: center;
+    letter-spacing: .12em;
+  }
+  .app-close-btn:active { color: #fff; border-color: #fff; }
+
+  /* ── Mobile retro YouTube player ─────────── */
+  .app-yt-player {
+    cursor: pointer;
+    border: 1px solid #ff2dce;
+    box-shadow: 0 0 10px #ff2dce;
+    margin: 4px 0;
+    overflow: hidden;
+  }
+  .app-yt-screen {
+    background: #000;
+    position: relative;
+    padding: 22px 12px 16px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .app-yt-scanlines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px, transparent 3px,
+      rgba(255,255,255,.05) 3px, rgba(255,255,255,.05) 4px
+    );
+  }
+  .app-yt-play {
+    font-size: 2.6rem;
+    color: #ff2dce;
+    text-shadow: 0 0 16px #ff2dce, 0 0 32px #7b00d4;
+    line-height: 1;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .app-yt-channel {
+    font-family: 'VT323', monospace;
+    font-size: 1.1rem;
+    color: #00e5ff;
+    letter-spacing: .15em;
+    text-shadow: 0 0 10px #00e5ff;
+    position: relative;
+  }
+  .app-yt-bar {
+    background: linear-gradient(90deg, #7b00d4, #ff2dce);
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    color: #fff;
+    padding: 6px 12px;
+    letter-spacing: .1em;
+  }
+
+  .app-screenshots {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .app-screenshot {
+    width: 100%;
+    border: 1px solid var(--accent, #ff2dce);
+    box-shadow: 0 0 10px var(--accent, #ff2dce);
+    display: block;
   }
 }

@@ -11,35 +11,37 @@
 
 <!-- ── Desktop ────────────────────────────── -->
 <div id="desktop">
-  <!-- Row 1 on mobile: About / Skills / Contact -->
-  <div class="icon" ondblclick="openWin('win-about')" onclick="if(isMobile())openWin('win-about')">
+  <div class="icon" id="ico-about" ondblclick="openWin('win-about')" onclick="if(isMobile())openWin('win-about')">
     <div class="icon-img">💎</div>
     <div class="icon-label">About Me</div>
   </div>
-  <div class="icon" ondblclick="openWin('win-skills')" onclick="if(isMobile())openWin('win-skills')">
-    <div class="icon-img">💾</div>
-    <div class="icon-label">Skills</div>
-  </div>
-  <div class="icon" ondblclick="openWin('win-contact')" onclick="if(isMobile())openWin('win-contact')">
-    <div class="icon-img">📧</div>
-    <div class="icon-label">Contact</div>
-  </div>
-  <!-- Row 2 on mobile: Projects (folder desktop / apps mobile) -->
-  <div class="icon desktop-only" ondblclick="openWin('win-projects')" onclick="if(isMobile())openWin('win-projects')">
+  <div class="icon desktop-only" id="ico-projects" ondblclick="openWin('win-projects')" onclick="if(isMobile())openWin('win-projects')">
     <div class="icon-img">📁</div>
     <div class="icon-label">Projects</div>
   </div>
-  <div class="icon mobile-only" onclick="openWin('win-proj-alpha')">
+  <div class="icon mobile-only" id="ico-alpha" onclick="openWin('win-proj-alpha')">
     <div class="icon-img">🎮</div>
     <div class="icon-label">Project Alpha</div>
   </div>
-  <div class="icon mobile-only" onclick="openWin('win-proj-pulse')">
+  <div class="icon mobile-only" id="ico-pulse" onclick="openWin('win-proj-pulse')">
     <div class="icon-img">📡</div>
     <div class="icon-label">PULSE</div>
   </div>
-  <div class="icon mobile-only" onclick="openWin('win-proj-beta')">
+  <div class="icon mobile-only" id="ico-beta" onclick="openWin('win-proj-beta')">
     <div class="icon-img">🐍</div>
     <div class="icon-label">Project Beta</div>
+  </div>
+  <div class="icon" id="ico-skills" ondblclick="openWin('win-skills')" onclick="if(isMobile())openWin('win-skills')">
+    <div class="icon-img">💾</div>
+    <div class="icon-label">Skills</div>
+  </div>
+  <div class="icon" id="ico-contact" ondblclick="openWin('win-contact')" onclick="if(isMobile())openWin('win-contact')">
+    <div class="icon-img">📧</div>
+    <div class="icon-label">Contact</div>
+  </div>
+  <div class="icon" id="ico-yt" ondblclick="openWin('win-yt')" onclick="if(isMobile())openWin('win-yt')">
+    <div class="icon-img">📺</div>
+    <div class="icon-label">YouTube</div>
   </div>
 </div>
 
@@ -57,28 +59,41 @@
     </div>
   </div>
   <div class="win-body">
-    <div class="mobile-win-hero" style="--accent:#ff2dce;--accent2:#7b00d4;">
-      <div class="mwh-icon">💎</div>
-      <div class="mwh-title">EMERY RESZKA</div>
-      <div class="mwh-sub">Multi-Discipline Creator &amp; Builder</div>
+    <!-- Mobile app-style layout -->
+    <div class="mobile-layout app-body">
+      <div class="app-hero" style="--accent:#ff2dce;--accent2:#7b00d4;">
+        <div class="app-hero-num">// portfolio</div>
+        <div class="app-hero-icon">💎</div>
+        <div class="app-hero-title">EMERY RESZKA</div>
+        <div class="app-hero-sub">Multi-Discipline Creator &amp; Builder</div>
+      </div>
+      <div class="app-section">
+        <div class="app-label">ABOUT</div>
+        <p class="app-desc">From code to concept, strategy to execution. Welcome to my digital space.</p>
+      </div>
+      <div class="app-section">
+        <div class="app-label">FREE TIME</div>
+        <p class="app-desc">🎸 Playing guitar &nbsp;|&nbsp; ☕ Trying new coffees</p>
+      </div>
+      <button class="app-close-btn" onclick="closeWin('win-about')">✕ Close</button>
     </div>
-    <div class="panel">
-      <div class="hero-name">EMERY RESZKA</div>
-      <div class="hero-sub">Multi-Discipline Creator &amp; Builder</div>
-      <div class="hero-desc">
-        From code to concept, strategy to execution. Welcome to my digital space.
+    <!-- Desktop Win95 layout -->
+    <div class="desktop-layout">
+      <div class="panel">
+        <div class="hero-name">EMERY RESZKA</div>
+        <div class="hero-sub">Multi-Discipline Creator &amp; Builder</div>
+        <div class="hero-desc">From code to concept, strategy to execution. Welcome to my digital space.</div>
+      </div>
+      <div class="panel" style="margin-top:4px;">
+        <div style="font-family:'Press Start 2P',monospace;font-size:.45rem;color:#00e5ff;margin-bottom:6px;">FREE TIME</div>
+        <div class="hero-desc">🎸 Playing guitar &nbsp;|&nbsp; ☕ Trying new coffees</div>
+      </div>
+      <div style="display:flex;gap:6px;margin-top:4px;">
+        <button class="btn95" onclick="openWin('win-projects')">📁 Projects</button>
+        <button class="btn95" onclick="openWin('win-skills')">💾 Skills</button>
+        <button class="btn95" onclick="openWin('win-contact')">📧 Contact</button>
       </div>
     </div>
-    <div class="panel" style="margin-top:4px;">
-      <div style="font-family:'Press Start 2P',monospace;font-size:.45rem;color:#00e5ff;margin-bottom:6px;">FREE TIME</div>
-      <div class="hero-desc">🎸 Playing guitar &nbsp;|&nbsp; ☕ Trying new coffees</div>
-    </div>
-    <div class="about-nav-row" style="display:flex;gap:6px;margin-top:4px;">
-      <button class="btn95" onclick="openWin('win-projects')">📁 Projects</button>
-      <button class="btn95" onclick="openWin('win-skills')">💾 Skills</button>
-      <button class="btn95" onclick="openWin('win-contact')">📧 Contact</button>
-    </div>
-    <button class="app-close-btn win-close-bottom" onclick="closeWin('win-about')">✕ Close</button>
   </div>
   <div class="win-resize"></div>
 </div>
@@ -106,6 +121,12 @@
         </div>
         <button class="btn95" onclick="window.open('https://gamejolt.com/games/ProjectEmerald/880548','_blank')">🎮 Download</button>
       </div>
+      <button class="btn95 view-more-btn" onclick="toggleViewMore('vm-alpha',this)" style="margin-top:6px;width:100%;">▼ View More</button>
+      <div id="vm-alpha" class="view-more-panel">
+        <img src="img/alpha-1.jpg" alt="screenshot 1" class="proj-screenshot">
+        <img src="img/alpha-2.png" alt="screenshot 2" class="proj-screenshot">
+        <img src="img/alpha-3.png" alt="screenshot 3" class="proj-screenshot">
+      </div>
     </div>
 
     <div class="panel project-item">
@@ -122,15 +143,26 @@
         </div>
         <button class="btn95" onclick="window.open('https://pulse-sooty-pi.vercel.app/frontend/src/pages/index.html','_blank')">↗ Live Site</button>
       </div>
+      <button class="btn95 view-more-btn" onclick="toggleViewMore('vm-pulse',this)" style="margin-top:6px;width:100%;">▼ View More</button>
+      <div id="vm-pulse" class="view-more-panel">
+        <img src="img/pulse-1.jpg" alt="PULSE screenshot 1" class="proj-screenshot">
+        <img src="img/pulse-2.png" alt="PULSE screenshot 2" class="proj-screenshot">
+      </div>
     </div>
 
     <div class="panel project-item">
       <div class="project-num">003</div>
       <div class="project-name">PROJECT BETA</div>
-      <div class="project-desc">Simple roguelike game created with pure python + Tcod</div>
+      <div class="project-desc">A roguelike built with Python + Tcod. The current big challenge: crafting a fully immersive procgen world that feels different every single run.</div>
       <div>
         <span class="tag">Python</span>
         <span class="tag">Game Dev</span>
+        <span class="tag">Procgen</span>
+      </div>
+      <button class="btn95 view-more-btn" onclick="toggleViewMore('vm-beta',this)" style="margin-top:6px;width:100%;">▼ View More</button>
+      <div id="vm-beta" class="view-more-panel">
+        <img src="img/beta-1.png" alt="Project Beta screenshot 1" class="proj-screenshot">
+        <img src="img/beta-2.png" alt="Project Beta screenshot 2" class="proj-screenshot">
       </div>
     </div>
 
@@ -149,45 +181,85 @@
     </div>
   </div>
   <div class="win-body">
-    <div class="mobile-win-hero" style="--accent:#00e5ff;--accent2:#7b00d4;">
-      <div class="mwh-icon">💾</div>
-      <div class="mwh-title">SKILLS.EXE</div>
-      <div class="mwh-sub">Tools &amp; Technologies</div>
+    <!-- Mobile app-style layout -->
+    <div class="mobile-layout app-body">
+      <div class="app-hero" style="--accent:#00e5ff;--accent2:#7b00d4;">
+        <div class="app-hero-num">// skills.exe</div>
+        <div class="app-hero-icon">💾</div>
+        <div class="app-hero-title">SKILLS.EXE</div>
+        <div class="app-hero-sub">Tools &amp; Technologies</div>
+      </div>
+      <div class="app-section">
+        <div class="app-label">TECHNICAL</div>
+        <div class="app-tags">
+          <span class="app-tag">Python</span>
+          <span class="app-tag">HTML &amp; CSS</span>
+          <span class="app-tag">C</span>
+          <span class="app-tag">C++</span>
+          <span class="app-tag">Java</span>
+          <span class="app-tag">Git</span>
+        </div>
+      </div>
+      <div class="app-section">
+        <div class="app-label">CREATIVE</div>
+        <div class="app-tags">
+          <span class="app-tag">Visual Graphics</span>
+          <span class="app-tag">Game Design</span>
+          <span class="app-tag">Videography</span>
+        </div>
+      </div>
+      <div class="app-section">
+        <div class="app-label">STRATEGY</div>
+        <div class="app-tags">
+          <span class="app-tag">Proj. Mgmt</span>
+          <span class="app-tag">User Research</span>
+          <span class="app-tag">Systems Thinking</span>
+        </div>
+      </div>
+      <div class="app-section">
+        <div class="app-label">TOOLS</div>
+        <div class="app-tags">
+          <span class="app-tag">VS Code</span>
+          <span class="app-tag">Nvim</span>
+          <span class="app-tag">Eclipse</span>
+          <span class="app-tag">Adobe CC</span>
+        </div>
+      </div>
+      <button class="app-close-btn" onclick="closeWin('win-skills')">✕ Close</button>
     </div>
-    <div class="panel">
-      <div class="skill-cat-label">Technical</div>
-      <div class="skill-pills">
-        <span class="skill-pill">Python</span>
-        <span class="skill-pill">HTML &amp; CSS</span>
-        <span class="skill-pill">C</span>
-        <span class="skill-pill":>C++</span>
-        <span class="skill-pill":>Java</span>
-        <span class="skill-pill">Git</span>
-      </div>
-
-      <div class="skill-cat-label">Creative</div>
-      <div class="skill-pills">
-        <span class="skill-pill">Visual Graphics</span>
-        <span class="skill-pill">Game Design</span>
-        <span class="skill-pill">Videography</span>
-      </div>
-
-      <div class="skill-cat-label">Strategy</div>
-      <div class="skill-pills">
-        <span class="skill-pill">Proj. Mgmt</span>
-        <span class="skill-pill">User Research</span>
-        <span class="skill-pill">Systems Thinking</span>
-      </div>
-
-      <div class="skill-cat-label">Tools</div>
-      <div class="skill-pills">
-        <span class="skill-pill">VS Code</span>
-        <span class="skill-pill">Nvim</span>
-        <span class="skill-pill">Eclipse</span>
-        <span class="skill-pill">Adobe CC</span>
+    <!-- Desktop Win95 layout -->
+    <div class="desktop-layout">
+      <div class="panel">
+        <div class="skill-cat-label">Technical</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">HTML &amp; CSS</span>
+          <span class="skill-pill">C</span>
+          <span class="skill-pill">C++</span>
+          <span class="skill-pill">Java</span>
+          <span class="skill-pill">Git</span>
+        </div>
+        <div class="skill-cat-label">Creative</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Visual Graphics</span>
+          <span class="skill-pill">Game Design</span>
+          <span class="skill-pill">Videography</span>
+        </div>
+        <div class="skill-cat-label">Strategy</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Proj. Mgmt</span>
+          <span class="skill-pill">User Research</span>
+          <span class="skill-pill">Systems Thinking</span>
+        </div>
+        <div class="skill-cat-label">Tools</div>
+        <div class="skill-pills">
+          <span class="skill-pill">VS Code</span>
+          <span class="skill-pill">Nvim</span>
+          <span class="skill-pill">Eclipse</span>
+          <span class="skill-pill">Adobe CC</span>
+        </div>
       </div>
     </div>
-    <button class="app-close-btn win-close-bottom" onclick="closeWin('win-skills')">✕ Close</button>
   </div>
   <div class="win-resize"></div>
 </div>
@@ -203,26 +275,99 @@
     </div>
   </div>
   <div class="win-body">
-    <div class="mobile-win-hero" style="--accent:#7b00d4;--accent2:#00e5ff;">
-      <div class="mwh-icon">📧</div>
-      <div class="mwh-title">CONTACT ME</div>
-      <div class="mwh-sub">Let's Connect</div>
+    <!-- Mobile app-style layout -->
+    <div class="mobile-layout app-body">
+      <div class="app-hero" style="--accent:#7b00d4;--accent2:#00e5ff;">
+        <div class="app-hero-num">// contact</div>
+        <div class="app-hero-icon">📧</div>
+        <div class="app-hero-title">CONTACT ME</div>
+        <div class="app-hero-sub">Let's Connect</div>
+      </div>
+      <div class="app-section">
+        <div class="app-label">LINKS</div>
+        <div class="app-contact-list">
+          <div class="app-contact-row" onclick="window.open('https://github.com/eareszka','_blank')">
+            <span class="app-contact-icon">🐙</span> GitHub
+          </div>
+          <div class="app-contact-row" onclick="window.open('https://www.linkedin.com/in/emery-reszka-a18336251/','_blank')">
+            <span class="app-contact-icon">💼</span> LinkedIn
+          </div>
+          <div class="app-contact-row" onclick="window.open('https://www.youtube.com/@EmeryReszka','_blank')">
+            <span class="app-contact-icon">📹</span> YouTube / X
+          </div>
+          <div class="app-contact-row" onclick="window.location='mailto:eareszka@uwm.edu'">
+            <span class="app-contact-icon">📨</span> eareszka@uwm.edu
+          </div>
+        </div>
+      </div>
+      <button class="app-close-btn" onclick="closeWin('win-contact')">✕ Close</button>
     </div>
-    <div class="panel">
-      <div class="contact-row" onclick="window.open('https://github.com/eareszka','_blank')">
-        <span class="contact-icon">🐙</span> GitHub
-      </div>
-      <div class="contact-row" onclick="window.open('https://www.linkedin.com/in/emery-reszka-a18336251/','_blank')">
-        <span class="contact-icon">💼</span> LinkedIn
-      </div>
-      <div class="contact-row" onclick="window.open('https://www.youtube.com/@EmeryReszka','_blank')">
-        <span class="contact-icon">📹</span> YouTube / X
-      </div>
-      <div class="contact-row" onclick="window.location='mailto:eareszka@uwm.edu'">
-        <span class="contact-icon">📨</span> eareszka@uwm.edu
+    <!-- Desktop Win95 layout -->
+    <div class="desktop-layout">
+      <div class="panel">
+        <div class="contact-row" onclick="window.open('https://github.com/eareszka','_blank')">
+          <span class="contact-icon">🐙</span> GitHub
+        </div>
+        <div class="contact-row" onclick="window.open('https://www.linkedin.com/in/emery-reszka-a18336251/','_blank')">
+          <span class="contact-icon">💼</span> LinkedIn
+        </div>
+        <div class="contact-row" onclick="window.open('https://www.youtube.com/@EmeryReszka','_blank')">
+          <span class="contact-icon">📹</span> YouTube / X
+        </div>
+        <div class="contact-row" onclick="window.location='mailto:eareszka@uwm.edu'">
+          <span class="contact-icon">📨</span> eareszka@uwm.edu
+        </div>
       </div>
     </div>
-    <button class="app-close-btn win-close-bottom" onclick="closeWin('win-contact')">✕ Close</button>
+  </div>
+  <div class="win-resize"></div>
+</div>
+
+<!-- ── Window: YouTube ──────────────────────── -->
+<div class="win" id="win-yt" style="top:100px;left:300px;width:300px;">
+  <div class="win-titlebar">
+    <span class="win-title">📺 YouTube</span>
+    <div class="win-controls">
+      <div class="win-btn" onclick="minimizeWin('win-yt')">_</div>
+      <div class="win-btn" onclick="maximizeWin('win-yt')">□</div>
+      <div class="win-btn" onclick="closeWin('win-yt')">✕</div>
+    </div>
+  </div>
+  <div class="win-body">
+    <!-- Mobile vaporwave layout -->
+    <div class="mobile-layout app-body" style="--accent:#ff2dce;--accent2:#7b00d4;">
+      <div class="app-hero" style="--accent:#ff2dce;--accent2:#7b00d4;">
+        <div class="app-hero-num">// channel</div>
+        <div class="app-hero-icon">📺</div>
+        <div class="app-hero-title">YOUTUBE</div>
+        <div class="app-hero-sub">@EmeryReszka</div>
+      </div>
+      <div class="app-section" style="padding-bottom:16px;">
+        <div class="app-yt-player" onclick="window.open('https://www.youtube.com/@EmeryReszka','_blank')">
+          <div class="app-yt-screen">
+            <div class="app-yt-scanlines"></div>
+            <div class="app-yt-play">▶</div>
+            <div class="app-yt-channel">@EmeryReszka</div>
+          </div>
+          <div class="app-yt-bar">📺 Visit Channel →</div>
+        </div>
+      </div>
+      <button class="app-close-btn" onclick="closeWin('win-yt')">✕ Close</button>
+    </div>
+    <!-- Desktop Win95 layout -->
+    <div class="desktop-layout">
+      <div class="retro-player" onclick="window.open('https://www.youtube.com/@EmeryReszka','_blank')">
+        <div class="retro-screen">
+          <div class="retro-scanlines"></div>
+          <div class="retro-play">▶</div>
+          <div class="retro-channel">@EmeryReszka</div>
+        </div>
+        <div class="retro-controls">
+          <span class="retro-label">📺 YouTube Channel</span>
+          <button class="btn95" tabindex="-1">▶ Watch</button>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="win-resize"></div>
 </div>
@@ -245,6 +390,14 @@
     <div class="app-section">
       <div class="app-label">ABOUT</div>
       <p class="app-desc">An ambitious turn-based JRPG in GameMaker Studio 2, featuring my real-life friends as characters — currently on the backburner, but far from forgotten.</p>
+    </div>
+    <div class="app-section">
+      <div class="app-label">SCREENSHOTS</div>
+      <div class="app-screenshots">
+        <img src="img/alpha-1.jpg" alt="Project Alpha screenshot 1" class="app-screenshot">
+        <img src="img/alpha-2.png" alt="Project Alpha screenshot 2" class="app-screenshot">
+        <img src="img/alpha-3.png" alt="Project Alpha screenshot 3" class="app-screenshot">
+      </div>
     </div>
     <div class="app-section">
       <div class="app-label">STACK</div>
@@ -281,6 +434,13 @@
       <p class="app-desc">A real-time dashboard for detecting abnormalities across stocks, Polymarket prediction bets, and sports betting markets — before the crowd catches on.</p>
     </div>
     <div class="app-section">
+      <div class="app-label">SCREENSHOTS</div>
+      <div class="app-screenshots">
+        <img src="img/pulse-1.jpg" alt="PULSE screenshot 1" class="app-screenshot">
+        <img src="img/pulse-2.png" alt="PULSE screenshot 2" class="app-screenshot">
+      </div>
+    </div>
+    <div class="app-section">
       <div class="app-label">STACK</div>
       <div class="app-tags">
         <span class="app-tag">Finance</span>
@@ -313,7 +473,14 @@
     </div>
     <div class="app-section">
       <div class="app-label">ABOUT</div>
-      <p class="app-desc">A simple roguelike built with pure Python and the Tcod library. Explore procedurally generated dungeons and fight your way through.</p>
+      <p class="app-desc">A roguelike built with pure Python and Tcod. The current big challenge: crafting a fully immersive procgen world that feels different every single run.</p>
+    </div>
+    <div class="app-section">
+      <div class="app-label">SCREENSHOTS</div>
+      <div class="app-screenshots">
+        <img src="img/beta-1.png" alt="Project Beta screenshot 1" class="app-screenshot">
+        <img src="img/beta-2.png" alt="Project Beta screenshot 2" class="app-screenshot">
+      </div>
     </div>
     <div class="app-section">
       <div class="app-label">STACK</div>
@@ -321,6 +488,7 @@
         <span class="app-tag">Python</span>
         <span class="app-tag">Tcod</span>
         <span class="app-tag">Game Dev</span>
+        <span class="app-tag">Procgen</span>
       </div>
     </div>
     <button class="app-close-btn" onclick="closeWin('win-proj-beta')">✕ Close</button>
@@ -353,6 +521,13 @@
 </div>
 
 <script>
+// ── View More toggle ───────────────────────
+function toggleViewMore(id, btn) {
+  const panel = document.getElementById(id);
+  const open = panel.classList.toggle('open');
+  btn.textContent = open ? '▲ View Less' : '▼ View More';
+}
+
 // ── Clock ──────────────────────────────────
 function updateClock() {
   const now = new Date();
@@ -372,6 +547,7 @@ const winMeta = {
   'win-projects':   { icon: '📁', label: 'Projects' },
   'win-skills':     { icon: '💾', label: 'Skills.exe' },
   'win-contact':    { icon: '📧', label: 'Contact' },
+  'win-yt':         { icon: '📺', label: 'YouTube' },
   'win-proj-alpha': { icon: '🎮', label: 'Project Alpha', mobileOnly: true },
   'win-proj-pulse': { icon: '📡', label: 'PULSE',         mobileOnly: true },
   'win-proj-beta':  { icon: '🐍', label: 'Project Beta',  mobileOnly: true },
