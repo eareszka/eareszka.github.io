@@ -15,9 +15,21 @@
     <div class="icon-img">💎</div>
     <div class="icon-label">About Me</div>
   </div>
-  <div class="icon" ondblclick="openWin('win-projects')" onclick="if(isMobile())openWin('win-projects')">
+  <div class="icon desktop-only" ondblclick="openWin('win-projects')" onclick="if(isMobile())openWin('win-projects')">
     <div class="icon-img">📁</div>
     <div class="icon-label">Projects</div>
+  </div>
+  <div class="icon mobile-only" onclick="openWin('win-proj-alpha')">
+    <div class="icon-img">🎮</div>
+    <div class="icon-label">Project Alpha</div>
+  </div>
+  <div class="icon mobile-only" onclick="openWin('win-proj-pulse')">
+    <div class="icon-img">📡</div>
+    <div class="icon-label">PULSE</div>
+  </div>
+  <div class="icon mobile-only" onclick="openWin('win-proj-beta')">
+    <div class="icon-img">🐍</div>
+    <div class="icon-label">Project Beta</div>
   </div>
   <div class="icon" ondblclick="openWin('win-skills')" onclick="if(isMobile())openWin('win-skills')">
     <div class="icon-img">💾</div>
@@ -195,6 +207,87 @@
   <div class="win-resize"></div>
 </div>
 
+<!-- ── Window: Project Alpha (mobile app) ──── -->
+<div class="win" id="win-proj-alpha" style="top:80px;left:500px;width:340px;">
+  <div class="win-titlebar">
+    <span class="win-title">🎮 Project Alpha</span>
+    <div class="win-controls">
+      <div class="win-btn" onclick="minimizeWin('win-proj-alpha')">_</div>
+      <div class="win-btn" onclick="maximizeWin('win-proj-alpha')">□</div>
+      <div class="win-btn" onclick="closeWin('win-proj-alpha')">✕</div>
+    </div>
+  </div>
+  <div class="win-body">
+    <div class="panel project-item">
+      <div class="project-num">001</div>
+      <div class="project-name">PROJECT ALPHA</div>
+      <div class="project-desc">An ambitious turn-based JRPG in GameMaker Studio 2, featuring my real-life friends as characters—currently on the backburner, but far from forgotten.</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;">
+        <div>
+          <span class="tag">Game Dev</span>
+          <span class="tag">GML</span>
+        </div>
+        <button class="btn95" onclick="window.open('https://gamejolt.com/games/ProjectEmerald/880548','_blank')">🎮 Download</button>
+      </div>
+    </div>
+  </div>
+  <div class="win-resize"></div>
+</div>
+
+<!-- ── Window: PULSE (mobile app) ─────────── -->
+<div class="win" id="win-proj-pulse" style="top:80px;left:500px;width:340px;">
+  <div class="win-titlebar">
+    <span class="win-title">📡 PULSE</span>
+    <div class="win-controls">
+      <div class="win-btn" onclick="minimizeWin('win-proj-pulse')">_</div>
+      <div class="win-btn" onclick="maximizeWin('win-proj-pulse')">□</div>
+      <div class="win-btn" onclick="closeWin('win-proj-pulse')">✕</div>
+    </div>
+  </div>
+  <div class="win-body">
+    <div class="panel project-item">
+      <div class="project-num">002</div>
+      <div class="project-name">PULSE</div>
+      <div class="project-desc" style="color:#ff2dce;font-style:italic;margin-bottom:6px;">feel ahead</div>
+      <div class="project-desc">A real-time dashboard for detecting abnormalities across stocks, Polymarket prediction bets, and sports betting markets — before the crowd catches on.</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;">
+        <div>
+          <span class="tag">Finance</span>
+          <span class="tag">Data</span>
+          <span class="tag">Markets</span>
+          <span class="tag">Analytics</span>
+        </div>
+        <button class="btn95" onclick="window.open('https://pulse-sooty-pi.vercel.app/frontend/src/pages/index.html','_blank')">↗ Live Site</button>
+      </div>
+    </div>
+  </div>
+  <div class="win-resize"></div>
+</div>
+
+<!-- ── Window: Project Beta (mobile app) ──── -->
+<div class="win" id="win-proj-beta" style="top:80px;left:500px;width:340px;">
+  <div class="win-titlebar">
+    <span class="win-title">🐍 Project Beta</span>
+    <div class="win-controls">
+      <div class="win-btn" onclick="minimizeWin('win-proj-beta')">_</div>
+      <div class="win-btn" onclick="maximizeWin('win-proj-beta')">□</div>
+      <div class="win-btn" onclick="closeWin('win-proj-beta')">✕</div>
+    </div>
+  </div>
+  <div class="win-body">
+    <div class="panel project-item">
+      <div class="project-num">003</div>
+      <div class="project-name">PROJECT BETA</div>
+      <div class="project-desc">Simple roguelike game created with pure Python + Tcod.</div>
+      <div>
+        <span class="tag">Python</span>
+        <span class="tag">Game Dev</span>
+      </div>
+    </div>
+  </div>
+  <div class="win-resize"></div>
+</div>
+
 </div><!-- /#win-container -->
 
 <!-- ── Start Menu ────────────────────────── -->
@@ -236,10 +329,13 @@ const wins = document.querySelectorAll('.win');
 const taskbarApps = document.getElementById('taskbar-apps');
 
 const winMeta = {
-  'win-about':    { icon: '💎', label: 'About Me' },
-  'win-projects': { icon: '📁', label: 'Projects' },
-  'win-skills':   { icon: '💾', label: 'Skills.exe' },
-  'win-contact':  { icon: '📧', label: 'Contact' },
+  'win-about':      { icon: '💎', label: 'About Me' },
+  'win-projects':   { icon: '📁', label: 'Projects' },
+  'win-skills':     { icon: '💾', label: 'Skills.exe' },
+  'win-contact':    { icon: '📧', label: 'Contact' },
+  'win-proj-alpha': { icon: '🎮', label: 'Project Alpha' },
+  'win-proj-pulse': { icon: '📡', label: 'PULSE' },
+  'win-proj-beta':  { icon: '🐍', label: 'Project Beta' },
 };
 
 function buildTaskbar() {

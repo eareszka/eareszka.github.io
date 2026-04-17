@@ -349,6 +349,10 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
 ═══════════════════════════════════════════════ */
 @media (max-width: 700px) {
 
+  /* Swap folder → individual app icons */
+  .desktop-only { display: none !important; }
+  .mobile-only  { display: flex !important; }
+
   /* No taskbar on mobile */
   #taskbar { display: none !important; }
   #start-menu { display: none !important; }
@@ -419,6 +423,9 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
     flex-wrap: wrap;
   }
 }
+
+/* Desktop/mobile icon visibility */
+.mobile-only { display: none; }
 
 /* Win container — mobile flow wrapper */
 #win-container {
