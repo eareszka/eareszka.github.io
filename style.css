@@ -452,7 +452,8 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
   }
 
   /* ── Mobile-only in-window elements ─────── */
-  .mob-el { display: block; }
+  .win.mobile-visible .win-close-bottom { display: block; }
+  .win.mobile-visible .about-nav-row { display: none; }
 
   /* Mobile hero header inside regular windows */
   .mobile-win-hero {
@@ -515,8 +516,8 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
     color: #ccc;
     line-height: 1.6;
   }
-  /* About — bottom nav buttons */
-  .win.mobile-visible div[style*="display:flex"] {
+  /* About — bottom nav buttons (hidden on mobile, but keep padding if shown) */
+  .win.mobile-visible .about-nav-row {
     padding: 14px 18px 0;
   }
   .win.mobile-visible .btn95 {
@@ -563,9 +564,8 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
 /* Desktop/mobile icon visibility */
 .mobile-only { display: none; }
 
-/* Mobile-only in-window elements (hero header, bottom close btn) */
+/* Mobile-only in-window elements */
 .mobile-win-hero { display: none; }
-.mob-el { display: none; }
 
 /* Mobile app windows — hidden entirely on desktop */
 .mobile-app-win { display: none !important; }
@@ -691,6 +691,9 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
   letter-spacing: .12em;
 }
 .app-close-btn:active { color: #fff; border-color: #fff; }
+
+/* Hidden on desktop; shown only when window is mobile-visible */
+.win-close-bottom { display: none; }
 
 /* Win container — mobile flow wrapper */
 #win-container {
