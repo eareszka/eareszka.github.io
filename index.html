@@ -674,21 +674,23 @@ const winMeta = {
   'win-proj-wingit': { icon: '🤍', label: 'WingIt', mobileOnly: true },
 };
 
-function buildTaskbar() {
-  taskbarApps.innerHTML = '';
-  wins.forEach(win => {
-    const meta = winMeta[win.id];
-    if (!meta) return;
-    if (meta.mobileOnly) return;
-    const btn = document.createElement('button');
-    btn.className = 'btn95 taskbar-app' + (win.classList.contains('active') ? ' active' : '');
-    btn.id = 'tb-' + win.id;
-    btn.innerHTML = meta.icon + ' ' + meta.label;
-    btn.onclick = () => toggleWin(win.id);
-    taskbarApps.appendChild(btn);
-  });
+// Taskbar shows only open apps — entries are added on open, removed on close.
+function addTaskbarApp(id) {
+  if (document.getElementById('tb-' + id)) return;
+  const meta = winMeta[id];
+  if (!meta || meta.mobileOnly) return;
+  const win = document.getElementById(id);
+  const btn = document.createElement('button');
+  btn.className = 'btn95 taskbar-app' + (win.classList.contains('active') ? ' active' : '');
+  btn.id = 'tb-' + id;
+  btn.innerHTML = meta.icon + ' ' + meta.label;
+  btn.onclick = () => toggleWin(id);
+  taskbarApps.appendChild(btn);
 }
-buildTaskbar();
+
+function removeTaskbarApp(id) {
+  document.getElementById('tb-' + id)?.remove();
+}
 
 function focusWin(id) {
   wins.forEach(w => {
@@ -706,6 +708,7 @@ function openWin(id) {
   const win = document.getElementById(id);
 
   win.classList.remove('minimized', 'win-closing');
+  addTaskbarApp(id);
   if (isMobile()) {
     wins.forEach(w => w.classList.remove('mobile-visible'));
     win.classList.add('mobile-visible');
@@ -719,7 +722,7 @@ function openWin(id) {
 
 function closeWin(id) {
   const win = document.getElementById(id);
-  document.getElementById('tb-' + id)?.classList.remove('active');
+  removeTaskbarApp(id);
   win.classList.add('win-closing');
 
   const finish = () => {
@@ -787,8 +790,9 @@ function maximizeWin(id) {
 // ── Mobile detection ───────────────────────
 const isMobile = () => window.innerWidth <= 700;
 
-// On mobile: start with all windows hidden (show icon grid only)
-if (isMobile()) wins.forEach(w => w.classList.add('minimized'));
+// Start with all windows closed — desktop shows icons only, taskbar empty.
+wins.forEach(w => w.classList.remove('active'));
+wins.forEach(w => w.classList.add('minimized'));
 
 // ── Dragging ───────────────────────────────
 
