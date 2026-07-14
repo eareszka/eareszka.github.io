@@ -36,7 +36,7 @@
     <div class="icon-label">SnipAI</div>
   </div>
   <div class="icon mobile-only" id="ico-wingit" onclick="openWin('win-proj-wingit')">
-    <div class="icon-img">🤍</div>
+    <div class="icon-img">🪽</div>
     <div class="icon-label">WingIt</div>
   </div>
   <div class="icon" id="ico-skills" ondblclick="openWin('win-skills')" onclick="if(isMobile())openWin('win-skills')">
@@ -195,16 +195,26 @@
     <div class="panel project-item">
       <div class="project-num">005</div>
       <div class="project-name">WINGIT</div>
-      <div class="project-desc" style="color:#ff5e8a;font-style:italic;margin-bottom:6px;">your local texting wingman</div>
-      <div class="project-desc">A fully-local AI dating-app wingman. It reads a chat screenshot with on-device OCR, measures the other person's texting style, and drafts your next reply in their energy — all running on your own machine via Ollama, so no conversation ever leaves your network. You always send the messages yourself.</div>
+      <div class="project-desc" style="color:#000;background:#FFFC00;display:inline-block;padding:1px 6px;font-style:italic;margin-bottom:6px;">your texting wingman</div>
+      <div class="project-desc">A cross-platform AI dating-app wingman (web, iOS &amp; Android from one codebase). Feed it chat screenshots — or a screen recording scrolled through the convo — and it reads who said what, learns the other person's energy, and drafts your next reply in their tone. Ask its built-in coach about a match, or open "the read" for a take on how they (and you) are coming across. Screenshots are read once to draft, never stored; you always send the messages yourself.</div>
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;">
         <div>
+          <span class="tag">React Native</span>
+          <span class="tag">Expo</span>
+          <span class="tag">TypeScript</span>
           <span class="tag">Python</span>
-          <span class="tag">Local LLM</span>
-          <span class="tag">OCR</span>
-          <span class="tag">AI</span>
+          <span class="tag">Claude API</span>
         </div>
-        <button class="btn95" onclick="window.open('https://github.com/eareszka/WingIt','_blank')">🐙 GitHub</button>
+        <div style="display:flex;gap:6px;">
+          <button class="btn95" onclick="window.open('https://wingit-backend.fly.dev','_blank')">🚀 Try it live</button>
+          <button class="btn95" onclick="window.open('https://github.com/eareszka/WingIt','_blank')">🐙 GitHub</button>
+        </div>
+      </div>
+      <button class="btn95 view-more-btn" onclick="toggleViewMore('vm-wingit',this)" style="margin-top:6px;width:100%;">▼ View More</button>
+      <div id="vm-wingit" class="view-more-panel">
+        <img src="img/wingit-2.png" alt="WingIt suggested reply" class="proj-screenshot">
+        <img src="img/wingit-1.png" alt="WingIt matches list" class="proj-screenshot">
+        <img src="img/wingit-3.png" alt="WingIt the read" class="proj-screenshot">
       </div>
     </div>
 
@@ -581,34 +591,44 @@
 <!-- ── Window: WingIt (mobile app) ─────── -->
 <div class="win mobile-app-win" id="win-proj-wingit">
   <div class="win-titlebar">
-    <span class="win-title">🤍 WingIt</span>
+    <span class="win-title">🪽 WingIt</span>
     <div class="win-controls">
       <div class="win-btn" onclick="closeWin('win-proj-wingit')">✕</div>
     </div>
   </div>
   <div class="win-body app-body">
-    <div class="app-hero" style="--accent:#ff5e8a;--accent2:#ff2dce;">
+    <div class="app-hero" style="--accent:#FFFC00;--accent2:#c99a00;">
       <div class="app-hero-num">005</div>
-      <div class="app-hero-icon">🤍</div>
+      <div class="app-hero-icon">🪽</div>
       <div class="app-hero-title">WINGIT</div>
-      <div class="app-hero-sub" style="color:#ff2dce;font-style:italic;">your local texting wingman</div>
+      <div class="app-hero-sub" style="color:#FFFC00;font-style:italic;">your texting wingman</div>
     </div>
     <div class="app-section">
       <div class="app-label">ABOUT</div>
-      <p class="app-desc">A fully-local AI dating-app wingman. It reads a chat screenshot with on-device OCR, measures the other person's texting style, and drafts your next reply in their energy — all running on your own machine via Ollama, so no conversation ever leaves your network. You always send the messages yourself.</p>
+      <p class="app-desc">A cross-platform AI dating-app wingman — web, iOS &amp; Android from a single Expo/React Native codebase. Feed it chat screenshots, or a screen recording scrolled through the conversation, and it reads who said what, learns the other person's energy, and drafts your next reply in their tone. A built-in coach answers questions about a specific match, and "the read" gives you a take on how they — and you — are coming across. Screenshots are read once to draft the reply, never stored; you always send the messages yourself.</p>
+    </div>
+    <div class="app-section">
+      <div class="app-label">SCREENSHOTS</div>
+      <div class="app-screenshots">
+        <img src="img/wingit-2.png" alt="WingIt suggested reply" class="app-screenshot">
+        <img src="img/wingit-1.png" alt="WingIt matches list" class="app-screenshot">
+        <img src="img/wingit-3.png" alt="WingIt the read" class="app-screenshot">
+      </div>
     </div>
     <div class="app-section">
       <div class="app-label">STACK</div>
       <div class="app-tags">
+        <span class="app-tag">React Native</span>
+        <span class="app-tag">Expo</span>
+        <span class="app-tag">TypeScript</span>
         <span class="app-tag">Python</span>
-        <span class="app-tag">Ollama</span>
-        <span class="app-tag">Local LLM</span>
-        <span class="app-tag">OCR</span>
-        <span class="app-tag">PWA</span>
+        <span class="app-tag">Claude API</span>
+        <span class="app-tag">Fly.io</span>
       </div>
     </div>
     <div class="app-action-row">
-      <button class="app-btn" onclick="window.open('https://github.com/eareszka/WingIt','_blank')">🐙 View on GitHub</button>
+      <button class="app-btn" style="color:#16161A;text-shadow:none;" onclick="window.open('https://wingit-backend.fly.dev','_blank')">🚀 Try the Live Prototype</button>
+      <button class="app-btn" style="color:#16161A;text-shadow:none;" onclick="window.open('https://github.com/eareszka/WingIt','_blank')">🐙 View on GitHub</button>
     </div>
     <button class="app-close-btn" onclick="closeWin('win-proj-wingit')">✕ Close</button>
   </div>
@@ -671,7 +691,7 @@ const winMeta = {
   'win-proj-pulse': { icon: '📡', label: 'PULSE',         mobileOnly: true },
   'win-proj-beta':  { icon: '🐍', label: 'Project Beta',  mobileOnly: true },
   'win-proj-autoanswer': { icon: '🔍', label: 'SnipAI', mobileOnly: true },
-  'win-proj-wingit': { icon: '🤍', label: 'WingIt', mobileOnly: true },
+  'win-proj-wingit': { icon: '🪽', label: 'WingIt', mobileOnly: true },
 };
 
 // Taskbar shows only open apps — entries are added on open, removed on close.

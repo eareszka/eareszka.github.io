@@ -634,7 +634,7 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
   .app-contact-row:active { color: var(--accent, #ff2dce); }
   .app-contact-icon { width: 28px; text-align: center; font-size: 1.4rem; }
 
-  .app-action-row { padding: 20px 18px 24px; margin-top: auto; }
+  .app-action-row { padding: 20px 18px 24px; margin-top: auto; display: flex; flex-direction: column; gap: 10px; }
   .app-btn {
     width: 100%;
     padding: 14px;
