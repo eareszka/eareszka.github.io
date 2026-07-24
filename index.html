@@ -39,6 +39,10 @@
     <div class="icon-img">🪽</div>
     <div class="icon-label">WingIt</div>
   </div>
+  <div class="icon mobile-only" id="ico-regionos" onclick="openWin('win-proj-regionos')">
+    <div class="icon-img">🖥️</div>
+    <div class="icon-label">RegionOS</div>
+  </div>
   <div class="icon" id="ico-skills" ondblclick="openWin('win-skills')" onclick="if(isMobile())openWin('win-skills')">
     <div class="icon-img">💾</div>
     <div class="icon-label">Skills</div>
@@ -215,6 +219,24 @@
         <img src="img/wingit-2.png" alt="WingIt suggested reply" class="proj-screenshot">
         <img src="img/wingit-1.png" alt="WingIt matches list" class="proj-screenshot">
         <img src="img/wingit-3.png" alt="WingIt the read" class="proj-screenshot">
+      </div>
+    </div>
+
+    <div class="panel project-item">
+      <div class="project-num">006</div>
+      <div class="project-name">REGIONOS</div>
+      <div class="project-desc">A live-preview dashboard for your desktop: draw boxes anywhere on screen, and RegionOS keeps each one updating in real time — screen areas, application windows, or websites — even while the source is covered, minimized, or hidden off-screen. A fullscreen mode strips away everything but the grid of live previews. No AI: every bit of it is deterministic computer vision, done entirely locally.</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;">
+        <div>
+          <span class="tag">Python</span>
+          <span class="tag">Win32 API</span>
+          <span class="tag">Desktop App</span>
+          <span class="tag">Computer Vision</span>
+        </div>
+        <div style="display:flex;gap:6px;">
+          <button class="btn95" onclick="window.open('https://github.com/eareszka/RegionOS/releases/latest','_blank')">⬇️ Download</button>
+          <button class="btn95" onclick="window.open('https://github.com/eareszka/RegionOS','_blank')">🐙 GitHub</button>
+        </div>
       </div>
     </div>
 
@@ -634,6 +656,42 @@
   </div>
 </div>
 
+<!-- ── Window: RegionOS (mobile app) ─────── -->
+<div class="win mobile-app-win" id="win-proj-regionos">
+  <div class="win-titlebar">
+    <span class="win-title">🖥️ RegionOS</span>
+    <div class="win-controls">
+      <div class="win-btn" onclick="closeWin('win-proj-regionos')">✕</div>
+    </div>
+  </div>
+  <div class="win-body app-body">
+    <div class="app-hero" style="--accent:#4a9eff;--accent2:#00e5ff;">
+      <div class="app-hero-num">006</div>
+      <div class="app-hero-icon">🖥️</div>
+      <div class="app-hero-title">REGIONOS</div>
+      <div class="app-hero-sub">Live-Preview Desktop Dashboard</div>
+    </div>
+    <div class="app-section">
+      <div class="app-label">ABOUT</div>
+      <p class="app-desc">A live-preview dashboard for your desktop: draw boxes anywhere on screen, and RegionOS keeps each one updating in real time — screen areas, application windows, or websites — even while the source is covered, minimized, or hidden off-screen. A fullscreen mode strips away everything but the grid of live previews. No AI: every bit of it is deterministic computer vision, done entirely locally.</p>
+    </div>
+    <div class="app-section">
+      <div class="app-label">STACK</div>
+      <div class="app-tags">
+        <span class="app-tag">Python</span>
+        <span class="app-tag">Win32 API</span>
+        <span class="app-tag">Desktop App</span>
+        <span class="app-tag">Computer Vision</span>
+      </div>
+    </div>
+    <div class="app-action-row">
+      <button class="app-btn" onclick="window.open('https://github.com/eareszka/RegionOS/releases/latest','_blank')">⬇️ Download for Windows</button>
+      <button class="app-btn" onclick="window.open('https://github.com/eareszka/RegionOS','_blank')">🐙 View on GitHub</button>
+    </div>
+    <button class="app-close-btn" onclick="closeWin('win-proj-regionos')">✕ Close</button>
+  </div>
+</div>
+
 </div><!-- /#win-container -->
 
 <!-- ── Start Menu ────────────────────────── -->
@@ -692,6 +750,7 @@ const winMeta = {
   'win-proj-beta':  { icon: '🐍', label: 'Project Beta',  mobileOnly: true },
   'win-proj-autoanswer': { icon: '🔍', label: 'SnipAI', mobileOnly: true },
   'win-proj-wingit': { icon: '🪽', label: 'WingIt', mobileOnly: true },
+  'win-proj-regionos': { icon: '🖥️', label: 'RegionOS', mobileOnly: true },
 };
 
 // Taskbar shows only open apps — entries are added on open, removed on close.
