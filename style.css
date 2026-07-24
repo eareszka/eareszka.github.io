@@ -428,6 +428,47 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
   box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #000;
 }
 
+/* ── Maximized window: re-tune content for the bigger viewport ──
+   A window normally stays a small, fixed-width panel; letting its
+   content just stretch edge-to-edge across a full screen makes text
+   lines unreadably long and leaves screenshots oddly small in a sea
+   of whitespace. Cap + center a comfortable reading column, scale
+   text up for a "viewed from across the room" fullscreen feel, and
+   let screenshots sit side-by-side as a gallery instead of one long
+   stacked column. */
+.win.maximized .win-body { padding: 28px 40px; }
+/* Center every direct child of win-body as one column -- not just
+   .panel elements -- so non-panel content (e.g. the Projects/Skills/
+   Contact button row under About) lines up with the panels above it
+   instead of hugging the true left edge of the maximized window. */
+.win.maximized .win-body > * { max-width: 900px; margin-left: auto; margin-right: auto; }
+
+.win.maximized .hero-name  { font-size: 1.4rem; }
+.win.maximized .hero-sub   { font-size: 1.5rem; }
+.win.maximized .hero-desc  { font-size: 1.35rem; line-height: 1.6; }
+
+.win.maximized .project-num  { font-size: 1.15rem; }
+.win.maximized .project-name { font-size: .85rem; }
+.win.maximized .project-desc { font-size: 1.3rem; line-height: 1.55; }
+.win.maximized .tag { font-size: 1.05rem; padding: 2px 8px; margin-right: 5px; }
+
+.win.maximized .skill-cat-label { font-size: .58rem; padding: 5px 10px; }
+.win.maximized .skill-pill      { font-size: 1.2rem; padding: 3px 10px; }
+
+.win.maximized .contact-row   { font-size: 1.4rem; padding: 12px 6px; }
+.win.maximized .contact-icon  { width: 30px; }
+
+.win.maximized .view-more-panel.open {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+.win.maximized .proj-screenshot {
+  width: calc(50% - 8px);
+  max-width: 430px;
+}
+
 /* ═══════════════════════════════════════════════
    DESKTOP DEFAULTS — hide mobile-specific elements
 ═══════════════════════════════════════════════ */
