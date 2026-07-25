@@ -62,7 +62,9 @@ body::after {
   flex-direction: column;
   z-index: 10;
   transform-origin: center top;
-  transition: transform 0.16s ease-out, opacity 0.14s ease;
+  transition: transform 0.16s ease-out, opacity 0.14s ease,
+              left 0.18s ease-out, top 0.18s ease-out,
+              width 0.18s ease-out, height 0.18s ease-out;
 }
 .win.active { z-index: 20; }
 .win.minimized { display: none; }
@@ -432,10 +434,9 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
    A window normally stays a small, fixed-width panel; letting its
    content just stretch edge-to-edge across a full screen makes text
    lines unreadably long and leaves screenshots oddly small in a sea
-   of whitespace. Cap + center a comfortable reading column, scale
-   text up for a "viewed from across the room" fullscreen feel, and
-   let screenshots sit side-by-side as a gallery instead of one long
-   stacked column. */
+   of whitespace. Cap + center a comfortable reading column (font size
+   stays constant whether windowed or maximized) and let screenshots
+   sit side-by-side as a gallery instead of one long stacked column. */
 .win.maximized .win-body { padding: 28px 40px; }
 /* Center every direct child of win-body as one column -- not just
    .panel elements -- so non-panel content (e.g. the Projects/Skills/
@@ -443,19 +444,12 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
    instead of hugging the true left edge of the maximized window. */
 .win.maximized .win-body > * { max-width: 900px; margin-left: auto; margin-right: auto; }
 
-.win.maximized .hero-name  { font-size: 1.4rem; }
-.win.maximized .hero-sub   { font-size: 1.5rem; }
-.win.maximized .hero-desc  { font-size: 1.35rem; line-height: 1.6; }
+.win.maximized .tag { padding: 2px 8px; margin-right: 5px; }
 
-.win.maximized .project-num  { font-size: 1.15rem; }
-.win.maximized .project-name { font-size: .85rem; }
-.win.maximized .project-desc { font-size: 1.3rem; line-height: 1.55; }
-.win.maximized .tag { font-size: 1.05rem; padding: 2px 8px; margin-right: 5px; }
+.win.maximized .skill-cat-label { padding: 5px 10px; }
+.win.maximized .skill-pill      { padding: 3px 10px; }
 
-.win.maximized .skill-cat-label { font-size: .58rem; padding: 5px 10px; }
-.win.maximized .skill-pill      { font-size: 1.2rem; padding: 3px 10px; }
-
-.win.maximized .contact-row   { font-size: 1.4rem; padding: 12px 6px; }
+.win.maximized .contact-row   { padding: 12px 6px; }
 .win.maximized .contact-icon  { width: 30px; }
 
 .win.maximized .view-more-panel.open {

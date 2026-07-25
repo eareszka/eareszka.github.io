@@ -898,6 +898,7 @@ document.querySelectorAll('.win-titlebar').forEach(bar => {
     dragging = true;
     ox = e.clientX - win.offsetLeft;
     oy = e.clientY - win.offsetTop;
+    win.style.transition = 'none';
     focusWin(win.id);
     e.preventDefault();
   });
@@ -912,7 +913,10 @@ document.querySelectorAll('.win-titlebar').forEach(bar => {
     win.style.top  = ny + 'px';
   });
 
-  document.addEventListener('mouseup', () => { dragging = false; });
+  document.addEventListener('mouseup', () => {
+    if (dragging) win.style.transition = '';
+    dragging = false;
+  });
 });
 
 // ── Resize ─────────────────────────────────
@@ -926,6 +930,7 @@ document.querySelectorAll('.win-resize').forEach(handle => {
     resizing = true;
     startX = e.clientX; startY = e.clientY;
     startW = win.offsetWidth; startH = win.offsetHeight;
+    win.style.transition = 'none';
     focusWin(win.id);
     e.preventDefault();
     e.stopPropagation();
@@ -939,7 +944,10 @@ document.querySelectorAll('.win-resize').forEach(handle => {
     win.style.height = nh + 'px';
   });
 
-  document.addEventListener('mouseup', () => { resizing = false; });
+  document.addEventListener('mouseup', () => {
+    if (resizing) win.style.transition = '';
+    resizing = false;
+  });
 });
 
 // ── Start menu ─────────────────────────────
