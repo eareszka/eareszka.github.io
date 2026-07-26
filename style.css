@@ -499,32 +499,35 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
   #taskbar    { display: none !important; }
   #start-menu { display: none !important; }
 
-  /* Desktop fills full screen — acts as the home/app grid */
+  /* Desktop fills full screen — acts as the home/app grid (4 icons per row) */
   #desktop {
     position: fixed;
     inset: 0;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
     align-content: flex-start;
     padding: 24px 8px 8px;
-    gap: 16px;
+    gap: 16px 4px;
     background: transparent;
   }
 
   /* Icons: larger tap targets */
-  .icon { width: 80px; padding: 10px 6px; }
+  .icon { width: 100%; max-width: 80px; padding: 10px 6px; }
   .icon-img { font-size: 2.4rem; }
   .icon-label { font-size: 1rem; }
 
-  /* Icon order: row 1 = About/Skills/Contact, row 2 = projects */
-  #ico-about   { order: 1; }
-  #ico-skills  { order: 2; }
-  #ico-contact { order: 3; }
-  #ico-yt      { order: 4; }
-  #ico-alpha   { order: 5; }
-  #ico-pulse   { order: 6; }
-  #ico-beta    { order: 7; }
+  /* Icon order: row 1 = About/Skills/Contact/YouTube, then all projects */
+  #ico-about      { order: 1; }
+  #ico-skills     { order: 2; }
+  #ico-contact    { order: 3; }
+  #ico-yt         { order: 4; }
+  #ico-alpha      { order: 5; }
+  #ico-pulse      { order: 6; }
+  #ico-beta       { order: 7; }
+  #ico-autoanswer { order: 8; }
+  #ico-wingit     { order: 9; }
+  #ico-regionos   { order: 10; }
 
   /* Hide titlebar X — bottom close button is the only exit */
   .win-controls { display: none; }
