@@ -8,6 +8,12 @@ Visit: http://localhost:8080
 import http.server
 import socketserver
 import os
+import sys
+
+# Windows consoles default to cp1252, which can't encode the box-drawing and
+# star glyphs in the banner below — printing it raised UnicodeEncodeError and
+# killed the server before it ever served a request.
+sys.stdout.reconfigure(encoding="utf-8")  # type: ignore[attr-defined]
 
 PORT = 8080
 DIRECTORY = os.path.dirname(os.path.abspath(__file__))
