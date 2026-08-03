@@ -463,6 +463,38 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
   max-width: 430px;
 }
 
+/* ── Latest uploads list (desktop Win95 look) ─ */
+.yt-latest-head {
+  font-weight: bold;
+  margin: 8px 0 4px;
+}
+.desktop-layout .yt-vid {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid #808080;
+  box-shadow: inset 1px 1px 0 #000, inset -1px -1px 0 #dfdfdf;
+  padding: 4px;
+  margin-bottom: 4px;
+  cursor: pointer;
+}
+.desktop-layout .yt-vid:hover .yt-vid-title {
+  color: #000080;
+  text-decoration: underline;
+}
+.yt-vid-thumb {
+  width: 96px;
+  height: 54px;
+  object-fit: cover;
+  display: block;
+  flex-shrink: 0;
+  border: 1px solid #000;
+}
+.yt-vid-info { min-width: 0; }
+.yt-vid-title { line-height: 1.1; }
+.desktop-layout .yt-vid-date { color: #808080; }
+
 /* ═══════════════════════════════════════════════
    DESKTOP DEFAULTS — hide mobile-specific elements
 ═══════════════════════════════════════════════ */
@@ -753,6 +785,30 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
     color: #fff;
     padding: 6px 12px;
     letter-spacing: .1em;
+  }
+
+  /* ── Mobile latest uploads (vaporwave look) ── */
+  .mobile-layout .yt-vid {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0,0,0,.45);
+    border: 1px solid #7b00d4;
+    box-shadow: 0 0 8px rgba(123,0,212,.6);
+    padding: 6px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  .mobile-layout .yt-vid:active { border-color: #ff2dce; box-shadow: 0 0 10px #ff2dce; }
+  .mobile-layout .yt-vid-title {
+    color: #fff;
+    font-size: 1rem;
+    line-height: 1.1;
+  }
+  .mobile-layout .yt-vid-date {
+    color: #00e5ff;
+    font-size: .95rem;
+    text-shadow: 0 0 6px #00e5ff;
   }
 
   .app-screenshots {

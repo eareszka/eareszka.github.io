@@ -432,6 +432,10 @@
           <div class="app-yt-bar">📺 Visit Channel →</div>
         </div>
       </div>
+      <div class="app-section" id="yt-latest-mobile" style="display:none;padding-bottom:16px;">
+        <div class="app-label">// LATEST UPLOADS</div>
+        <div id="yt-list-mobile"></div>
+      </div>
       <button class="app-close-btn" onclick="closeWin('win-yt')">✕ Close</button>
     </div>
     <!-- Desktop Win95 layout -->
@@ -446,6 +450,10 @@
           <span class="retro-label">📺 YouTube Channel</span>
           <button class="btn95" tabindex="-1">▶ Watch</button>
         </div>
+      </div>
+      <div id="yt-latest-desktop" style="display:none;">
+        <div class="yt-latest-head">Latest Uploads</div>
+        <div id="yt-list-desktop"></div>
       </div>
     </div>
   </div>
@@ -716,8 +724,7 @@
     <div class="start-item" onclick="openWin('win-projects');closeStartMenu()">📁 <span>Projects</span></div>
     <div class="start-item" onclick="openWin('win-skills');closeStartMenu()">💾 <span>Skills</span></div>
     <div class="start-item" onclick="openWin('win-contact');closeStartMenu()">📧 <span>Contact</span></div>
-    <div class="start-sep"></div>
-    <div class="start-item" onclick="closeStartMenu()">🔌 <span>Close Menu</span></div>
+    <div class="start-item" onclick="openWin('win-yt');closeStartMenu()">📺 <span>YouTube</span></div>
   </div>
 </div>
 
@@ -970,6 +977,52 @@ document.querySelectorAll('.icon').forEach(icon => {
     icon.classList.add('selected');
   });
 });
+
+// ── YouTube: 3 latest uploads (via RSS feed) ──
+const YT_FEED = 'https://www.youtube.com/feeds/videos.xml?channel_id=UCECn7n2-gTo-y8TKMrVWSBQ';
+// The feed has no CORS headers, so it goes through a public proxy
+const YT_PROXIES = [
+  u => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u),
+  u => 'https://corsproxy.io/?url=' + encodeURIComponent(u)
+];
+
+async function loadLatestVideos() {
+  for (const proxy of YT_PROXIES) {
+    try {
+      const res = await fetch(proxy(YT_FEED));
+      if (!res.ok) continue;
+      const xml = new DOMParser().parseFromString(await res.text(), 'text/xml');
+      const vids = [...xml.getElementsByTagName('entry')].slice(0, 3).map(e => ({
+        id:    e.getElementsByTagNameNS('*', 'videoId')[0].textContent,
+        title: e.getElementsByTagName('title')[0].textContent,
+        date:  new Date(e.getElementsByTagName('published')[0].textContent)
+      }));
+      if (vids.length) { renderLatestVideos(vids); return; }
+    } catch (err) { /* try next proxy */ }
+  }
+  // All proxies failed — the Visit Channel player stays as the fallback
+}
+
+function renderLatestVideos(vids) {
+  const html = vids.map(v => {
+    const t = document.createElement('div');
+    t.textContent = v.title;
+    const date = v.date.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+    return `
+      <div class="yt-vid" onclick="window.open('https://www.youtube.com/watch?v=${v.id}','_blank')">
+        <img class="yt-vid-thumb" src="https://i.ytimg.com/vi/${v.id}/mqdefault.jpg" alt="" loading="lazy">
+        <div class="yt-vid-info">
+          <div class="yt-vid-title">${t.innerHTML}</div>
+          <div class="yt-vid-date">${date}</div>
+        </div>
+      </div>`;
+  }).join('');
+  document.getElementById('yt-list-desktop').innerHTML = html;
+  document.getElementById('yt-list-mobile').innerHTML = html;
+  document.getElementById('yt-latest-desktop').style.display = '';
+  document.getElementById('yt-latest-mobile').style.display = '';
+}
+loadLatestVideos();
 </script>
 </body>
 </html>
