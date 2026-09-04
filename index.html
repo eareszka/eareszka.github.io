@@ -2,268 +2,261 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Emery Reszka — Software Engineer | CS, Florida Gulf Coast University</title>
-<meta name="description" content="Emery Reszka — Computer Science student at Florida Gulf Coast University graduating May 2027. I build and ship software: an AI texting assistant on the Claude API, an offline computer-vision desktop tool, and a real-time market anomaly dashboard. Seeking software engineering roles in Florida.">
+<meta name="description" content="Emery Reszka builds software that watches things and reports what changed: an AI texting assistant on the Claude API, an offline computer-vision desktop tool, a live multi-market anomaly dashboard, and a Chrome extension spanning three vision APIs. Computer Science at Florida Gulf Coast University, graduating May 2027. Looking for software engineering work in Florida.">
 <meta name="author" content="Emery Reszka">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Emery Reszka — Software Engineer">
-<meta property="og:description" content="CS student at Florida Gulf Coast University, graduating May 2027. Python, TypeScript, Java. I ship things: AI apps, computer vision, real-time data.">
+<meta property="og:description" content="Everything I build watches a live source and reports what changed. CS at Florida Gulf Coast University, graduating May 2027. Python, TypeScript, Java.">
 <meta property="og:url" content="https://eareszka.github.io/">
 <meta name="twitter:card" content="summary">
-
 <link rel="canonical" href="https://eareszka.github.io/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="pro.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💎</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='6' y='6' width='34' height='5' fill='%23000'/><rect x='6' y='6' width='5' height='34' fill='%23000'/><rect x='60' y='89' width='34' height='5' fill='%23000'/><rect x='89' y='60' width='5' height='34' fill='%23000'/></svg>">
 </head>
 <body>
 
-<header class="topbar">
-  <div class="wrap">
-    <span class="brand">Emery Reszka</span>
-    <nav class="topnav" aria-label="Section navigation">
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#experience">Experience</a>
+<div class="shell">
+
+  <header class="masthead">
+    <span class="who">Emery Reszka</span>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#capability">Capability</a>
+      <a href="#history">History</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a class="mode-toggle" href="desktop.html" id="toDesktop" title="Switch to the desktop-OS version of this site">
-      <span aria-hidden="true">🖥️</span> Desktop Mode
-    </a>
-  </div>
-</header>
+    <a class="switch" href="desktop.html">Try the desktop version</a>
+  </header>
 
-<main>
+  <main>
 
-<section class="hero" style="border-top:none">
-  <div class="wrap">
-    <h1>Emery Reszka</h1>
-    <p class="role">Software Engineer &middot; B.S. Computer Science, Florida Gulf Coast University</p>
-    <p class="lede">
-      I build things that ship &mdash; a cross-platform AI texting assistant running on the Claude API,
-      an offline computer-vision desktop tool with a real installer, and a live dashboard that watches
-      several markets at once. Most of what I know came from getting those to work on machines that
-      weren't mine.
-    </p>
-    <p class="lede">
-      I do that around a 20&ndash;40 hour training week as an NCAA Division I swimmer, which is most of the
-      reason I finish things instead of leaving them in a branch.
-    </p>
-    <ul class="facts">
-      <li>Graduating <strong>May 2027</strong></li>
-      <li><strong>Osprey, FL</strong> &middot; open to relocation in Florida</li>
-      <li><strong>U.S. citizen</strong> &middot; no sponsorship required</li>
-      <li>Seeking <strong>software engineering internships &amp; 2027 new-grad roles</strong></li>
-    </ul>
-    <div class="cta">
-      <a class="btn primary" href="Emery_Reszka_Resume.pdf">Download r&eacute;sum&eacute; (PDF)</a>
-      <a class="btn" href="mailto:EmeryReszka@outlook.com">EmeryReszka@outlook.com</a>
-      <a class="btn" href="https://github.com/eareszka" rel="noopener">GitHub</a>
-      <a class="btn" href="https://www.linkedin.com/in/emery-reszka-a18336251/" rel="noopener">LinkedIn</a>
-    </div>
-  </div>
-</section>
+    <section class="region region--hero" aria-labelledby="name">
+      <h1 class="name" id="name">Emery<br>Reszka</h1>
 
-<section id="projects">
-  <div class="wrap">
-    <h2>Selected projects</h2>
-    <div class="projects">
+      <p class="standfirst">Everything I build watches a live source and reports what changed.</p>
 
-      <article class="project">
-        <div class="shot"><img src="img/wingit-1.png" alt="WingIt! app screenshot" loading="lazy"></div>
-        <div class="body">
-          <h3>WingIt!</h3>
-          <p class="tag">Cross-platform AI texting assistant &middot; web, iOS &amp; Android from one codebase</p>
-          <p>Reads a conversation screenshot, works out who said what, and drafts a reply matched to the
-            other person's tone. A built-in coach answers questions about a specific conversation, and
-            &ldquo;The Read&rdquo; gives an assessment of how both sides are coming across.</p>
-          <p class="hard"><strong>The hard part:</strong> a language model returns something fluent and wrong
-            with exactly the confidence it returns something good. Most of the work was narrowing prompts until
-            responses came back in a shape the interface could rely on, and deciding what the user sees when
-            they don't. Screenshots are discarded after processing &mdash; which also means no saved corpus to
-            re-test a prompt change against.</p>
-          <ul class="chips">
-            <li>React Native (Expo)</li><li>TypeScript</li><li>Python</li><li>Claude API</li>
-            <li>Prompt engineering</li><li>Fly.io</li><li>REST APIs</li>
-          </ul>
-          <div class="links">
-            <a href="https://wingit-backend.fly.dev" rel="noopener">Try the live web app &rarr;</a>
-          </div>
+      <p class="blurb">An assistant that reads a conversation and drafts the next message. A desktop tool
+        that keeps previewing a window after the window is gone. A dashboard that flags a market moving in a
+        way the others don't confirm. Most of what I know came from getting those to run on machines that
+        weren't mine.</p>
+
+      <dl class="readout">
+        <div>
+          <dt>Degree</dt><span class="leader" aria-hidden="true"></span>
+          <dd>B.S. Computer Science, Florida Gulf Coast University</dd>
         </div>
-      </article>
-
-      <article class="project">
-        <div class="shot"><img src="img/regionos-1.png" alt="RegionOS screenshot" loading="lazy"></div>
-        <div class="body">
-          <h3>RegionOS</h3>
-          <p class="tag">Windows live-preview desktop dashboard &middot; v0.1.0 released July 2026</p>
-          <p>Draw regions anywhere on screen and each one keeps updating in real time &mdash; screen areas,
-            application windows, or websites &mdash; even while the source is covered, minimized, or hidden
-            off-screen. Fullscreen mode strips everything down to a grid of live previews.</p>
-          <p class="hard"><strong>The hard part:</strong> there is no image to copy off a window that isn't
-            being drawn, so nearly everything structural in the codebase exists to solve that one clause. I
-            kept it fully offline on deterministic computer vision rather than a model &mdash; it caps what
-            the tool can do, and buys failures that repeat identically instead of a guess.</p>
-          <ul class="chips">
-            <li>Python</li><li>Win32 API</li><li>Computer vision</li><li>PyInstaller</li><li>Desktop app</li>
-          </ul>
-          <div class="links">
-            <a href="https://github.com/eareszka/RegionOS" rel="noopener">Source on GitHub &rarr;</a>
-            <a href="https://github.com/eareszka/RegionOS/releases/latest" rel="noopener">Download v0.1.0 for Windows &rarr;</a>
-          </div>
+        <div>
+          <dt>Graduating</dt><span class="leader" aria-hidden="true"></span>
+          <dd>May 2027</dd>
         </div>
-      </article>
-
-      <article class="project">
-        <div class="shot"><img src="img/pulse-1.png" alt="Pulse dashboard screenshot" loading="lazy"></div>
-        <div class="body">
-          <h3>Pulse</h3>
-          <p class="tag">Real-time multi-market anomaly dashboard &middot; live since January 2026</p>
-          <p>Pulls equities, Polymarket prediction markets, and sports betting lines onto one screen and
-            flags what is moving in a way the other sources don't confirm.</p>
-          <p class="hard"><strong>The hard part:</strong> almost none of it is the chart. It is sources that
-            disagree with each other, fields that vanish without warning, rate limits, and the recurring
-            question of whether a spike is a real signal or a bad row I failed to catch upstream.</p>
-          <ul class="chips">
-            <li>Python</li><li>Data aggregation</li><li>REST APIs</li><li>JSON</li><li>Vercel</li>
-          </ul>
-          <div class="links">
-            <a href="https://pulse-sooty-pi.vercel.app/" rel="noopener">Open live site &rarr;</a>
-          </div>
+        <div>
+          <dt>Based</dt><span class="leader" aria-hidden="true"></span>
+          <dd>Osprey, Florida, and will relocate in state</dd>
         </div>
-      </article>
-
-      <article class="project">
-        <div class="shot"><img src="img/autoanswer-1.png" alt="SnipAI extension screenshot" loading="lazy"></div>
-        <div class="body">
-          <h3>SnipAI</h3>
-          <p class="tag">Chrome extension &middot; AI screen-reader for a region of your tab</p>
-          <p>Watches any region of a browser tab and re-queries a vision model &mdash; Claude, GPT, or Gemini,
-            switchable at runtime &mdash; the moment the pixels in that region change, behind one
-            provider-agnostic interface sitting in front of three different vision APIs.</p>
-          <p class="hard"><strong>The hard part:</strong> Manifest V3 replaces the long-lived background page
-            with a service worker that gets torn down, so watching a region, detecting the change, and calling
-            the model all have to survive being restarted mid-task.</p>
-          <ul class="chips">
-            <li>JavaScript</li><li>Chrome Extension</li><li>Manifest V3</li><li>AI vision models</li><li>REST APIs</li>
-          </ul>
-          <div class="links">
-            <a href="https://chromewebstore.google.com/detail/snipai/hdnhmcaekfpinanfkkbdpknhmhgibpkk" rel="noopener">Install from the Chrome Web Store &rarr;</a>
-            <a href="https://github.com/eareszka/SnipAI" rel="noopener">Source on GitHub &rarr;</a>
-          </div>
+        <div>
+          <dt>Work authorization</dt><span class="leader" aria-hidden="true"></span>
+          <dd>U.S. citizen, no sponsorship needed</dd>
         </div>
-      </article>
-
-      <article class="project no-shot">
-        <div class="body">
-          <h3>Campus Event Management System</h3>
-          <p class="tag">Full-stack Django application &middot; team build, Agile sprints</p>
-          <p>Internal event platform with authentication and role-based access: registration, waitlists, and
-            attendance tracking. Built across separate frontend and backend teams on sprint cycles, with my
-            work on registration and waitlists.</p>
-          <p class="hard"><strong>The hard part:</strong> a waitlist looks like a feature and is really an
-            ordering problem. Store each person's position as a number and every read is cheap, but one
-            cancellation in the middle means rewriting every row underneath it. Role-based access pushed on
-            the same rows from the other side &mdash; an organizer and a student look at one registration and
-            are entitled to different parts of it.</p>
-          <ul class="chips">
-            <li>Django</li><li>Python</li><li>SQL</li><li>Authentication</li><li>Role-based access</li><li>Agile</li>
-          </ul>
-          <div class="links">
-            <a href="https://github.com/eareszka/campus-event-mgmt" rel="noopener">Source on GitHub &rarr;</a>
-          </div>
+        <div>
+          <dt>Looking for</dt><span class="leader" aria-hidden="true"></span>
+          <dd>Software engineering internships and 2027 graduate roles</dd>
         </div>
-      </article>
+      </dl>
 
-    </div>
-
-    <p style="margin-top:26px;color:var(--muted);font-size:14.5px">
-      Also: a turn-based JRPG in GameMaker Studio 2, and a roguelike in pure Python with Tcod focused on
-      procedural generation. Both live in the
-      <a href="desktop.html">desktop version of this site</a>.
-    </p>
-  </div>
-</section>
-
-<section id="skills">
-  <div class="wrap">
-    <h2>Skills</h2>
-    <div class="skills">
-      <div class="skillrow">
-        <h3>Languages</h3>
-        <ul class="chips">
-          <li>Python</li><li>Java</li><li>C</li><li>TypeScript</li><li>JavaScript</li><li>SQL</li><li>R</li><li>HTML</li>
-        </ul>
+      <div class="actions">
+        <a class="action action--fill" href="Emery_Reszka_Resume.pdf">Download my r&eacute;sum&eacute;</a>
+        <a class="action" href="mailto:EmeryReszka@outlook.com">Email me</a>
+        <a class="action" href="https://github.com/eareszka" rel="noopener">GitHub</a>
+        <a class="action" href="https://www.linkedin.com/in/emery-reszka-a18336251/" rel="noopener">LinkedIn</a>
       </div>
-      <div class="skillrow">
-        <h3>Frameworks &amp; tools</h3>
-        <ul class="chips">
-          <li>Django</li><li>React Native (Expo)</li><li>PyTorch</li><li>SDL2</li><li>PyInstaller</li>
-          <li>Git</li><li>Linux (WSL)</li><li>REST APIs</li><li>JSON</li><li>Win32 API</li>
-        </ul>
-      </div>
-      <div class="skillrow">
-        <h3>Concepts</h3>
-        <ul class="chips">
-          <li>Object-oriented programming</li><li>Data structures &amp; algorithms</li><li>Computer vision</li>
-          <li>LLM / AI API integration</li><li>Prompt engineering</li><li>Agile sprint development</li>
-          <li>Debugging &amp; troubleshooting</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section id="experience">
-  <div class="wrap">
-    <h2>Experience &amp; education</h2>
+    <section class="region" id="work" aria-labelledby="work-h">
+      <h2 id="work-h">What I've built</h2>
 
-    <div class="entry">
-      <h3>Florida Gulf Coast University &mdash; Fort Myers, FL</h3>
-      <p class="meta">B.S. Computer Science &middot; expected May 2027</p>
-    </div>
+      <ul class="work">
 
-    <div class="entry">
-      <h3>University of Wisconsin&ndash;Milwaukee, School of Engineering</h3>
-      <p class="meta">Computer Science coursework, September 2022 &ndash; 2026 &middot; transferred to FGCU</p>
-    </div>
+        <li class="piece">
+          <img src="img/wingit-1.png" alt="WingIt! running on a phone, showing a drafted reply." loading="lazy" width="600" height="400">
+          <div>
+            <h3>WingIt!</h3>
+            <p class="what">An AI texting assistant that runs on the web, iOS and Android from one codebase.</p>
+            <p>It reads a conversation screenshot, works out who said what, and drafts a reply matched to the
+              other person's tone. A coach answers questions about a specific conversation, and a feature
+              called The Read tells you how both sides are coming across.</p>
+            <p class="hard"><b>What was hard.</b> A language model returns something fluent and wrong with
+              exactly the confidence it returns something good. Most of the work was narrowing prompts until
+              replies came back in a shape the interface could rely on, then deciding what a person sees when
+              they don't. Screenshots are thrown away after processing, which also means there is no saved
+              corpus to re-test a prompt change against.</p>
+            <ul class="stack">
+              <li>React Native</li><li>Expo</li><li>TypeScript</li><li>Python</li>
+              <li>Claude API</li><li>Prompt engineering</li><li>Fly.io</li><li>REST APIs</li>
+            </ul>
+            <p class="go"><a href="https://wingit-backend.fly.dev" rel="noopener">Open the live app</a></p>
+          </div>
+        </li>
 
-    <div class="entry">
-      <h3>NCAA Division I Student Athlete &mdash; UW&ndash;Milwaukee Athletics</h3>
-      <p class="meta">September 2022 &ndash; present</p>
-      <ul>
-        <li>20&ndash;40 hours a week of training and competition alongside a full course load</li>
-        <li>Represented the university in community and philanthropy events</li>
+        <li class="piece">
+          <img src="img/regionos-1.png" alt="RegionOS previewing several screen regions at once." loading="lazy" width="600" height="400">
+          <div>
+            <h3>RegionOS</h3>
+            <p class="what">A Windows tool that keeps previewing any region of your screen, released as v0.1.0 in July 2026.</p>
+            <p>Draw a box anywhere and it keeps updating in real time, whether that box holds a screen area, an
+              application window, or a website, and it keeps going while the source is covered, minimized, or
+              pushed off-screen. Fullscreen mode drops everything but the grid of live previews.</p>
+            <p class="hard"><b>What was hard.</b> There is no picture to copy off a window that is not being
+              drawn, so nearly everything structural in the codebase exists to solve that one clause. I kept it
+              fully offline on deterministic computer vision instead of a model, which caps what it can ever
+              recognize and buys something I wanted more: when it gets a region wrong, it gets it wrong the
+              same way every run, and I can go find out why.</p>
+            <ul class="stack">
+              <li>Python</li><li>Win32 API</li><li>Computer vision</li><li>PyInstaller</li><li>Windows desktop</li>
+            </ul>
+            <p class="go">
+              <a href="https://github.com/eareszka/RegionOS" rel="noopener">Read the source</a>
+              <a href="https://github.com/eareszka/RegionOS/releases/latest" rel="noopener">Download v0.1.0 for Windows</a>
+            </p>
+          </div>
+        </li>
+
+        <li class="piece">
+          <img src="img/pulse-1.png" alt="The Pulse dashboard showing several market feeds side by side." loading="lazy" width="600" height="400">
+          <div>
+            <h3>Pulse</h3>
+            <p class="what">A dashboard that watches several unrelated markets at once, live since January 2026.</p>
+            <p>It pulls equities, Polymarket prediction markets and sports betting lines onto one screen, then
+              flags whatever is moving in a way the other sources don't confirm.</p>
+            <p class="hard"><b>What was hard.</b> Almost none of it is the chart. It is sources that disagree
+              with each other, fields that vanish without warning, rate limits, and the question that keeps
+              coming back: is this spike a real signal, or a bad row I failed to catch upstream.</p>
+            <ul class="stack">
+              <li>Python</li><li>Multi-source aggregation</li><li>REST APIs</li><li>JSON</li><li>Vercel</li>
+            </ul>
+            <p class="go"><a href="https://pulse-sooty-pi.vercel.app/" rel="noopener">Open the live dashboard</a></p>
+          </div>
+        </li>
+
+        <li class="piece">
+          <img src="img/autoanswer-1.png" alt="SnipAI watching a selected region of a browser tab." loading="lazy" width="600" height="400">
+          <div>
+            <h3>SnipAI</h3>
+            <p class="what">A Chrome extension that re-reads a region of a tab whenever its pixels change.</p>
+            <p>Select any region of a browser tab and it re-queries a vision model the moment that region
+              changes, with Claude, GPT and Gemini switchable at runtime behind one provider-agnostic
+              interface.</p>
+            <p class="hard"><b>What was hard.</b> Manifest V3 replaced the long-lived background page with a
+              service worker the browser tears down whenever it likes. Watching a region, noticing the change,
+              and calling the model all had to survive being restarted mid-task.</p>
+            <ul class="stack">
+              <li>JavaScript</li><li>Chrome extension</li><li>Manifest V3</li><li>Vision models</li><li>REST APIs</li>
+            </ul>
+            <p class="go">
+              <a href="https://chromewebstore.google.com/detail/snipai/hdnhmcaekfpinanfkkbdpknhmhgibpkk" rel="noopener">Install from the Chrome Web Store</a>
+              <a href="https://github.com/eareszka/SnipAI" rel="noopener">Read the source</a>
+            </p>
+          </div>
+        </li>
+
+        <li class="piece piece--textonly">
+          <div>
+            <h3>Campus event management system</h3>
+            <p class="what">A Django application built by a team on sprint cycles, where I owned registration and waitlists.</p>
+            <p>Accounts and roles, event registration, waitlists and attendance tracking, built for one
+              organization rather than the public, with frontend and backend handled by separate groups.</p>
+            <p class="hard"><b>What was hard.</b> A waitlist looks like a feature and is really an ordering
+              problem. Store each person's position as a number and every read is cheap, but one cancellation
+              in the middle means rewriting every row underneath it. Role-based access pushed on the same rows
+              from the other side, because an organizer and a student look at one registration and are
+              entitled to different parts of it.</p>
+            <ul class="stack">
+              <li>Django</li><li>Python</li><li>SQL</li><li>Authentication</li><li>Role-based access</li><li>Agile sprints</li>
+            </ul>
+            <p class="go"><a href="https://github.com/eareszka/campus-event-mgmt" rel="noopener">Read the source</a></p>
+          </div>
+        </li>
+
       </ul>
-    </div>
 
-    <div class="entry">
-      <h3>Aquatics Staff &mdash; IMG Academy, Bradenton, FL</h3>
-      <p class="meta">June 2026 &ndash; August 2026</p>
-      <ul>
-        <li>Supervised swimmers and maintained a safe aquatics environment for student-athletes and campers</li>
-        <li>Enforced facility rules face to face and stayed ready to respond to water emergencies</li>
+      <p class="aside">There is also a turn-based JRPG in GameMaker Studio 2 and a roguelike written in pure
+        Python with Tcod, both about procedural generation more than anything else. They live on
+        <a href="desktop.html">the desktop version of this site</a>, along with everything else I've made.</p>
+    </section>
+
+    <section class="region" id="capability" aria-labelledby="cap-h">
+      <h2 id="cap-h">What I work in</h2>
+      <dl class="caps">
+        <div>
+          <dt>Languages</dt>
+          <dd>Python, Java, C, TypeScript, JavaScript, SQL, R, HTML</dd>
+        </div>
+        <div>
+          <dt>Frameworks and tools</dt>
+          <dd>Django, React Native with Expo, PyTorch, SDL2, PyInstaller, Git, Linux under WSL, Win32 API,
+            REST APIs, JSON</dd>
+        </div>
+        <div>
+          <dt>Ideas I use daily</dt>
+          <dd>Object-oriented programming, data structures and algorithms, computer vision, integrating LLM
+            APIs, prompt engineering, working in Agile sprints, and the debugging that holds all of it
+            together</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="region" id="history" aria-labelledby="hist-h">
+      <h2 id="hist-h">Where I've been</h2>
+      <ul class="history">
+        <li>
+          <h3>Florida Gulf Coast University, Fort Myers</h3>
+          <p class="when">B.S. Computer Science, expected May 2027</p>
+        </li>
+        <li>
+          <h3>University of Wisconsin&ndash;Milwaukee, School of Engineering</h3>
+          <p class="when">Computer Science coursework, September 2022 to 2026, before transferring to FGCU</p>
+        </li>
+        <li>
+          <h3>NCAA Division I swimmer, UW&ndash;Milwaukee Athletics</h3>
+          <p class="when">September 2022 to now</p>
+          <ul>
+            <li>Twenty to forty hours a week of training and competition against a full course load</li>
+            <li>Four years of showing up on the mornings it stopped being interesting, which is most of the
+              reason I finish things instead of leaving them in a branch</li>
+          </ul>
+        </li>
+        <li>
+          <h3>Aquatics staff, IMG Academy, Bradenton</h3>
+          <p class="when">June to August 2026</p>
+          <ul>
+            <li>Supervised swimmers and kept the pool areas safe for student athletes and campers</li>
+            <li>Enforced facility rules face to face and stayed ready for water emergencies</li>
+          </ul>
+        </li>
       </ul>
-    </div>
-  </div>
-</section>
+    </section>
 
-</main>
+  </main>
 
-<footer id="contact">
-  <div class="wrap">
-    <div class="row">
+  <footer class="region close" id="contact" aria-labelledby="contact-h">
+    <h2 id="contact-h">Get in touch</h2>
+    <p class="lines">
       <a href="mailto:EmeryReszka@outlook.com">EmeryReszka@outlook.com</a>
       <a href="https://github.com/eareszka" rel="noopener">github.com/eareszka</a>
       <a href="https://www.linkedin.com/in/emery-reszka-a18336251/" rel="noopener">LinkedIn</a>
-      <a href="Emery_Reszka_Resume.pdf">R&eacute;sum&eacute; (PDF)</a>
-      <a href="desktop.html">Desktop Mode &rarr;</a>
-    </div>
-    <p style="margin:16px 0 0">Osprey, Florida &middot; open to relocation within Florida</p>
-  </div>
-</footer>
+      <a href="Emery_Reszka_Resume.pdf">R&eacute;sum&eacute;, PDF</a>
+      <a href="desktop.html">The desktop version</a>
+    </p>
+    <p class="where">Osprey, Florida. Happy to relocate anywhere in the state.</p>
+  </footer>
 
+</div>
 
 </body>
 </html>
