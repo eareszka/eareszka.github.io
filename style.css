@@ -507,6 +507,27 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
    MOBILE — all mobile styles in one place
    Breakpoint: anything under 700px
 ═══════════════════════════════════════════════ */
+/* ── Recruiter view switch ─────────────────────────────────── */
+.to-pro {
+  position: fixed;
+  top: 14px;
+  right: 16px;
+  z-index: 99999;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 15px;
+  border-radius: 999px;
+  text-decoration: none;
+  font: 600 13.5px/1 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #0f1216;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.18);
+  box-shadow: 0 2px 6px rgba(0,0,0,.28);
+  cursor: pointer;
+}
+.to-pro:focus-visible { outline: 3px solid #00595F; outline-offset: 3px; }
+
 @media (max-width: 700px) {
 
   /* Swap folder → individual app icons */
@@ -823,4 +844,19 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
     box-shadow: 0 0 10px var(--accent, #ff2dce);
     display: block;
   }
+
+  /* Recruiter switch moves to the bottom edge on mobile: the icon grid owns
+     the top-right corner here, and the taskbar is hidden, so the bottom is free. */
+  .to-pro {
+    top: auto;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    padding: 11px 22px;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  /* keep the last row of icons clear of it */
+  #desktop { padding-bottom: 78px; }
 }
