@@ -4,13 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Emery Reszka — Software Engineer | CS, Florida Gulf Coast University</title>
-<meta name="description" content="Computer Science at Florida Gulf Coast University, graduating May 2027. I build tools that watch a live source and report what changed. Looking for software engineering work in Florida.">
+<meta name="description" content="Computer Science at Florida Gulf Coast University, graduating May 2027. I build desktop tools, web apps, and browser extensions in Python and TypeScript. Looking for software engineering work in Florida.">
 <meta name="author" content="Emery Reszka">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Emery Reszka — Software Engineer">
-<meta property="og:description" content="Everything I build watches a live source and reports what changed. CS at Florida Gulf Coast University, graduating May 2027. Python, TypeScript, Java.">
+<meta property="og:description" content="CS at Florida Gulf Coast University, graduating May 2027. I build desktop tools, web apps, and browser extensions. Python, TypeScript, Java.">
 <meta property="og:url" content="https://eareszka.github.io/">
+<meta property="og:image" content="https://eareszka.github.io/img/emery-reszka.jpg">
+<meta property="og:image:width" content="400">
+<meta property="og:image:height" content="400">
+<meta property="og:image:alt" content="Emery Reszka">
 <meta name="twitter:card" content="summary">
 <link rel="canonical" href="https://eareszka.github.io/">
 
@@ -26,13 +30,13 @@
 
   <header class="masthead">
     <span class="who">Emery Reszka</span>
+    <a class="switch" href="desktop.html">Try the desktop version</a>
     <nav aria-label="Sections">
       <a href="#work">Work</a>
       <a href="#capability">Stack</a>
       <a href="#history">Background</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a class="switch" href="desktop.html">Try the desktop version</a>
   </header>
 
   <main>
@@ -40,32 +44,35 @@
     <section class="region region--hero" aria-labelledby="name">
       <h1 class="name" id="name">Emery<br>Reszka</h1>
 
-      <p class="standfirst">Everything I build watches a live source and reports what changed.</p>
+      <picture class="portrait">
+        <source srcset="img/emery-reszka.webp" type="image/webp">
+        <img src="img/emery-reszka.jpg" width="400" height="400" fetchpriority="high" alt="Emery Reszka">
+      </picture>
 
-      <p class="blurb">In practice that means a desktop tool that keeps previewing a window after the window
-        is gone, a dashboard that flags one market moving in a way the others don't confirm, an extension that
-        re-reads part of a page the moment its pixels change. Most of what I know came out of getting those to
-        run on machines that weren't mine.</p>
+      <p class="standfirst">I build desktop tools, web apps, and browser extensions, mostly in Python and TypeScript.</p>
+
+      <p class="blurb">Two of the projects below are live, one is on the Chrome Web Store, and one has a
+        Windows release you can download.</p>
 
       <dl class="readout">
         <div>
-          <dt>Degree</dt><span class="leader" aria-hidden="true"></span>
+          <dt>Degree</dt>
           <dd>B.S. Computer Science, Florida Gulf Coast University</dd>
         </div>
         <div>
-          <dt>Graduating</dt><span class="leader" aria-hidden="true"></span>
+          <dt>Graduating</dt>
           <dd>May 2027</dd>
         </div>
         <div>
-          <dt>Based</dt><span class="leader" aria-hidden="true"></span>
+          <dt>Based</dt>
           <dd>Osprey, Florida. Will relocate in state</dd>
         </div>
         <div>
-          <dt>Work authorization</dt><span class="leader" aria-hidden="true"></span>
+          <dt>Work authorization</dt>
           <dd>U.S. citizen, no sponsorship needed</dd>
         </div>
         <div>
-          <dt>Looking for</dt><span class="leader" aria-hidden="true"></span>
+          <dt>Looking for</dt>
           <dd>Software engineering internships and 2027 graduate roles</dd>
         </div>
       </dl>
@@ -73,14 +80,13 @@
       <div class="actions">
         <a class="action action--fill" href="Emery_Reszka_Resume.pdf" download>Download r&eacute;sum&eacute; (PDF)</a>
         <a class="action action--wide" href="mailto:EmeryReszka@outlook.com?subject=Software%20engineering%20role%20-%20via%20eareszka.github.io">Email me</a>
-        <a class="action" href="https://github.com/eareszka" rel="noopener">GitHub</a>
-        <a class="action" href="https://www.linkedin.com/in/emery-reszka-a18336251/" rel="noopener">LinkedIn</a>
+        <a class="action action--quiet" href="https://github.com/eareszka" target="_blank" rel="noopener">GitHub</a>
+        <a class="action action--quiet" href="https://www.linkedin.com/in/emery-reszka-a18336251/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </section>
 
     <section class="region" id="work" aria-labelledby="work-h">
       <h2 id="work-h">What I've built</h2>
-      <p class="vh">Each project below ends with a paragraph on what was genuinely hard about building it.</p>
 
       <ul class="work">
 
@@ -93,20 +99,19 @@
           </picture>
           <div>
             <h3>WingIt!</h3>
-            <p class="what">An AI texting assistant that runs on the web, iOS and Android from one codebase.</p>
-            <p>It reads a screenshot of a conversation, works out who said what, and drafts a reply matched to
-              the other person's tone. A coach answers questions about that specific thread, and a mode called
-              The Read tells you how both sides are coming across.</p>
-            <p class="hard">A language model returns something fluent and wrong with exactly the confidence it
-              returns something good. So most of the work was prompts: narrowing them until replies came back
-              in a shape the interface could rely on, then deciding what a person sees when they don't.
-              Screenshots get deleted after processing, so there's no saved corpus to test a prompt change
-              against either.</p>
+            <p class="what">An AI texting assistant for web, iOS, and Android, built from one codebase.</p>
+            <p>You upload a screenshot of a conversation. It works out who said what and drafts a reply in the
+              other person's tone. A coach answers questions about that thread, and a mode called The Read
+              describes how each side is coming across.</p>
+            <p>The model's wrong answers sound as confident as its right ones, so most of the work
+              went into prompts: tightening them until replies came back in a format the interface could depend
+              on, and deciding what to show when they didn't. Screenshots are deleted after processing, so there
+              is no saved set of conversations to test a prompt change against.</p>
             <ul class="stack">
               <li>React Native</li><li>Expo</li><li>TypeScript</li><li>Python</li>
               <li>Claude API</li><li>Prompt engineering</li><li>Fly.io</li><li>REST APIs</li>
             </ul>
-            <p class="go"><a href="https://wingit-backend.fly.dev" rel="noopener">Open the live app</a></p>
+            <p class="go"><a href="https://wingit-backend.fly.dev" target="_blank" rel="noopener">Open the live app</a></p>
           </div>
         </li>
 
@@ -119,21 +124,20 @@
           </picture>
           <div>
             <h3>RegionOS</h3>
-            <p class="what">A Windows tool that keeps previewing any region of your screen, released as v0.1.0 in July 2026.</p>
-            <p>Draw a box around a screen area, an application window, or a website, and the preview keeps
-              updating in real time, including while the source is covered, minimized, or pushed off-screen.
-              Fullscreen mode drops everything but the grid of previews.</p>
-            <p class="hard">Windows won't hand you a picture of a window it isn't drawing, and most of the
-              structure in that codebase exists to work around it. I kept the recognition side fully offline on
-              deterministic computer vision instead of a model. That caps what it can ever recognize, and it
-              buys the thing I wanted more: when it gets a region wrong, it gets it wrong the same way every
-              run, and I can go find out why.</p>
+            <p class="what">A Windows tool that shows live previews of any region of your screen. Version 0.1.0 came out in July 2026.</p>
+            <p>You draw a box around part of the screen, an application window, or a website, and the preview
+              keeps updating, even while the source is covered, minimized, or moved off-screen. Fullscreen mode
+              hides everything except the grid of previews.</p>
+            <p>Windows doesn't give you an image of a window it isn't currently drawing, and most
+              of the code exists to work around that. Recognition runs offline, using deterministic computer
+              vision instead of a model. It recognizes less than a model would, but it fails the same way every
+              time, so I can reproduce a bad result and debug it.</p>
             <ul class="stack">
               <li>Python</li><li>Win32 API</li><li>Computer vision</li><li>PyInstaller</li><li>Windows desktop</li>
             </ul>
             <p class="go">
-              <a href="https://github.com/eareszka/RegionOS" rel="noopener">Read the source</a>
-              <a href="https://github.com/eareszka/RegionOS/releases/latest" rel="noopener">Download v0.1.0 for Windows</a>
+              <a href="https://github.com/eareszka/RegionOS" target="_blank" rel="noopener">Read the source</a>
+              <a href="https://github.com/eareszka/RegionOS/releases/latest" target="_blank" rel="noopener">Download v0.1.0 for Windows</a>
             </p>
           </div>
         </li>
@@ -147,16 +151,16 @@
           </picture>
           <div>
             <h3>Pulse</h3>
-            <p class="what">A dashboard that watches several unrelated markets at once, live since January 2026.</p>
-            <p>It pulls equities, Polymarket prediction markets and sports betting lines onto one screen, then
-              flags whatever is moving in a way the other sources don't confirm.</p>
-            <p class="hard">The chart was the easy part. Sources disagree with each other, fields disappear
-              without warning, and rate limits hit mid-poll. I still can't always tell a real spike from a bad
-              row I missed upstream.</p>
+            <p class="what">A dashboard that tracks several unrelated markets at once. Live since January 2026.</p>
+            <p>It puts stock prices, Polymarket prediction markets, and sports betting lines on one screen and
+              flags a market that moves when the other sources don't.</p>
+            <p>Most of the work was on the data. Sources disagree with each other, fields
+              disappear without notice, and rate limits cut polls off partway through. I still can't always
+              tell a real spike from a bad row that got through.</p>
             <ul class="stack">
               <li>Python</li><li>Multi-source aggregation</li><li>REST APIs</li><li>JSON</li><li>Vercel</li>
             </ul>
-            <p class="go"><a href="https://pulse-sooty-pi.vercel.app/" rel="noopener">Open the live dashboard</a></p>
+            <p class="go"><a href="https://pulse-sooty-pi.vercel.app/" target="_blank" rel="noopener">Open the live dashboard</a></p>
           </div>
         </li>
 
@@ -169,18 +173,18 @@
           </picture>
           <div>
             <h3>SnipAI</h3>
-            <p class="what">A Chrome extension that re-reads a region of a tab whenever its pixels change.</p>
-            <p>Select a region of a browser tab and it re-queries a vision model the moment those pixels
-              change. Claude, GPT and Gemini are switchable at runtime behind one interface.</p>
-            <p class="hard">Manifest V3 replaced the long-lived background page with a service worker that
-              Chrome shuts down on its own schedule. Watching a region, noticing the change, and calling the
-              model all had to survive being restarted mid-task.</p>
+            <p class="what">A Chrome extension that re-reads part of a browser tab whenever it changes.</p>
+            <p>You select a region of a tab, and it sends that region to a vision model each time the pixels
+              change. You can switch between Claude, GPT, and Gemini while it runs.</p>
+            <p>Manifest V3 replaced the persistent background page with a service worker that
+              Chrome can shut down at any time. Watching the region, detecting a change, and calling the model
+              all had to recover from being restarted partway through.</p>
             <ul class="stack">
               <li>JavaScript</li><li>Chrome extension</li><li>Manifest V3</li><li>Vision models</li><li>REST APIs</li>
             </ul>
             <p class="go">
-              <a href="https://chromewebstore.google.com/detail/snipai/hdnhmcaekfpinanfkkbdpknhmhgibpkk" rel="noopener">Install from the Chrome Web Store</a>
-              <a href="https://github.com/eareszka/SnipAI" rel="noopener">Read the source</a>
+              <a href="https://chromewebstore.google.com/detail/snipai/hdnhmcaekfpinanfkkbdpknhmhgibpkk" target="_blank" rel="noopener">Install from the Chrome Web Store</a>
+              <a href="https://github.com/eareszka/SnipAI" target="_blank" rel="noopener">Read the source</a>
             </p>
           </div>
         </li>
@@ -189,24 +193,24 @@
           <div>
             <h3>Campus event management system</h3>
             <p class="what">A Django application built by a team on sprint cycles, where I owned registration and waitlists.</p>
-            <p>Accounts and roles, event registration, waitlists, attendance tracking. Built for a single
-              organization rather than the public, with frontend and backend split across separate groups.</p>
-            <p class="hard">A waitlist looks like a feature and is really an ordering problem. Store each
-              person's position as a number and every read is cheap, but one cancellation in the middle means
-              rewriting every row underneath it. Role-based access hit the same rows from the other side: an
-              organizer and a student look at one registration and are entitled to different parts of it.</p>
+            <p>Accounts and roles, event registration, waitlists, and attendance tracking, built for one
+              organization rather than the public. Frontend and backend were split between separate groups.</p>
+            <p>Waitlists took longer than I expected. Storing each person's position as a number
+              makes reads cheap, but one cancellation in the middle means updating every row after it.
+              Role-based access touched the same rows: an organizer and a student looking at the same
+              registration are allowed to see different fields.</p>
             <ul class="stack">
               <li>Django</li><li>Python</li><li>SQL</li><li>Authentication</li><li>Role-based access</li><li>Agile sprints</li>
             </ul>
-            <p class="go"><a href="https://github.com/eareszka/campus-event-mgmt" rel="noopener">Read the source</a></p>
+            <p class="go"><a href="https://github.com/eareszka/campus-event-mgmt" target="_blank" rel="noopener">Read the source</a></p>
           </div>
         </li>
 
       </ul>
 
-      <p class="aside">There's also a turn-based JRPG in GameMaker Studio 2 and a roguelike in pure Python
-        with Tcod, both mostly exercises in procedural generation. Those and everything else I've made are on
-        <a href="desktop.html">the desktop version of this site</a>.</p>
+      <p class="aside">I've also made a turn-based JRPG in GameMaker Studio 2 and a roguelike in Python with
+        Tcod, both mainly to practice procedural generation. They're on
+        <a href="desktop.html">the desktop version of this site</a>, along with my other projects.</p>
     </section>
 
     <section class="region" id="capability" aria-labelledby="cap-h">
@@ -224,7 +228,7 @@
         <div>
           <dt>Concepts and practice</dt>
           <dd>Object-oriented programming, data structures and algorithms, computer vision, integrating LLM
-            APIs, prompt engineering, working in Agile sprints, and a lot of debugging</dd>
+            APIs, prompt engineering, Agile sprints</dd>
         </div>
       </dl>
     </section>
@@ -244,16 +248,8 @@
           <h3>NCAA Division I swimmer, UW&ndash;Milwaukee Athletics</h3>
           <p class="when">September 2022 to May 2026</p>
           <ul>
-            <li>Twenty to forty hours a week of training and competition against a full course load, for four
-              straight seasons</li>
-          </ul>
-        </li>
-        <li>
-          <h3>Preloader, UPS, Elm Grove</h3>
-          <p class="when">2023 to 2025</p>
-          <ul>
-            <li>Loaded packages onto delivery trucks in route order before the drivers headed out</li>
-            <li>Worked it through the school year, around classes and Division I training</li>
+            <li>Twenty to forty hours a week of training and competition alongside a full course load, for four
+              seasons</li>
           </ul>
         </li>
         <li>
@@ -264,6 +260,14 @@
             <li>Enforced facility rules face to face and stayed ready for a water emergency</li>
           </ul>
         </li>
+        <li>
+          <h3>Preloader, UPS, Elm Grove</h3>
+          <p class="when">2023 to 2025</p>
+          <ul>
+            <li>Loaded packages onto delivery trucks in route order before the drivers headed out</li>
+            <li>Worked during the school year, around classes and Division I training</li>
+          </ul>
+        </li>
       </ul>
     </section>
 
@@ -271,15 +275,15 @@
 
   <footer class="region close" id="contact" aria-labelledby="contact-h">
     <h2 id="contact-h">Contact</h2>
-    <p class="ask">I graduate in May 2027, I'm looking for software engineering work in Florida, and I answer
-      every email.</p>
+    <p class="ask">I graduate in May 2027 and I'm looking for software engineering internships and full-time
+      roles in Florida.</p>
     <p class="act">
       <a class="action action--fill" href="mailto:EmeryReszka@outlook.com?subject=Software%20engineering%20role%20-%20via%20eareszka.github.io">Email me at EmeryReszka@outlook.com</a>
     </p>
     <p class="lines">
-      <a href="https://github.com/eareszka" rel="noopener">github.com/eareszka</a>
-      <a href="https://www.linkedin.com/in/emery-reszka-a18336251/" rel="noopener">LinkedIn</a>
-      <a href="Emery_Reszka_Resume.pdf" download>R&eacute;sum&eacute;, PDF</a>
+      <a href="https://github.com/eareszka" target="_blank" rel="noopener">github.com/eareszka</a>
+      <a href="https://www.linkedin.com/in/emery-reszka-a18336251/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="Emery_Reszka_Resume.pdf" download>R&eacute;sum&eacute; (PDF)</a>
     </p>
     <p class="where">Osprey, Florida. I'll relocate anywhere in the state.</p>
   </footer>
