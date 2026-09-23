@@ -53,6 +53,21 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
+/* announced, never shown: carries a purely visual convention to a
+   screen reader once, at the point the convention starts. */
+.vh {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
 .shell {
   max-width: 68rem;
   margin: 0 auto;
@@ -122,8 +137,15 @@ button:focus-visible {
   font-weight: 600;
   color: var(--ink);
   text-decoration: none;
-  border-bottom: 2px solid var(--water);
-  padding-bottom: 1px;
+  /* the 2px water rule is a text underline, not a box border, so the hit
+     area below can grow to 44px without the rule drifting off the word */
+  text-decoration-line: underline;
+  text-decoration-color: var(--water);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 .switch:hover { color: var(--water); }
 
@@ -184,6 +206,11 @@ button:focus-visible {
   font-size: var(--t-sm);
   font-weight: 600;
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  text-align: center;
   padding: .625rem 1.125rem;
   border: 2px solid var(--ink);
   color: var(--ink);
@@ -195,11 +222,11 @@ button:focus-visible {
 
 /* ── section headings ────────────────────────────────────────── */
 .region > h2 {
-  font-size: var(--t-lg);
-  font-stretch: 112%;
+  font-size: var(--t-xl);
+  font-stretch: 118%;
   font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -.015em;
+  line-height: 1.05;
+  letter-spacing: -.02em;
   margin: 0 0 1.75rem;
 }
 
@@ -225,27 +252,44 @@ button:focus-visible {
 }
 .work p { margin: 0 0 .85rem; max-width: 68ch; }
 
-.piece { display: grid; grid-template-columns: 15rem minmax(0, 1fr); gap: var(--pad); align-items: start; }
-.piece > div { min-width: 0; }
+.piece { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }  /* the shot sits above the prose, at the region's full width */
+.piece > div, .piece picture { min-width: 0; }
 .piece img {
   width: 100%;
   height: auto;
-  max-height: 20rem;
-  object-fit: cover;
-  object-position: top center;
+  max-height: 26rem;
+  object-fit: contain;
+  background: var(--deck);
   display: block;
   border: 1px solid var(--rule);
 }
-.piece--textonly { grid-template-columns: 1fr; }
+.piece .shot--tall { max-height: 30rem; }  /* phone shots: too tall for full width, so fitted whole with deck around them */
 
-/* the honest bit: what was actually hard */
-.hard {
-  border-left: 3px solid var(--water);
-  padding: .1rem 0 .1rem 1rem;
-  margin: 0 0 .85rem;
-  max-width: 66ch;
+/* the honest bit: what was actually hard. This is the payload of each
+   write-up, so it carries the same typographic register as the hero's
+   standfirst — the page's other payload sentence — on a tighter
+   measure. The short hairline still marks the turn in the prose, in
+   the same 1px rule language as every other separator on the page.
+   Scoped to `.work p.hard` (0,2,1) because plain `.hard` (0,1,0) loses
+   to `.work p` (0,1,1) above: its margin and measure never applied. */
+.work p.hard {
+  position: relative;
+  font-size: clamp(1.0625rem, 2.4vw, var(--t-md));
+  font-weight: 500;
+  line-height: 1.4;
+  max-width: 52ch;
+  padding-top: 1.25rem;
+  margin: 1.9rem 0 1rem;
 }
-.hard b { font-weight: 700; }
+.work p.hard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2.5rem;
+  height: 1px;
+  background: var(--ink);
+}
 
 .stack {
   display: flex; flex-wrap: wrap; gap: .375rem .5rem;
@@ -257,8 +301,14 @@ button:focus-visible {
   border: 1px solid var(--rule);
   padding: .15rem .5rem;
 }
-.go { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-top: .9rem; }
-.go a { font-size: var(--t-sm); font-weight: 600; }
+.work p.go { display: flex; flex-wrap: wrap; gap: 0 1.25rem; margin: .2rem 0 0; }
+.go a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: var(--t-sm);
+  font-weight: 600;
+}
 
 .aside {
   font-size: var(--t-sm);
@@ -288,9 +338,53 @@ button:focus-visible {
 
 /* ── close ───────────────────────────────────────────────────── */
 .close { padding-bottom: clamp(2rem, 6vw, 4rem); }
-.close .lines { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; font-size: var(--t-sm); }
-.close .lines a { font-weight: 600; }
-.close .where { font-size: var(--t-sm); color: var(--mute); margin: 1.25rem 0 0; }
+
+/* the last mark on the page. Every other region leaves an open
+   bottom-right corner, which reads as "the selection continues below".
+   Here the marquee seals instead: same 2px --ink stroke, same corner
+   geometry, drawn the full width of the panel so nothing follows. */
+.close::after {
+  left: -1px;
+  right: -1px;
+  width: auto;
+}
+
+.close .ask {
+  font-size: clamp(1.0625rem, 2.4vw, var(--t-md));
+  font-weight: 500;
+  line-height: 1.4;
+  max-width: 40ch;
+  margin: 0 0 1.75rem;
+}
+
+.close .act { margin: 0 0 1.75rem; }
+.close .act .action {
+  font-size: var(--t-base);
+  padding: .75rem 1.375rem;
+}
+
+/* subordinate row: smaller, --mute, still underlined so they read as
+   links. The 44px target is declared, not inferred from padding, so it
+   survives a change to --t-xs or to the body line-height. */
+.close .lines {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem 1.5rem;
+  font-size: var(--t-xs);
+  margin: 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+}
+.close .lines a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: .5rem 0;
+  color: var(--mute);
+  font-weight: 400;
+}
+.close .lines a:hover { color: var(--ink); }
+.close .where { font-size: var(--t-xs); color: var(--mute); margin: .75rem 0 0; }
 
 /* ── compact ─────────────────────────────────────────────────── */
 @media (max-width: 46rem) {
@@ -298,9 +392,36 @@ button:focus-visible {
 
   .shell { padding-left: .875rem; padding-right: .875rem; }
 
-  .masthead { gap: .35rem .875rem; padding-bottom: .875rem; }
-  .masthead nav { display: none; }
-  .masthead .who { margin-right: 0; }
+  .masthead { gap: .25rem .875rem; padding-bottom: .5rem; }
+  /* The section nav never disappears. One horizontally-scrollable row at
+     --t-xs keeps all four targets at 44px; the four labels measure ~306px,
+     so on a 320px phone it does not actually scroll — overflow-x is
+     insurance for large text, not a layout. Because the nav now survives
+     at every width, a desktop reader at 200% zoom — which trips this same
+     46rem query — keeps it too, so there is no zoom case left to split. */
+  .masthead nav {
+    order: 3;
+    flex-wrap: nowrap;
+    gap: 0;
+    width: calc(100% + 1.75rem);
+    margin: 0 -.875rem;
+    padding: 0 .875rem 0 .125rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    border-top: 1px solid var(--rule);
+  }
+  .masthead nav::-webkit-scrollbar { width: 0; height: 0; }
+  .masthead nav a {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 .75rem;
+    font-size: var(--t-xs);
+    white-space: nowrap;
+  }
+  .masthead .who { margin-right: auto; }
   .switch { font-size: var(--t-xs); }
 
   .name { line-height: .9; margin-bottom: .35em; }
@@ -323,17 +444,23 @@ button:focus-visible {
   }
 
   .actions { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
-  .action { text-align: center; padding: .6rem .5rem; }
+  .action { padding: .6rem .75rem; }
+
+  /* Full width is earned here, not inherited from document order: the
+     resume and the email are the two acts worth a recruiter's thumb.
+     GitHub and LinkedIn share the row below them. */
   .action--fill,
-  .action:last-child { grid-column: 1 / -1; }
+  .action--wide { grid-column: 1 / -1; }
 
-  .region > h2 { font-size: var(--t-md); margin-bottom: 1.125rem; }
+  .close .act .action { display: flex; }
 
-  .piece { grid-template-columns: 1fr; gap: .875rem; }
-  .piece img { max-height: 11rem; object-fit: cover; object-position: top; }
+  .region > h2 { font-size: var(--t-lg); margin-bottom: 1.125rem; }
+
+  .piece { gap: .875rem; }
+  .piece .shot--tall { max-height: 24rem; }
 
   .work > li + li { margin-top: 1.5rem; padding-top: 1.5rem; }
-  .work p, .hard { font-size: .9375rem; }
+  .work p { font-size: .9375rem; }
 
   .caps > div { grid-template-columns: 1fr; gap: .25rem; }
   .stack li { font-size: .75rem; }
@@ -350,4 +477,8 @@ button:focus-visible {
   .switch, .masthead nav { display: none; }
   .region { margin-bottom: 1rem; padding: 0; }
   .region::before, .region::after { display: none; }
+  .action, .go a, .close .lines a { min-height: 0; }
+  .close .lines a { padding: 0; }
+  /* screen caps grew to 26/30rem; on paper that is half a page per shot */
+  .piece img, .piece .shot--tall { max-height: 16rem; }
 }
