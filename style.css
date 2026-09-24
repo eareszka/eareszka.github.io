@@ -575,12 +575,12 @@ a, button, .icon, .win-btn, .contact-row, .start-item, .taskbar-app, #start-btn 
   #ico-skills     { order: 2; }
   #ico-contact    { order: 3; }
   #ico-yt         { order: 4; }
-  #ico-alpha      { order: 5; }
+  #ico-alpha      { order: 9; }
   #ico-pulse      { order: 6; }
-  #ico-beta       { order: 7; }
+  #ico-beta       { order: 10; }
   #ico-autoanswer { order: 8; }
-  #ico-wingit     { order: 9; }
-  #ico-regionos   { order: 10; }
+  #ico-wingit     { order: 5; }
+  #ico-regionos   { order: 7; }
 
   /* Hide titlebar X — bottom close button is the only exit */
   .win-controls { display: none; }

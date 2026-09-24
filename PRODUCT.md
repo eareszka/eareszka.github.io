@@ -46,7 +46,7 @@ What a visitor should remember, in the user's own priorities:
 ## Evidence on Hand
 
 - Résumé: `Emery_Reszka_Resume.pdf`.
-- Project screenshots in `img/` (PNG plus WebP for the ones shown on the recruiter view). Known gaps: the SnipAI image is a title card rather than a screenshot, and the RegionOS and Pulse shots don't fully show what their descriptions claim. Replacing them needs new captures.
+- Project screenshots in `img/` (PNG plus WebP for the ones shown on the recruiter view). Known gaps: the SnipAI image is a title card rather than a screenshot, and the RegionOS shot doesn't fully show what their descriptions claim. Replacing them needs new captures.
 - Live links: WingIt (wingit-backend.fly.dev), Pulse (pulse-sooty-pi.vercel.app), SnipAI on the Chrome Web Store, RegionOS v0.1.0 release on GitHub, campus event system repo.
 - Facts: B.S. Computer Science at FGCU, expected May 2027. UW–Milwaukee coursework September 2022 to May 2026. Based in Osprey, Florida, will relocate within the state. U.S. citizen, no sponsorship needed.
 - None exist, and future work must not invent them: testimonials, references, GPA, awards, usage numbers or user counts for any project, or employer endorsements.

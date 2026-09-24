@@ -117,6 +117,28 @@
 
         <li class="piece">
           <picture>
+            <source srcset="img/pulse-1.webp" type="image/webp">
+            <img class="shot--tall" src="img/pulse-1.png" width="640" height="1388"
+                 loading="lazy" decoding="async"
+                 alt="Pulse on a phone-width screen: a watchlist of three of five slots mixing a Polymarket question, a Kalshi market and NVDA stock, each with its current value and how close it is to triggering an alert, above a list of recent buzzes.">
+          </picture>
+          <div>
+            <h3>Pulse</h3>
+            <p class="what">A dashboard that tracks several unrelated markets at once. Live since January 2026.</p>
+            <p>It puts stock prices, Polymarket prediction markets, and sports betting lines on one screen and
+              flags a market that moves when the other sources don't.</p>
+            <p>Most of the work was on the data. Sources disagree with each other, fields
+              disappear without notice, and rate limits cut polls off partway through. I still can't always
+              tell a real spike from a bad row that got through.</p>
+            <ul class="stack">
+              <li>Python</li><li>Multi-source aggregation</li><li>REST APIs</li><li>JSON</li><li>Vercel</li>
+            </ul>
+            <p class="go"><a href="https://pulse-sooty-pi.vercel.app/" target="_blank" rel="noopener">Open the live dashboard</a></p>
+          </div>
+        </li>
+
+        <li class="piece">
+          <picture>
             <source srcset="img/regionos-1.webp" type="image/webp">
             <img src="img/regionos-1.png" width="1384" height="861"
                  loading="lazy" decoding="async"
@@ -139,28 +161,6 @@
               <a href="https://github.com/eareszka/RegionOS" target="_blank" rel="noopener">Read the source</a>
               <a href="https://github.com/eareszka/RegionOS/releases/latest" target="_blank" rel="noopener">Download v0.1.0 for Windows</a>
             </p>
-          </div>
-        </li>
-
-        <li class="piece">
-          <picture>
-            <source srcset="img/pulse-1.webp" type="image/webp">
-            <img class="shot--tall" src="img/pulse-1.png" width="640" height="1387"
-                 loading="lazy" decoding="async"
-                 alt="Pulse on a phone-width screen: the tracked list, five of five slots in use, showing Polymarket questions with their current percentage, a no-move-yet status, and the point move that would trigger an alert.">
-          </picture>
-          <div>
-            <h3>Pulse</h3>
-            <p class="what">A dashboard that tracks several unrelated markets at once. Live since January 2026.</p>
-            <p>It puts stock prices, Polymarket prediction markets, and sports betting lines on one screen and
-              flags a market that moves when the other sources don't.</p>
-            <p>Most of the work was on the data. Sources disagree with each other, fields
-              disappear without notice, and rate limits cut polls off partway through. I still can't always
-              tell a real spike from a bad row that got through.</p>
-            <ul class="stack">
-              <li>Python</li><li>Multi-source aggregation</li><li>REST APIs</li><li>JSON</li><li>Vercel</li>
-            </ul>
-            <p class="go"><a href="https://pulse-sooty-pi.vercel.app/" target="_blank" rel="noopener">Open the live dashboard</a></p>
           </div>
         </li>
 
