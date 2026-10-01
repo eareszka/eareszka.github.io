@@ -1,1034 +1,656 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Emery Reszka — Portfolio (Desktop Mode)</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💎</text></svg>">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Basement — Emery Reszka</title>
+<meta name="description" content="Emery Reszka's games on an old basement PC: a Windows 98 desktop with each game as its own 2000-era download site.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#008080">
+<link rel="stylesheet" href="style.css?v=9">
+<script src="basement.js?v=9" defer></script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'><rect width='16' height='16' fill='%23008080'/><rect x='2' y='3' width='12' height='2' fill='%23000080'/><rect x='2' y='5' width='12' height='8' fill='%23c0c0c0'/><rect x='4' y='7' width='8' height='4' fill='%23fff'/></svg>">
 </head>
 <body>
 
-<!-- ── Recruiter / professional view toggle ─────────────── -->
-<a href="index.html" id="toPro" class="to-pro" aria-label="Switch to the professional resume view">
-  <span aria-hidden="true">&#128188;</span> Recruiter View
-</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="f-select" x="0" y="0" width="1" height="1">
+      <feFlood flood-color="#000080" flood-opacity=".55" result="c"/>
+      <feComposite in="c" in2="SourceAlpha" operator="in" result="t"/>
+      <feBlend in="t" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <symbol id="i-computer" viewBox="0 0 16 16" shape-rendering="crispEdges">
+    <rect x="1" y="1" width="14" height="11" fill="#c0c0c0"/>
+    <path d="M1 1h14v1H1zM1 1h1v11H1z" fill="#fff"/>
+    <path d="M14 1h1v11h-1zM1 11h14v1H1z" fill="#808080"/>
+    <rect x="3" y="3" width="10" height="7" fill="#000080"/>
+    <path d="M4 4h3v1H4zM4 6h5v1H4zM4 8h2v1H4z" fill="#fff"/>
+    <rect x="6" y="12" width="4" height="1" fill="#808080"/>
+    <rect x="3" y="13" width="10" height="2" fill="#c0c0c0"/>
+    <path d="M3 13h10v1H3z" fill="#fff"/><path d="M3 14h10v1H3zM12 13h1v2h-1z" fill="#808080"/>
+  </symbol>
+  <symbol id="i-ie" viewBox="0 0 16 16" shape-rendering="crispEdges">
+    <path d="M5 3h6v1H5zM4 4h8v7H4zM5 11h6v1H5z" fill="#1c5cd8"/>
+    <path d="M6 5h4v1H6zM6 8h6v1H6zM10 9h2v1h-2z" fill="#fff"/>
+    <ellipse cx="8" cy="8" rx="8" ry="2.6" transform="rotate(-28 8 8)" fill="none" stroke="#ffcc00" stroke-width="1.3"/>
+  </symbol>
+  <symbol id="i-bin" viewBox="0 0 16 16" shape-rendering="crispEdges">
+    <path d="M5 2h5v2H5z" fill="#fff"/><path d="M6 1h3v1H6zM5 2h1v2H5zM9 2h1v2H9z" fill="#808080"/>
+    <path d="M10 2h3v3h-3z" fill="#fff"/><path d="M10 2h3v1h-3zM12 3h1v2h-1z" fill="#808080"/>
+    <rect x="3" y="4" width="10" height="1" fill="#808080"/>
+    <rect x="4" y="5" width="8" height="10" fill="#c0c0c0"/>
+    <path d="M4 5h1v10H4z" fill="#fff"/><path d="M11 5h1v10h-1zM4 14h8v1H4z" fill="#808080"/>
+    <path d="M6 8h1v4H6zM9 8h1v4H9zM7 12h2v1H7zM7 7h2v1H7z" fill="#008000"/>
+  </symbol>
+  <symbol id="i-txt" viewBox="0 0 16 16" shape-rendering="crispEdges">
+    <path d="M3 1h8v3h3v11H3z" fill="#fff"/>
+    <path d="M3 1h8v1H3zM3 1h1v14H3zM3 14h11v1H3zM13 4h1v11h-1zM11 1h1v3h-1zM11 4h3v1h-3z" fill="#000"/>
+    <path d="M5 6h6v1H5zM5 8h6v1H5zM5 10h4v1H5zM5 12h6v1H5z" fill="#000080"/>
+  </symbol>
+  <symbol id="i-pdf" viewBox="0 0 16 16" shape-rendering="crispEdges">
+    <path d="M3 1h8v3h3v11H3z" fill="#fff"/>
+    <path d="M3 1h8v1H3zM3 1h1v14H3zM3 14h11v1H3zM13 4h1v11h-1zM11 1h1v3h-1zM11 4h3v1h-3z" fill="#000"/>
+    <rect x="4" y="6" width="9" height="4" fill="#c00000"/>
+    <path d="M5 7h1v2H5zM7 7h1v2H7zM9 7h2v2H9z" fill="#fff"/>
+    <path d="M5 11h6v1H5zM5 13h4v1H5z" fill="#808080"/>
+  </symbol>
+  <symbol id="i-media" viewBox="0 0 16 16" shape-rendering="crispEdges">
+    <rect x="1" y="1" width="14" height="11" fill="#808080"/>
+    <rect x="2" y="2" width="12" height="9" fill="#000"/>
+    <path d="M6 4h1v5H6zM7 5h1v3H7zM8 5h1v3H8zM9 6h1v1H9z" fill="#00ff00"/>
+    <rect x="1" y="12" width="14" height="3" fill="#c0c0c0"/>
+    <path d="M1 12h14v1H1z" fill="#fff"/><path d="M3 13h2v1H3zM6 13h2v1H6zM9 13h2v1H9z" fill="#000"/>
+  </symbol>
+  <symbol id="i-mail" viewBox="0 0 16 16" shape-rendering="crispEdges">
+    <rect x="1" y="4" width="14" height="9" fill="#fff"/>
+    <path d="M1 4h14v1H1zM1 4h1v9H1zM14 4h1v9h-1zM1 12h14v1H1z" fill="#000"/>
+    <path d="M2 5h1v1H2zM13 5h1v1h-1zM3 6h1v1H3zM12 6h1v1h-1zM4 7h1v1H4zM11 7h1v1h-1zM5 8h1v1H5zM10 8h1v1h-1zM6 9h1v1H6zM9 9h1v1H9zM7 10h2v1H7z" fill="#808080"/>
+    <path d="M9 1h5v1H9zM13 0h1v1h-1zM13 2h1v1h-1zM2 14h5v1H2zM1 13h1v1H1zM1 15h1v1H1z" fill="#0000ff"/>
+  </symbol>
+  <symbol id="i-folder" viewBox="0 0 16 16" shape-rendering="crispEdges">
+    <path d="M1 3h5v1H1zM1 4h14v10H1z" fill="#e0a800"/>
+    <path d="M1 3h5v1H1zM6 4h9v1H6zM1 3h1v11H1zM1 14h14v1H1zM14 4h1v11h-1z" fill="#000"/>
+    <path d="M2 6h12v7H2z" fill="#ffd800"/><path d="M2 6h12v1H2z" fill="#fff5b0"/>
+  </symbol>
+  <symbol id="i-flag" viewBox="0 0 16 16" shape-rendering="crispEdges">
+    <g transform="skewY(-8) translate(0 1)">
+      <rect x="1" y="2" width="6" height="6" fill="#ff0000"/><rect x="8" y="2" width="6" height="6" fill="#00a000"/>
+      <rect x="1" y="9" width="6" height="6" fill="#0000ff"/><rect x="8" y="9" width="6" height="6" fill="#ffd700"/>
+      <path d="M0 1h15v1H0zM0 1h1v15H0zM14 1h1v15h-1zM0 15h15v1H0zM7 1h1v15H7zM0 8h15v1H0z" fill="#000"/>
+    </g>
+  </symbol>
+  <symbol id="i-err" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7.5" fill="#ff0000" stroke="#800000"/><path d="M5 5l6 6M11 5l-6 6" stroke="#fff" stroke-width="2"/></symbol>
+  <symbol id="i-info" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7.5" fill="#fff" stroke="#000"/><path d="M7 4h2v2H7zM7 7h2v5H7z" fill="#0000ff"/></symbol>
+  <symbol id="i-warn" viewBox="0 0 16 16"><path d="M8 1L15.5 15H.5z" fill="#ffff00" stroke="#000"/><path d="M7 5h2v5H7zM7 11h2v2H7z" fill="#000"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 16 16" shape-rendering="crispEdges"><circle cx="8" cy="8" r="7" fill="#1c5cd8" stroke="#003080"/><path d="M3 5h4v3H3zM8 3h4v2H8zM9 8h4v3H9zM4 10h3v3H4z" fill="#00c000"/></symbol>
+  <symbol id="i-back" viewBox="0 0 16 16"><path d="M2 8l6-6v4h6v4H8v4z" fill="#00a000" stroke="#004000"/></symbol>
+  <symbol id="i-fwd" viewBox="0 0 16 16"><path d="M14 8L8 2v4H2v4h6v4z" fill="#00a000" stroke="#004000"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 16 16"><path d="M12.5 5.5A5.5 5.5 0 1 0 13.5 8" fill="none" stroke="#00a000" stroke-width="2.4"/><path d="M15 2v6H9z" fill="#00a000"/></symbol>
+  <symbol id="i-home" viewBox="0 0 16 16"><path d="M8 1.5L1 8h2v7h4v-4h2v4h4V8h2z" fill="#f0f0f0" stroke="#000"/><path d="M1 8L8 1.5 15 8" fill="none" stroke="#c00000" stroke-width="2"/></symbol>
+  <symbol id="i-print" viewBox="0 0 16 16"><rect x="4" y="1" width="8" height="5" fill="#fff" stroke="#000"/><rect x="1" y="6" width="14" height="6" fill="#c0c0c0" stroke="#000"/><rect x="4" y="10" width="8" height="5" fill="#fff" stroke="#000"/><rect x="12" y="7.5" width="1.5" height="1.5" fill="#00c000"/></symbol>
+  <symbol id="i-down" viewBox="0 0 16 16"><path d="M5 1h6v7h4l-7 7-7-7h4z" fill="currentColor"/></symbol>
+  <symbol id="i-min" viewBox="0 0 10 10"><rect x="1" y="6" width="6" height="2"/></symbol>
+  <symbol id="i-max" viewBox="0 0 10 10"><path d="M0 0h9v9H0zM1 2v6h7V2z" fill-rule="evenodd"/></symbol>
+  <symbol id="i-close" viewBox="0 0 10 10"><path d="M1 0l3.5 3.5L8 0h1v1L5.5 4.5 9 8v1H8L4.5 5.5 1 9H0V8l3.5-3.5L0 1V0z"/></symbol>
+  <symbol id="i-shortcut" viewBox="0 0 10 10"><rect x=".5" y=".5" width="9" height="9" fill="#fff" stroke="#000"/><path d="M2 8l4-4H4V3h4v4H7V5.5L3 9.5z" fill="#000"/></symbol>
+  <symbol id="i-star" viewBox="0 0 44 44"><g fill="#ff0000" stroke="#ffd700" stroke-width="1.5"><rect x="7" y="7" width="30" height="30"/><rect x="7" y="7" width="30" height="30" transform="rotate(30 22 22)"/><rect x="7" y="7" width="30" height="30" transform="rotate(60 22 22)"/></g></symbol>
+  <symbol id="i-hdd" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect x="1" y="4" width="14" height="8" fill="#c0c0c0" stroke="#000"/><rect x="11" y="7" width="2" height="2" fill="#00c000"/><path d="M2 5h12v1H2z" fill="#fff"/></symbol>
+  <symbol id="i-speaker" viewBox="0 0 16 16"><path d="M2 6h3l4-3v10l-4-3H2z" fill="#000"/><path d="M11 5c2 2 2 4 0 6" fill="none" stroke="#000"/></symbol>
+  <symbol id="i-hat" viewBox="0 0 16 16"><path d="M4 9a4 4 0 0 1 8 0v1H4z" fill="#ffd700" stroke="#000"/><rect x="2" y="10" width="12" height="2" fill="#ffd700" stroke="#000"/><path d="M5 12h6v3H5z" fill="#f0c090" stroke="#000"/></symbol>
+</svg>
 
+<noscript><p style="position:fixed;inset:0;z-index:9999;background:#008080;color:#fff;padding:24px;font:14px Tahoma,Arial,sans-serif">The Basement needs JavaScript to boot. The plain version of this site is at <a href="index.html" style="color:#fff">eareszka.github.io</a>.</p></noscript>
 
-<!-- ── Desktop ────────────────────────────── -->
+<!-- Boot -->
+<div id="boot" aria-live="polite">
+  <pre class="post"><span>Basement BIOS v9.8  (C) 2026 Emery Reszka</span><span>CPU: whatever was in the basement          Speed: enough</span><span>Memory Test: 65536K OK</span><span> </span><span>Detecting IDE drives ...</span><span>  Primary Master  : BASEMENT-HDD   (2 games, 1 resume)</span><span>  Primary Slave   : CD-ROM          (empty)</span><span>Keyboard ........ OK</span><span>Mouse ........... OK (ball needs cleaning)</span><span> </span><span>Starting The Basement 98 ... <i class="cur"></i></span></pre>
+  <div class="splash">
+    <div class="splash-logo">
+      <svg class="flag"><use href="#i-flag"/></svg>
+      <h1>The Basement <small>Emery Reszka &middot; Second Edition</small></h1>
+    </div>
+    <div class="splash-bar"></div>
+  </div>
+  <div class="boot-skip">Press any key to skip</div>
+</div>
+
+<div id="off" data-mode="">
+  <p class="safe">It's now safe to turn off your computer.<small><a href="#" data-action="poweron">Turn it back on</a> &nbsp;&middot;&nbsp; <a href="index.html">Go to the recruiter view</a></small></p>
+</div>
+
+<a class="to-pro" href="index.html"><svg class="ico16"><use href="#i-txt"/></svg> <span>Back to the </span>recruiter view</a>
+
+<!-- Desktop -->
 <div id="desktop">
-  <div class="icon" id="ico-about" ondblclick="openWin('win-about')" onclick="if(isMobile())openWin('win-about')">
-    <div class="icon-img">💎</div>
-    <div class="icon-label">About Me</div>
-  </div>
-  <div class="icon desktop-only" id="ico-projects" ondblclick="openWin('win-projects')" onclick="if(isMobile())openWin('win-projects')">
-    <div class="icon-img">📁</div>
-    <div class="icon-label">Projects</div>
-  </div>
-  <div class="icon mobile-only" id="ico-alpha" onclick="openWin('win-proj-alpha')">
-    <div class="icon-img">🎮</div>
-    <div class="icon-label">Project Alpha</div>
-  </div>
-  <div class="icon mobile-only" id="ico-pulse" onclick="openWin('win-proj-pulse')">
-    <div class="icon-img">📡</div>
-    <div class="icon-label">PULSE</div>
-  </div>
-  <div class="icon mobile-only" id="ico-beta" onclick="openWin('win-proj-beta')">
-    <div class="icon-img">🐍</div>
-    <div class="icon-label">Project Beta</div>
-  </div>
-  <div class="icon mobile-only" id="ico-autoanswer" onclick="openWin('win-proj-autoanswer')">
-    <div class="icon-img">🔍</div>
-    <div class="icon-label">SnipAI</div>
-  </div>
-  <div class="icon mobile-only" id="ico-wingit" onclick="openWin('win-proj-wingit')">
-    <div class="icon-img">🪽</div>
-    <div class="icon-label">WingIt</div>
-  </div>
-  <div class="icon mobile-only" id="ico-regionos" onclick="openWin('win-proj-regionos')">
-    <div class="icon-img">🖥️</div>
-    <div class="icon-label">RegionOS</div>
-  </div>
-  <div class="icon" id="ico-skills" ondblclick="openWin('win-skills')" onclick="if(isMobile())openWin('win-skills')">
-    <div class="icon-img">💾</div>
-    <div class="icon-label">Skills</div>
-  </div>
-  <div class="icon" id="ico-contact" ondblclick="openWin('win-contact')" onclick="if(isMobile())openWin('win-contact')">
-    <div class="icon-img">📧</div>
-    <div class="icon-label">Contact</div>
-  </div>
-  <div class="icon" id="ico-yt" ondblclick="openWin('win-yt')" onclick="if(isMobile())openWin('win-yt')">
-    <div class="icon-img">📺</div>
-    <div class="icon-label">YouTube</div>
-  </div>
+  <button class="icon" data-open="w-sys"><svg class="ico"><use href="#i-computer"/></svg><span class="lbl">My Computer</span></button>
+  <button class="icon" data-open="w-ie"><svg class="ico"><use href="#i-ie"/></svg><span class="lbl">Internet Explorer</span></button>
+  <button class="icon" data-open="w-mail"><svg class="ico"><use href="#i-mail"/></svg><span class="lbl">Outlook Express</span></button>
+  <button class="icon" data-open="w-notes"><svg class="ico"><use href="#i-txt"/></svg><span class="lbl">skills.txt</span></button>
+  <a class="icon" href="Emery_Reszka_Resume.pdf" target="_blank" rel="noopener"><svg class="ico"><use href="#i-pdf"/></svg><svg class="shortcut"><use href="#i-shortcut"/></svg><span class="lbl">Resume.pdf</span></a>
+  <button class="icon" data-open="w-media"><svg class="ico"><use href="#i-media"/></svg><span class="lbl">Media Player</span></button>
+  <button class="icon" data-open="w-bin"><svg class="ico"><use href="#i-bin"/></svg><span class="lbl">Recycle Bin</span></button>
 </div>
 
-<!-- ── Windows (wrapped for mobile flow) ─── -->
-<div id="win-container">
+<!-- ═══ Internet Explorer ═══ -->
+<section class="win" id="w-ie" role="dialog" aria-labelledby="w-ie-t" hidden data-icon="i-ie" data-menus="ie">
+  <header class="tbar"><svg class="ico16"><use href="#i-ie"/></svg><h2 class="ttl" id="w-ie-t">Internet Explorer</h2></header>
+  <div class="mbar" data-mbar></div>
+  <div class="body">
+    <div class="tools">
+      <button class="tb" data-ie="back" disabled><svg><use href="#i-back"/></svg><span>Back</span></button>
+      <button class="tb" data-ie="fwd" disabled><svg><use href="#i-fwd"/></svg><span>Forward</span></button>
+      <span class="sep"></span>
+      <button class="tb" data-ie="stop"><svg><use href="#i-err"/></svg><span>Stop</span></button>
+      <button class="tb" data-ie="refresh"><svg><use href="#i-refresh"/></svg><span>Refresh</span></button>
+      <button class="tb" data-ie="home"><svg><use href="#i-home"/></svg><span>Home</span></button>
+      <span class="sep"></span>
+      <button class="tb" data-open="w-mail"><svg><use href="#i-mail"/></svg><span>Mail</span></button>
+      <button class="tb" data-ie="print"><svg><use href="#i-print"/></svg><span>Print</span></button>
+      <span class="throb" aria-hidden="true"><svg><use href="#i-flag"/></svg></span>
+    </div>
+    <form class="addr" data-ie-form>
+      <label for="ie-url">A<u>d</u>dress</label>
+      <span class="field"><svg class="ico16"><use href="#i-ie"/></svg><input id="ie-url" type="text" autocomplete="off" spellcheck="false" value="http://emeryzone.basement/index.htm"></span>
+      <button class="go" type="submit"><svg><use href="#i-fwd"/></svg>Go</button>
+    </form>
+    <div class="pane scroll" id="ie-pane" tabindex="-1">
 
-<!-- ── Window: About ─────────────────────── -->
-<div class="win active" id="win-about" style="top:80px;left:120px;width:380px;">
-  <div class="win-titlebar">
-    <span class="win-title">💎 Emery Reszka — Portfolio</span>
-    <div class="win-controls">
-      <div class="win-btn" onclick="minimizeWin('win-about')">_</div>
-      <div class="win-btn" onclick="maximizeWin('win-about')">□</div>
-      <div class="win-btn" onclick="closeWin('win-about')">✕</div>
+      <!-- Portal -->
+      <article class="site" id="s-portal" data-url="http://emeryzone.basement/index.htm" data-title="Emery's Games Zone">
+        <div class="wrap">
+          <div class="marquee" aria-hidden="true"><span>*** WELCOME TO EMERY'S GAMES ZONE *** TWO GAMES, BOTH REAL *** THE FAKE DOWNLOAD BUTTONS ARE THE JOKE *** SIGN MY GUESTBOOK *** BEST VIEWED AT 800x600 ***</span></div>
+          <h1><span class="wordart rainbow">Emery's<br>Games Zone</span></h1>
+          <p class="bestviewed"><span class="blink">!!!</span> This site is best viewed at 800x600 in Internet Explorer 5 <span class="blink">!!!</span></p>
+          <div class="cols">
+            <aside class="sitenav" aria-label="Site navigation">
+              <div class="box"><b>Navigate</b>
+                <ul>
+                  <li><a href="#portal">Home</a></li>
+                  <li><a href="#alpha">Project Alpha</a></li>
+                  <li><a href="#beta">Project Beta</a></li>
+                  <li><button type="button" data-open="w-sys">About the webmaster</button></li>
+                  <li><button type="button" data-open="w-mail">Sign my guestbook</button></li>
+                  <li><a href="#links">Links</a></li>
+                </ul>
+              </div>
+              <div class="box"><b>Hit counter</b>
+                <span class="counter" data-counter aria-hidden="true"></span>
+                <p class="counter-note">You are visitor number <span data-counter-n>1</span>. This counter only counts you, on this computer. Nobody is tracked.</p>
+              </div>
+              <div class="webmaster">
+                <b>The webmaster</b><br>Emery Reszka<br>CS at FGCU, class of 2027
+              </div>
+              <div class="b88s">
+                <span class="b88 ie"><svg><use href="#i-ie"/></svg>Best viewed in IE 5</span>
+                <span class="b88 ns">Netscape? Also fine</span>
+                <span class="b88 res">800 x 600 or bust</span>
+                <span class="b88 txt"><svg><use href="#i-txt"/></svg>Made in a text editor</span>
+                <span class="b88 html">Valid HTML (probably)</span>
+                <span class="b88 nf">No frames &middot; No Flash</span>
+              </div>
+            </aside>
+            <main>
+              <h2>Welcome to my homepage!!!</h2>
+              <p class="intro">I'm Emery Reszka. I study Computer Science at Florida Gulf Coast University and graduate in May 2027. This is where I keep the games I've made: a JRPG in GameMaker and a roguelike in Python, both mostly to practice procedural generation. Every button on these pages goes to the real thing, except the flashing ones, which go to an error box.</p>
+              <h2>The games</h2>
+              <div class="featured">
+                <section class="game" aria-labelledby="fg-alpha">
+                  <h3 id="fg-alpha"><a href="#alpha">Project Alpha</a></h3>
+                  <a class="thumb" href="#alpha"><img src="img/alpha-1.jpg" width="1533" height="860" loading="lazy" alt="Project Alpha: the party on a beach in the overworld"></a>
+                  <p>A turn-based JRPG in GameMaker Studio 2, starring my real-life friends.</p>
+                  <table class="spec">
+                    <tr><th>Engine</th><td>GameMaker Studio 2</td></tr>
+                    <tr><th>Status</th><td>On the backburner</td></tr>
+                    <tr><th>Get it</th><td>Game Jolt</td></tr>
+                  </table>
+                  <p class="enter"><a href="#alpha">Enter the Alpha shrine &raquo;</a></p>
+                </section>
+                <section class="game" aria-labelledby="fg-beta">
+                  <h3 id="fg-beta"><a href="#beta">Project Beta</a> <span class="new" aria-label="In progress"><svg><use href="#i-star"/></svg><b>WIP!</b></span></h3>
+                  <a class="thumb" href="#beta"><img src="img/beta-1.png" width="1332" height="999" loading="lazy" alt="Project Beta: a generated dungeon level"></a>
+                  <p>A roguelike in Python with Tcod, where every run generates a new world.</p>
+                  <table class="spec">
+                    <tr><th>Library</th><td>Python + Tcod</td></tr>
+                    <tr><th>Status</th><td>In progress</td></tr>
+                    <tr><th>Get it</th><td>Not yet</td></tr>
+                  </table>
+                  <p class="enter"><a href="#beta">Enter the dungeon &raquo;</a></p>
+                </section>
+              </div>
+              <h2>News</h2>
+              <ul>
+                <li><b>Sep 2026:</b> New homepage. The old one is in the Recycle Bin.</li>
+                <li><b>Sep 2026:</b> The software moved out. It lives on <a href="index.html">my professional site</a> now; the basement is games only.</li>
+              </ul>
+              <div class="ring">
+                <b>The Basement Webring</b>
+                This site is owned by Emery. Four sites, one basement.
+                <nav aria-label="Webring"><a href="#links" data-ring="prev">&laquo; Previous</a> <a href="#beta" data-ring="rand">Random</a> <a href="#alpha" data-ring="next">Next &raquo;</a> <a href="#portal">List sites</a></nav>
+              </div>
+            </main>
+          </div>
+          <div class="foot">
+            <p><span class="mailme"><svg><use href="#i-mail"/></svg><button type="button" data-open="w-mail" class="sitenav" style="border:0;background:none;padding:0;text-decoration:underline;font:inherit;color:inherit">E-mail the webmaster</button></span></p>
+            <p>This page was last updated 9/27/2026. Made by hand in a text editor. No frames, no Flash, no Java applets, no counters that lie.</p>
+            <p>&copy; 2026 Emery Reszka &middot; <a href="index.html">My professional site</a> &middot; <a href="https://github.com/eareszka" target="_blank" rel="noopener">GitHub</a></p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project Alpha -->
+      <article class="site" id="s-alpha" data-url="http://emeryzone.basement/games/alpha.htm" data-title="~*~ Project Alpha ~*~ a JRPG">
+        <div class="wrap">
+          <h1><span class="wordart">Project Alpha</span></h1>
+          <p class="tagline">~*~ a turn-based JRPG starring my real-life friends ~*~</p>
+          <div class="uc"><svg><use href="#i-hat"/></svg><span>Under construction. On the backburner, not forgotten.</span><svg><use href="#i-hat"/></svg></div>
+          <div class="cols">
+            <aside class="sitenav" aria-label="Site navigation">
+              <div class="box"><b>Alpha shrine</b>
+                <ul>
+                  <li><a href="#portal">&laquo; Back to the Zone</a></li>
+                  <li><a href="#s-alpha-shots">Screenshots</a></li>
+                  <li><a href="#s-alpha-dl">Download</a></li>
+                  <li><a href="#beta">My other game</a></li>
+                </ul>
+              </div>
+              <div class="box"><b>Hit counter</b><span class="counter" data-counter aria-hidden="true"></span><p class="counter-note">Visitor <span data-counter-n>1</span>, counted on your computer only.</p></div>
+              <div class="b88s"><span class="b88">GameMaker Studio 2</span><span class="b88">Turn-based</span></div>
+            </aside>
+            <main>
+              <h2>About the game</h2>
+              <p>A turn-based JRPG in GameMaker Studio 2, with my real-life friends as the characters. I made it mainly to practice procedural generation. It's currently on the backburner, but far from forgotten.</p>
+              <div id="s-alpha-shots">
+                <h2>Screenshots</h2>
+                <div class="shots">
+                  <a href="img/alpha-1.jpg"><img class="wide" src="img/alpha-1.jpg" width="1533" height="860" loading="lazy" alt="Project Alpha: the party in a turn-based battle"></a>
+                  <a href="img/alpha-2.png"><img class="wide" src="img/alpha-2.png" width="1554" height="892" loading="lazy" alt="Project Alpha: exploring the overworld"></a>
+                  <a href="img/alpha-3.png"><img class="wide" src="img/alpha-3.png" width="1547" height="861" loading="lazy" alt="Project Alpha: a dialogue scene"></a>
+                </div>
+                <p class="shot-note">Click a picture to see it full size.</p>
+              </div>
+              <h2 id="s-alpha-dl">Download</h2>
+              <div class="dl-row">
+                <a class="dl-real" href="https://gamejolt.com/games/ProjectEmerald/880548" target="_blank" rel="noopener" data-file="Project Alpha for Windows" data-from="gamejolt.com" data-info="The game's page on Game Jolt. The download is there."><svg><use href="#i-down"/></svg>Get it on Game Jolt</a>
+              </div>
+              <button type="button" class="ad orange" data-msg="There is no 'full version'. The game is on Game Jolt, under the green button, and it is as finished as it is.">UNLOCK FULL VERSION <svg class="arrow"><use href="#i-down"/></svg><small>no CD key needed!!!</small></button>
+              <table class="spec">
+                <tr><th>Engine</th><td>GameMaker Studio 2</td></tr>
+                <tr><th>Language</th><td>GML</td></tr>
+                <tr><th>Genre</th><td>Turn-based JRPG</td></tr>
+                <tr><th>Status</th><td>On the backburner</td></tr>
+              </table>
+              <div class="ring"><b>The Basement Webring</b><nav aria-label="Webring"><a href="#portal" data-ring="prev">&laquo; Previous</a> <a href="#links" data-ring="rand">Random</a> <a href="#beta" data-ring="next">Next &raquo;</a> <a href="#portal">List sites</a></nav></div>
+            </main>
+          </div>
+          <div class="foot"><p class="lastupd">Last updated: 9/27/2026 (this page). The game: not since it went on the backburner.</p><p>Thanks for visiting my shrine. <a href="#portal">Back to the Zone</a>.</p></div>
+        </div>
+      </article>
+
+      <!-- Project Beta -->
+      <article class="site" id="s-beta" data-url="http://emeryzone.basement/games/beta.htm" data-title="Project Beta (roguelike)">
+        <div class="wrap">
+<pre class="map" aria-hidden="true">########################        #############
+#......................#        #...........#
+#......<i>@</i>...............+########+.....<u>k</u>.....#
+#......................#        #...........#
+#####.##################        ######.######
+    #.#                              #.#
+    #.####################           #.#
+    #....................#############.#
+    ######################.............#
+                         ##############</pre>
+          <h1><span class="wordart straight">Project Beta</span></h1>
+          <p class="tagline">a roguelike in Python with Tcod</p>
+          <div class="uc"><svg><use href="#i-hat"/></svg><span>Under construction. Every run is different; so is every build.</span><svg><use href="#i-hat"/></svg></div>
+          <div class="cols">
+            <aside class="sitenav" aria-label="Site navigation">
+              <div class="box"><b>[beta]</b>
+                <ul>
+                  <li><a href="#portal">&laquo; Back to the Zone</a></li>
+                  <li><a href="#s-beta-shots">Screenshots</a></li>
+                  <li><a href="#alpha">My other game</a></li>
+                  <li><button type="button" data-open="w-mail">Mail</button></li>
+                </ul>
+              </div>
+              <div class="box"><b>Hit counter</b><span class="counter" data-counter aria-hidden="true"></span><p class="counter-note">Visitor <span data-counter-n>1</span>. Counted here, on your machine.</p></div>
+              <div class="b88s"><span class="b88">Python + Tcod</span><span class="b88">Procgen</span></div>
+            </aside>
+            <main>
+              <h2>About</h2>
+              <p>A roguelike built with Python and Tcod, made mainly to practice procedural generation. The current problem is making a generated world that feels different every single run instead of the same corridors in a new order.</p>
+              <h2>Download</h2>
+              <p>Not yet. It isn't done. When it is, the button will be here and it will be green.</p>
+              <button type="button" class="ad red" data-msg="No. There is no beta of Project Beta yet. When there is, it will be a green button, and it will say where it goes.">DOWNLOAD BETA v99.9 <svg class="arrow"><use href="#i-down"/></svg><small>leaked build!!!</small></button>
+              <div id="s-beta-shots">
+                <h2>Screenshots</h2>
+                <div class="shots">
+                  <a href="img/beta-1.png"><img class="wide" src="img/beta-1.png" width="1332" height="999" loading="lazy" alt="Project Beta: a generated dungeon level with the player, enemies and a message log"></a>
+                  <a href="img/beta-2.png"><img class="wide" src="img/beta-2.png" width="1332" height="993" loading="lazy" alt="Project Beta: another generated level"></a>
+                </div>
+                <p class="shot-note">Click a picture to see it full size.</p>
+              </div>
+              <table class="spec">
+                <tr><th>Language</th><td>Python</td></tr>
+                <tr><th>Library</th><td>Tcod</td></tr>
+                <tr><th>Genre</th><td>Roguelike</td></tr>
+                <tr><th>Status</th><td>In progress</td></tr>
+              </table>
+              <div class="ring"><b>The Basement Webring</b><nav aria-label="Webring"><a href="#alpha" data-ring="prev">&laquo; Previous</a> <a href="#portal" data-ring="rand">Random</a> <a href="#links" data-ring="next">Next &raquo;</a> <a href="#portal">List sites</a></nav></div>
+            </main>
+          </div>
+          <div class="foot"><p class="lastupd">Last updated: 9/27/2026 (this page). The game changes every run and every build.</p><p>You descend. <a href="#portal">Back to the Zone</a>.</p></div>
+        </div>
+      </article>
+
+      <!-- Links -->
+      <article class="site" id="s-links" data-url="http://emeryzone.basement/links.htm" data-title="Links - Emery's Games Zone">
+        <div class="wrap">
+          <h1><span class="wordart" style="--wa-fill:#0000ff;--wa-shade:#000080">Links</span></h1>
+          <h2>Me, elsewhere</h2>
+          <ul>
+            <li><a href="index.html">My professional site</a>: my résumé and my software projects.</li>
+            <li><a href="Emery_Reszka_Resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a></li>
+            <li><a href="https://github.com/eareszka" target="_blank" rel="noopener">github.com/eareszka</a>: my source code.</li>
+            <li><a href="https://www.linkedin.com/in/emery-reszka-a18336251/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://www.youtube.com/@EmeryReszka" target="_blank" rel="noopener">YouTube</a>: also playable in Media Player on the desktop.</li>
+            <li><button type="button" data-open="w-mail" class="sitenav" style="border:0;background:none;padding:0;text-decoration:underline;font:inherit;color:#0000ff">EmeryReszka@outlook.com</button></li>
+          </ul>
+          <h2>Cool sites</h2>
+          <p>I don't have a links page of other people's sites. That was the one part of a 2000 homepage I couldn't do honestly.</p>
+          <div class="ring"><b>The Basement Webring</b><nav aria-label="Webring"><a href="#beta" data-ring="prev">&laquo; Previous</a> <a href="#alpha" data-ring="rand">Random</a> <a href="#portal" data-ring="next">Next &raquo;</a> <a href="#portal">List sites</a></nav></div>
+          <div class="foot"><p class="lastupd">Last updated: 9/27/2026.</p><p><a href="#portal">Back to the Zone</a></p></div>
+        </div>
+      </article>
+
+      <!-- Cannot find server -->
+      <article class="site" id="s-404" data-url="" data-title="Cannot find server">
+        <div class="wrap">
+          <h1>The page cannot be displayed</h1>
+          <p>The page you are looking for is currently unavailable. The Web site might be experiencing technical difficulties, or you may need to adjust your browser settings. Or, more likely, this browser only knows four pages, and that isn't one of them.</p>
+          <hr>
+          <h2>Please try the following:</h2>
+          <ul>
+            <li>Click the <a href="#" data-ie-link="refresh">Refresh</a> button, or try again later.</li>
+            <li>If you typed the page address in the Address bar, make sure that it is spelled correctly. Anything with "alpha", "beta" or "links" in it will work.</li>
+            <li>Click the <a href="#portal">Home</a> button to go back to Emery's Games Zone.</li>
+            <li>To leave the basement, use <a href="index.html">the recruiter view</a>.</li>
+          </ul>
+          <hr>
+          <p>Cannot find server or DNS Error<br>Internet Explorer</p>
+        </div>
+      </article>
+
+    </div>
+    <div class="sbar"><span class="msg" data-ie-status>Done</span><span class="prog" aria-hidden="true"><i></i></span><span class="zone"><svg class="ico16"><use href="#i-globe"/></svg>Internet</span></div>
+  </div>
+  <div class="resize" aria-hidden="true"></div>
+</section>
+
+<!-- ═══ System Properties (My Computer) ═══ -->
+<section class="win" id="w-sys" role="dialog" aria-labelledby="w-sys-t" hidden data-icon="i-computer" data-controls="close">
+  <header class="tbar"><svg class="ico16"><use href="#i-computer"/></svg><h2 class="ttl" id="w-sys-t">System Properties</h2></header>
+  <div class="body">
+    <div class="tabs" role="tablist"><button class="tab" role="tab" aria-selected="true">General</button><button class="tab" role="tab" aria-selected="false" disabled>Device Manager</button><button class="tab" role="tab" aria-selected="false" disabled>Performance</button></div>
+    <div class="sheet">
+      <dl>
+        <dt>System:</dt>
+        <dd>The Basement 98<br>Second Edition</dd>
+        <dt>Registered to:</dt>
+        <dd>Emery Reszka<br>B.S. Computer Science, Florida Gulf Coast University<br>Expected May 2027</dd>
+        <dt>Computer:</dt>
+        <dd>Osprey, Florida. Will relocate within the state.<br>U.S. citizen, no sponsorship needed.<br>Looking for software engineering internships and 2027 graduate roles.</dd>
+        <dt>Background:</dt>
+        <dd>NCAA Division I swimmer for four seasons at UW&ndash;Milwaukee, 20 to 40 hours a week alongside a full course load.<br>UPS preloader during the school year.<br>Aquatics staff at IMG Academy, summer 2026.</dd>
+      </dl>
+    </div>
+    <div class="dlg-foot">
+      <a class="b" href="Emery_Reszka_Resume.pdf" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center">R&eacute;sum&eacute; (PDF)</a>
+      <button class="b" type="button" data-open="w-mail">E-mail</button>
+      <button class="b default" type="button" data-close>OK</button>
     </div>
   </div>
-  <div class="win-body">
-    <!-- Mobile app-style layout -->
-    <div class="mobile-layout app-body">
-      <div class="app-hero" style="--accent:#ff2dce;--accent2:#7b00d4;">
-        <div class="app-hero-num">// portfolio</div>
-        <div class="app-hero-icon">💎</div>
-        <div class="app-hero-title">EMERY RESZKA</div>
-        <div class="app-hero-sub">Multi-Discipline Creator &amp; Builder</div>
+</section>
+
+<!-- ═══ Notepad ═══ -->
+<section class="win" id="w-notes" role="dialog" aria-labelledby="w-notes-t" hidden data-icon="i-txt" data-menus="notepad">
+  <header class="tbar"><svg class="ico16"><use href="#i-txt"/></svg><h2 class="ttl" id="w-notes-t">skills.txt - Notepad</h2></header>
+  <div class="mbar" data-mbar></div>
+  <div class="body"><div class="pane scroll"><pre>SKILLS.TXT  -  Emery Reszka
+=============================
+
+LANGUAGES
+  Python, Java, C, TypeScript, JavaScript, SQL, R, HTML
+
+FRAMEWORKS AND TOOLS
+  Django, React Native with Expo, PyTorch, SDL2, PyInstaller,
+  Git, Linux under WSL, Win32 API, REST APIs, JSON
+
+CONCEPTS AND PRACTICE
+  Object-oriented programming, data structures and algorithms,
+  computer vision, integrating LLM APIs, prompt engineering,
+  Agile sprints
+
+SCHOOL AND JOBS
+  Florida Gulf Coast University, Fort Myers
+    B.S. Computer Science, expected May 2027
+  University of Wisconsin-Milwaukee, School of Engineering
+    Computer Science coursework, Sep 2022 - May 2026,
+    before transferring to FGCU
+  NCAA Division I swimmer, UW-Milwaukee Athletics
+    Sep 2022 - May 2026. Twenty to forty hours a week of
+    training and competition alongside a full course load,
+    for four seasons.
+  Aquatics staff, IMG Academy, Bradenton
+    Jun - Aug 2026. Supervised swimmers and kept the pool
+    areas safe for student athletes and campers.
+  Preloader, UPS, Elm Grove
+    2023 - 2025. Loaded packages onto delivery trucks in
+    route order, during the school year, around classes
+    and Division I training.
+
+(Read-only. The version with the formatting is the resume.)
+</pre></div></div>
+  <div class="resize" aria-hidden="true"></div>
+</section>
+
+<!-- ═══ Outlook Express ═══ -->
+<section class="win" id="w-mail" role="dialog" aria-labelledby="w-mail-t" hidden data-icon="i-mail" data-menus="mail">
+  <header class="tbar"><svg class="ico16"><use href="#i-mail"/></svg><h2 class="ttl" id="w-mail-t">Hi from the basement - Message</h2></header>
+  <div class="mbar" data-mbar></div>
+  <div class="body">
+    <form class="mailform" data-mail style="display:contents">
+      <div class="mail-tools">
+        <button class="tb" type="submit"><svg><use href="#i-mail"/></svg><span>Send</span></button>
+        <span class="sep" style="width:2px;align-self:stretch;margin:3px;box-shadow:var(--groove)"></span>
+        <a class="tb" href="https://github.com/eareszka" target="_blank" rel="noopener"><svg><use href="#i-folder"/></svg><span>GitHub</span></a>
+        <a class="tb" href="https://www.linkedin.com/in/emery-reszka-a18336251/" target="_blank" rel="noopener"><svg><use href="#i-globe"/></svg><span>LinkedIn</span></a>
+        <a class="tb" href="https://www.youtube.com/@EmeryReszka" target="_blank" rel="noopener"><svg><use href="#i-media"/></svg><span>YouTube</span></a>
       </div>
-      <div class="app-section">
-        <div class="app-label">ABOUT</div>
-        <p class="app-desc">From code to concept, strategy to execution. Welcome to my digital space.</p>
+      <div class="mailhead">
+        <label for="m-to"><svg class="ico16"><use href="#i-txt"/></svg>To:</label><input class="field" id="m-to" type="text" value="EmeryReszka@outlook.com" readonly>
+        <label for="m-from">From:</label><input class="field" id="m-from" type="text" placeholder="Your name (goes in the message)" autocomplete="name">
+        <label for="m-subj">Subject:</label><input class="field" id="m-subj" type="text" value="Hi from the basement">
       </div>
-      <div class="app-section">
-        <div class="app-label">FREE TIME</div>
-        <p class="app-desc">🎸 Playing guitar &nbsp;|&nbsp; ☕ Trying new coffees</p>
-      </div>
-      <button class="app-close-btn" onclick="closeWin('win-about')">✕ Close</button>
+      <div class="pane"><textarea class="field" id="m-body" aria-label="Message" placeholder="Send opens your mail program with this filled in. The address is real and I read it."></textarea></div>
+    </form>
+  </div>
+  <div class="resize" aria-hidden="true"></div>
+</section>
+
+<!-- ═══ Media Player ═══ -->
+<section class="win" id="w-media" role="dialog" aria-labelledby="w-media-t" hidden data-icon="i-media" data-menus="media">
+  <header class="tbar"><svg class="ico16"><use href="#i-media"/></svg><h2 class="ttl" id="w-media-t">Media Player - @EmeryReszka</h2></header>
+  <div class="mbar" data-mbar></div>
+  <div class="body">
+    <a class="screen" href="https://www.youtube.com/@EmeryReszka" target="_blank" rel="noopener"><span><span class="play" aria-hidden="true"></span><b>@EmeryReszka on YouTube</b><small>Click to open the channel</small></span></a>
+    <div class="mp-controls">
+      <button class="b" type="button" data-media="play" aria-label="Play">&#9654;</button>
+      <button class="b" type="button" disabled aria-label="Pause">&#10074;&#10074;</button>
+      <button class="b" type="button" disabled aria-label="Stop">&#9632;</button>
+      <span class="track" aria-hidden="true"></span>
+      <svg class="ico16"><use href="#i-speaker"/></svg>
     </div>
-    <!-- Desktop Win95 layout -->
-    <div class="desktop-layout">
-      <div class="panel">
-        <div class="hero-name">EMERY RESZKA</div>
-        <div class="hero-sub">Multi-Discipline Creator &amp; Builder</div>
-        <div class="hero-desc">From code to concept, strategy to execution. Welcome to my digital space.</div>
-      </div>
-      <div class="panel" style="margin-top:4px;">
-        <div style="font-family:'Press Start 2P',monospace;font-size:.45rem;color:#00e5ff;margin-bottom:6px;">FREE TIME</div>
-        <div class="hero-desc">🎸 Playing guitar &nbsp;|&nbsp; ☕ Trying new coffees</div>
-      </div>
-      <div style="display:flex;gap:6px;margin-top:4px;">
-        <button class="btn95" onclick="openWin('win-projects')">📁 Projects</button>
-        <button class="btn95" onclick="openWin('win-skills')">💾 Skills</button>
-        <button class="btn95" onclick="openWin('win-contact')">📧 Contact</button>
-      </div>
+    <ul class="playlist scroll" data-playlist><li class="hint">Loading the three latest uploads&hellip;</li></ul>
+  </div>
+</section>
+
+<!-- ═══ Recycle Bin ═══ -->
+<section class="win" id="w-bin" role="dialog" aria-labelledby="w-bin-t" hidden data-icon="i-bin" data-menus="bin">
+  <header class="tbar"><svg class="ico16"><use href="#i-bin"/></svg><h2 class="ttl" id="w-bin-t">Recycle Bin</h2></header>
+  <div class="mbar" data-mbar></div>
+  <div class="body">
+    <div class="pane scroll" style="padding:0">
+      <table class="files">
+        <thead><tr><th>Name</th><th>Original location</th><th>Date deleted</th><th>Type</th></tr></thead>
+        <tbody>
+          <tr><td><svg class="ico16"><use href="#i-txt"/></svg>vaporwave.css</td><td>C:\Portfolio\v1</td><td>9/27/2026</td><td>Cascading Style Sheet</td></tr>
+          <tr><td><svg class="ico16"><use href="#i-txt"/></svg>neon_grid_scroll.gif</td><td>C:\Portfolio\v1</td><td>9/27/2026</td><td>GIF Image</td></tr>
+          <tr><td><svg class="ico16"><use href="#i-txt"/></svg>Press Start 2P.ttf</td><td>C:\Portfolio\v1\fonts</td><td>9/27/2026</td><td>TrueType Font</td></tr>
+          <tr><td><svg class="ico16"><use href="#i-txt"/></svg>titlebar_shimmer.ani</td><td>C:\Portfolio\v1</td><td>9/27/2026</td><td>Animated Cursor</td></tr>
+          <tr><td><svg class="ico16"><use href="#i-txt"/></svg>emoji_icons.ico</td><td>C:\Portfolio\v1\icons</td><td>9/27/2026</td><td>Icon</td></tr>
+          <tr><td><svg class="ico16"><use href="#i-txt"/></svg>hero_tagline.txt</td><td>C:\Portfolio\v1</td><td>9/27/2026</td><td>Text Document ("From code to concept, strategy to execution")</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="dlg-foot" style="justify-content:flex-start">
+      <button class="b" type="button" data-msg-info="The old version of this page is gone. It was purple, it had a scrolling grid, and the icons were emoji. It is not coming back.">Restore</button>
+      <button class="b" type="button" data-msg-info="The Recycle Bin is already as empty as it is going to get. These are the only things in it.">Empty Recycle Bin</button>
     </div>
   </div>
-  <div class="win-resize"></div>
-</div>
+  <div class="resize" aria-hidden="true"></div>
+</section>
 
-<!-- ── Window: Projects ──────────────────── -->
-<div class="win" id="win-projects" style="top:80px;left:120px;width:380px;">
-  <div class="win-titlebar">
-    <span class="win-title">📁 Projects</span>
-    <div class="win-controls">
-      <div class="win-btn" onclick="minimizeWin('win-projects')">_</div>
-      <div class="win-btn" onclick="maximizeWin('win-projects')">□</div>
-      <div class="win-btn" onclick="closeWin('win-projects')">✕</div>
+<!-- ═══ Welcome ═══ -->
+<section class="win" id="w-welcome" role="dialog" aria-labelledby="w-welcome-t" hidden data-icon="i-flag" data-controls="close">
+  <header class="tbar"><svg class="ico16"><use href="#i-flag"/></svg><h2 class="ttl" id="w-welcome-t">Welcome</h2></header>
+  <div class="body">
+    <div class="welcome">
+      <div class="side"><h2>Welcome to The Basement</h2><p>The old computer where I keep my projects.</p></div>
+      <div class="main">
+        <h3>Everything on this desktop works.</h3>
+        <p>Double-click an icon (tap, on a phone), drag windows around, or use the Start button.</p>
+        <ul>
+          <li><b>Internet Explorer</b> has a site for each of my two games, the way game sites looked in 2000. The green buttons are real. The flashing ones are not.</li>
+          <li><b>My Computer</b> says who I am. <b>skills.txt</b> lists what I use.</li>
+          <li><b>Outlook Express</b> writes me an e-mail. <b>Media Player</b> plays my YouTube channel.</li>
+        </ul>
+        <p>Looking for the résumé or my software projects? The résumé is on the desktop, and the software lives on the <a href="index.html">recruiter view</a>.</p>
+      </div>
+    </div>
+    <div class="welcome-foot">
+      <label><input type="checkbox" data-welcome-toggle checked> Show this screen each time The Basement starts</label>
+      <span><button class="b default" type="button" data-open="w-ie" data-close-self>Open Internet Explorer</button> <button class="b" type="button" data-close>Close</button></span>
     </div>
   </div>
-  <div class="win-body">
+</section>
 
-    <div class="panel project-item">
-      <div class="project-num">001</div>
-      <div class="project-name">WINGIT</div>
-      <div class="project-desc" style="color:#000;background:#FFFC00;display:inline-block;padding:1px 6px;font-style:italic;margin-bottom:6px;">your texting wingman</div>
-      <div class="project-desc">A cross-platform AI dating-app wingman (web, iOS &amp; Android from one codebase). Feed it chat screenshots — or a screen recording scrolled through the convo — and it reads who said what, learns the other person's energy, and drafts your next reply in their tone. Ask its built-in coach about a match, or open "the read" for a take on how they (and you) are coming across. Screenshots are read once to draft, never stored; you always send the messages yourself.</div>
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;">
-        <div>
-          <span class="tag">React Native</span>
-          <span class="tag">Expo</span>
-          <span class="tag">TypeScript</span>
-          <span class="tag">Python</span>
-          <span class="tag">Claude API</span>
-        </div>
-        <div style="display:flex;gap:6px;">
-          <button class="btn95" onclick="window.open('https://wingit-backend.fly.dev','_blank')">🚀 Try it live</button>
-          <button class="btn95" onclick="window.open('https://github.com/eareszka/WingIt','_blank')">🐙 GitHub</button>
-        </div>
-      </div>
-      <button class="btn95 view-more-btn" onclick="toggleViewMore('vm-wingit',this)" style="margin-top:6px;width:100%;">▼ View More</button>
-      <div id="vm-wingit" class="view-more-panel">
-        <img src="img/wingit-draft.png" alt="WingIt drafted reply, circled, with a Copy button" class="proj-screenshot">
-        <img src="img/wingit-home.png" alt="WingIt home screen with the matches list" class="proj-screenshot">
-        <img src="img/wingit-read.png" alt="WingIt The Read: how Maya comes across and how you come across" class="proj-screenshot">
-      </div>
-    </div>
+<!-- ═══ Image preview ═══ -->
+<section class="win" id="w-view" role="dialog" aria-labelledby="w-view-t" hidden data-icon="i-txt">
+  <header class="tbar"><svg class="ico16"><use href="#i-txt"/></svg><h2 class="ttl" id="w-view-t">Image Preview</h2></header>
+  <div class="body"><div class="pane"><img data-view-img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt=""></div></div>
+  <div class="resize" aria-hidden="true"></div>
+</section>
 
-    <div class="panel project-item">
-      <div class="project-num">002</div>
-      <div class="project-name">PULSE</div>
-      <div class="project-desc" style="color:#ff2dce;font-style:italic;margin-bottom:6px;">feel ahead</div>
-      <div class="project-desc">A real-time dashboard for detecting abnormalities across stocks, Polymarket prediction bets, and sports betting markets — before the crowd catches on.</div>
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;">
-        <div>
-          <span class="tag">Finance</span>
-          <span class="tag">Data</span>
-          <span class="tag">Markets</span>
-          <span class="tag">Analytics</span>
-        </div>
-        <button class="btn95" onclick="window.open('https://pulse-sooty-pi.vercel.app/','_blank')">↗ Live Site</button>
-      </div>
-      <button class="btn95 view-more-btn" onclick="toggleViewMore('vm-pulse',this)" style="margin-top:6px;width:100%;">▼ View More</button>
-      <div id="vm-pulse" class="view-more-panel">
-        <img src="img/pulse-1.png" alt="PULSE watchlist" class="proj-screenshot">
-        <img src="img/pulse-2.png" alt="PULSE market detail with alert threshold" class="proj-screenshot">
-        <img src="img/pulse-3.png" alt="PULSE light mode" class="proj-screenshot">
-      </div>
-    </div>
+<!-- ═══ Dialogs ═══ -->
+<section class="win dialog" id="d-msg" role="alertdialog" aria-labelledby="d-msg-t" aria-describedby="d-msg-b" hidden data-icon="i-err" data-controls="close">
+  <header class="tbar"><h2 class="ttl" id="d-msg-t">Internet Explorer</h2></header>
+  <div class="body">
+    <div class="msg"><svg class="ico" data-msg-icon><use href="#i-err"/></svg><div id="d-msg-b" data-msg-body></div></div>
+    <div class="btns"><button class="b default" type="button" data-close>OK</button></div>
+  </div>
+</section>
 
-    <div class="panel project-item">
-      <div class="project-num">003</div>
-      <div class="project-name">REGIONOS</div>
-      <div class="project-desc">A live-preview dashboard for your desktop: draw boxes anywhere on screen, and RegionOS keeps each one updating in real time — screen areas, application windows, or websites — even while the source is covered, minimized, or hidden off-screen. A fullscreen mode strips away everything but the grid of live previews. No AI: every bit of it is deterministic computer vision, done entirely locally.</div>
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;">
-        <div>
-          <span class="tag">Python</span>
-          <span class="tag">Win32 API</span>
-          <span class="tag">Desktop App</span>
-          <span class="tag">Computer Vision</span>
-        </div>
-        <div style="display:flex;gap:6px;">
-          <button class="btn95" onclick="window.open('https://github.com/eareszka/RegionOS/releases/latest','_blank')">⬇️ Download</button>
-          <button class="btn95" onclick="window.open('https://github.com/eareszka/RegionOS','_blank')">🐙 GitHub</button>
-        </div>
-      </div>
-      <button class="btn95 view-more-btn" onclick="toggleViewMore('vm-regionos',this)" style="margin-top:6px;width:100%;">▼ View More</button>
-      <div id="vm-regionos" class="view-more-panel">
-        <img src="img/regionos-1.png" alt="RegionOS tracking a calculator and Wikipedia live" class="proj-screenshot">
-        <img src="img/regionos-2.png" alt="RegionOS fullscreen mode" class="proj-screenshot">
-      </div>
-    </div>
-
-    <div class="panel project-item">
-      <div class="project-num">004</div>
-      <div class="project-name">SNIPAI</div>
-      <div class="project-desc">A Chrome extension that watches a region of your browser tab and uses an AI vision model — Claude, GPT, or Gemini — to answer whatever question or problem appears there, live, the moment it changes.</div>
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;">
-        <div>
-          <span class="tag">Chrome Extension</span>
-          <span class="tag">AI</span>
-          <span class="tag">JavaScript</span>
-        </div>
-        <button class="btn95" onclick="window.open('https://chromewebstore.google.com/detail/snipai/hdnhmcaekfpinanfkkbdpknhmhgibpkk','_blank')">⬇️ Get Extension</button>
-      </div>
-      <button class="btn95 view-more-btn" onclick="toggleViewMore('vm-autoanswer',this)" style="margin-top:6px;width:100%;">▼ View More</button>
-      <div id="vm-autoanswer" class="view-more-panel">
-        <img src="img/autoanswer-1.png" alt="SnipAI banner" class="proj-screenshot">
-      </div>
-    </div>
-
-    <div class="panel project-item">
-      <div class="project-num">005</div>
-      <div class="project-name">PROJECT ALPHA</div>
-      <div class="project-desc">An ambitious turn-based JRPG in GameMaker Studio 2, featuring my real-life friends as characters—currently on the backburner, but far from forgotten.</div>
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;">
-        <div>
-          <span class="tag">Game Dev</span>
-          <span class="tag">GML</span>
-        </div>
-        <button class="btn95" onclick="window.open('https://gamejolt.com/games/ProjectEmerald/880548','_blank')">🎮 Download</button>
-      </div>
-      <button class="btn95 view-more-btn" onclick="toggleViewMore('vm-alpha',this)" style="margin-top:6px;width:100%;">▼ View More</button>
-      <div id="vm-alpha" class="view-more-panel">
-        <img src="img/alpha-1.jpg" alt="screenshot 1" class="proj-screenshot">
-        <img src="img/alpha-2.png" alt="screenshot 2" class="proj-screenshot">
-        <img src="img/alpha-3.png" alt="screenshot 3" class="proj-screenshot">
-      </div>
-    </div>
-
-    <div class="panel project-item">
-      <div class="project-num">006</div>
-      <div class="project-name">PROJECT BETA</div>
-      <div class="project-desc">A roguelike built with Python + Tcod. The current big challenge: crafting a fully immersive procgen world that feels different every single run.</div>
+<section class="win dialog" id="d-dl" role="dialog" aria-labelledby="d-dl-t" hidden data-icon="i-ie" data-controls="close">
+  <header class="tbar"><h2 class="ttl" id="d-dl-t">File Download</h2></header>
+  <div class="body">
+    <div class="msg"><svg class="ico"><use href="#i-ie"/></svg>
       <div>
-        <span class="tag">Python</span>
-        <span class="tag">Game Dev</span>
-        <span class="tag">Procgen</span>
-      </div>
-      <button class="btn95 view-more-btn" onclick="toggleViewMore('vm-beta',this)" style="margin-top:6px;width:100%;">▼ View More</button>
-      <div id="vm-beta" class="view-more-panel">
-        <img src="img/beta-1.png" alt="Project Beta screenshot 1" class="proj-screenshot">
-        <img src="img/beta-2.png" alt="Project Beta screenshot 2" class="proj-screenshot">
+        <p>You have chosen to download a file from this location.</p>
+        <div class="dl-file"><b data-dl-name>file</b><span>from <span data-dl-from>github.com</span></span></div>
+        <p>What would you like to do with this file?</p>
+        <fieldset>
+          <label><input type="radio" name="dl-what" value="open" checked> Open it from its current location</label>
+          <label><input type="radio" name="dl-what" value="save"> Save this file to disk</label>
+        </fieldset>
+        <p><small>Either way it copies for a second, then opens the real page in a new tab. There is only one place the file lives.</small></p>
       </div>
     </div>
+    <div class="btns"><button class="b default" type="button" data-dl-ok>OK</button><button class="b" type="button" data-close>Cancel</button><button class="b" type="button" data-dl-info>More Info</button></div>
+  </div>
+</section>
 
+<section class="win dialog" id="d-copy" role="dialog" aria-labelledby="d-copy-t" hidden data-icon="i-folder" data-controls="close">
+  <header class="tbar"><h2 class="ttl" id="d-copy-t">Copying...</h2></header>
+  <div class="body">
+    <div class="copyanim" aria-hidden="true">
+      <svg class="ico"><use href="#i-folder"/></svg>
+      <span class="papers"><i></i><i></i><i></i></span>
+      <svg class="ico"><use href="#i-folder"/></svg>
+    </div>
+    <p class="copytext"><span data-copy-verb>Opening</span> <b data-copy-name>file</b><br>From '<span data-copy-from>github.com</span>' to 'this tab'</p>
+    <div class="copybar" aria-hidden="true"><i></i></div>
+    <div class="btns right"><button class="b" type="button" data-close>Cancel</button></div>
   </div>
-  <div class="win-resize"></div>
-</div>
+</section>
 
-<!-- ── Window: Skills ────────────────────── -->
-<div class="win" id="win-skills" style="top:80px;left:120px;width:380px;">
-  <div class="win-titlebar">
-    <span class="win-title">💾 Skills.exe</span>
-    <div class="win-controls">
-      <div class="win-btn" onclick="minimizeWin('win-skills')">_</div>
-      <div class="win-btn" onclick="maximizeWin('win-skills')">□</div>
-      <div class="win-btn" onclick="closeWin('win-skills')">✕</div>
+<section class="win dialog" id="d-done" role="dialog" aria-labelledby="d-done-t" hidden data-icon="i-folder" data-controls="close">
+  <header class="tbar"><h2 class="ttl" id="d-done-t">Download complete</h2></header>
+  <div class="body">
+    <div class="msg"><svg class="ico"><use href="#i-info"/></svg>
+      <div>
+        <p><b>Download complete.</b> Nothing was saved to your disk; the file lives at the address below and this button opens it.</p>
+        <div class="dl-file"><b data-done-name>file</b><span data-done-href>https://</span></div>
+      </div>
     </div>
+    <div class="btns right"><button class="b default" type="button" data-done-open>Open</button><button class="b" type="button" data-close>Close</button></div>
   </div>
-  <div class="win-body">
-    <!-- Mobile app-style layout -->
-    <div class="mobile-layout app-body">
-      <div class="app-hero" style="--accent:#00e5ff;--accent2:#7b00d4;">
-        <div class="app-hero-num">// skills.exe</div>
-        <div class="app-hero-icon">💾</div>
-        <div class="app-hero-title">SKILLS.EXE</div>
-        <div class="app-hero-sub">Tools &amp; Technologies</div>
-      </div>
-      <div class="app-section">
-        <div class="app-label">TECHNICAL</div>
-        <div class="app-tags">
-          <span class="app-tag">Python</span>
-          <span class="app-tag">HTML &amp; CSS</span>
-          <span class="app-tag">C</span>
-          <span class="app-tag">C++</span>
-          <span class="app-tag">Java</span>
-          <span class="app-tag">Git</span>
-        </div>
-      </div>
-      <div class="app-section">
-        <div class="app-label">CREATIVE</div>
-        <div class="app-tags">
-          <span class="app-tag">Visual Graphics</span>
-          <span class="app-tag">Game Design</span>
-          <span class="app-tag">Videography</span>
-        </div>
-      </div>
-      <div class="app-section">
-        <div class="app-label">STRATEGY</div>
-        <div class="app-tags">
-          <span class="app-tag">Proj. Mgmt</span>
-          <span class="app-tag">User Research</span>
-          <span class="app-tag">Systems Thinking</span>
-        </div>
-      </div>
-      <div class="app-section">
-        <div class="app-label">TOOLS</div>
-        <div class="app-tags">
-          <span class="app-tag">VS Code</span>
-          <span class="app-tag">Nvim</span>
-          <span class="app-tag">Eclipse</span>
-          <span class="app-tag">Adobe CC</span>
-        </div>
-      </div>
-      <button class="app-close-btn" onclick="closeWin('win-skills')">✕ Close</button>
-    </div>
-    <!-- Desktop Win95 layout -->
-    <div class="desktop-layout">
-      <div class="panel">
-        <div class="skill-cat-label">Technical</div>
-        <div class="skill-pills">
-          <span class="skill-pill">Python</span>
-          <span class="skill-pill">HTML &amp; CSS</span>
-          <span class="skill-pill">C</span>
-          <span class="skill-pill">C++</span>
-          <span class="skill-pill">Java</span>
-          <span class="skill-pill">Git</span>
-        </div>
-        <div class="skill-cat-label">Creative</div>
-        <div class="skill-pills">
-          <span class="skill-pill">Visual Graphics</span>
-          <span class="skill-pill">Game Design</span>
-          <span class="skill-pill">Videography</span>
-        </div>
-        <div class="skill-cat-label">Strategy</div>
-        <div class="skill-pills">
-          <span class="skill-pill">Proj. Mgmt</span>
-          <span class="skill-pill">User Research</span>
-          <span class="skill-pill">Systems Thinking</span>
-        </div>
-        <div class="skill-cat-label">Tools</div>
-        <div class="skill-pills">
-          <span class="skill-pill">VS Code</span>
-          <span class="skill-pill">Nvim</span>
-          <span class="skill-pill">Eclipse</span>
-          <span class="skill-pill">Adobe CC</span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="win-resize"></div>
-</div>
+</section>
 
-<!-- ── Window: Contact ───────────────────── -->
-<div class="win" id="win-contact" style="top:80px;left:120px;width:380px;">
-  <div class="win-titlebar">
-    <span class="win-title">📧 Contact Me</span>
-    <div class="win-controls">
-      <div class="win-btn" onclick="minimizeWin('win-contact')">_</div>
-      <div class="win-btn" onclick="maximizeWin('win-contact')">□</div>
-      <div class="win-btn" onclick="closeWin('win-contact')">✕</div>
+<section class="win dialog" id="d-shutdown" role="dialog" aria-labelledby="d-sd-t" hidden data-icon="i-flag" data-controls="close">
+  <header class="tbar"><h2 class="ttl" id="d-sd-t">Shut Down The Basement</h2></header>
+  <div class="body">
+    <div class="msg"><svg class="ico"><use href="#i-computer"/></svg>
+      <div>
+        <p>What do you want the computer to do?</p>
+        <fieldset>
+          <label><input type="radio" name="sd" value="standby"> Stand by</label>
+          <label><input type="radio" name="sd" value="off" checked> Shut down</label>
+          <label><input type="radio" name="sd" value="restart"> Restart</label>
+          <label><input type="radio" name="sd" value="pro"> Log off to the recruiter view</label>
+        </fieldset>
+      </div>
     </div>
+    <div class="btns right"><button class="b default" type="button" data-sd-ok>OK</button><button class="b" type="button" data-close>Cancel</button><button class="b" type="button" disabled>Help</button></div>
   </div>
-  <div class="win-body">
-    <!-- Mobile app-style layout -->
-    <div class="mobile-layout app-body">
-      <div class="app-hero" style="--accent:#7b00d4;--accent2:#00e5ff;">
-        <div class="app-hero-num">// contact</div>
-        <div class="app-hero-icon">📧</div>
-        <div class="app-hero-title">CONTACT ME</div>
-        <div class="app-hero-sub">Let's Connect</div>
-      </div>
-      <div class="app-section">
-        <div class="app-label">LINKS</div>
-        <div class="app-contact-list">
-          <div class="app-contact-row" onclick="window.open('https://github.com/eareszka','_blank')">
-            <span class="app-contact-icon">🐙</span> GitHub
-          </div>
-          <div class="app-contact-row" onclick="window.open('https://www.linkedin.com/in/emery-reszka-a18336251/','_blank')">
-            <span class="app-contact-icon">💼</span> LinkedIn
-          </div>
-          <div class="app-contact-row" onclick="window.open('https://www.youtube.com/@EmeryReszka','_blank')">
-            <span class="app-contact-icon">📹</span> YouTube
-          </div>
-          <div class="app-contact-row" onclick="window.location='mailto:EmeryReszka@outlook.com'">
-            <span class="app-contact-icon">📨</span> EmeryReszka@outlook.com
-          </div>
-        </div>
-      </div>
-      <button class="app-close-btn" onclick="closeWin('win-contact')">✕ Close</button>
-    </div>
-    <!-- Desktop Win95 layout -->
-    <div class="desktop-layout">
-      <div class="panel">
-        <div class="contact-row" onclick="window.open('https://github.com/eareszka','_blank')">
-          <span class="contact-icon">🐙</span> GitHub
-        </div>
-        <div class="contact-row" onclick="window.open('https://www.linkedin.com/in/emery-reszka-a18336251/','_blank')">
-          <span class="contact-icon">💼</span> LinkedIn
-        </div>
-        <div class="contact-row" onclick="window.open('https://www.youtube.com/@EmeryReszka','_blank')">
-          <span class="contact-icon">📹</span> YouTube
-        </div>
-        <div class="contact-row" onclick="window.location='mailto:EmeryReszka@outlook.com'">
-          <span class="contact-icon">📨</span> EmeryReszka@outlook.com
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="win-resize"></div>
-</div>
+</section>
 
-<!-- ── Window: YouTube ──────────────────────── -->
-<div class="win" id="win-yt" style="top:80px;left:120px;width:380px;">
-  <div class="win-titlebar">
-    <span class="win-title">📺 YouTube</span>
-    <div class="win-controls">
-      <div class="win-btn" onclick="minimizeWin('win-yt')">_</div>
-      <div class="win-btn" onclick="maximizeWin('win-yt')">□</div>
-      <div class="win-btn" onclick="closeWin('win-yt')">✕</div>
-    </div>
+<!-- ═══ Start menu and taskbar ═══ -->
+<nav id="startmenu" hidden aria-label="Start menu">
+  <div class="sm-band"><b>The Basement</b><span>&nbsp;98</span></div>
+  <div class="sm-items">
+    <button type="button" data-open="w-ie"><svg class="ico"><use href="#i-ie"/></svg><span><u>I</u>nternet Explorer</span></button>
+    <button type="button" data-open="w-sys"><svg class="ico"><use href="#i-computer"/></svg><span><u>M</u>y Computer</span></button>
+    <button type="button" data-open="w-notes"><svg class="ico"><use href="#i-txt"/></svg><span>s<u>k</u>ills.txt</span></button>
+    <button type="button" data-open="w-mail"><svg class="ico"><use href="#i-mail"/></svg><span><u>O</u>utlook Express</span></button>
+    <button type="button" data-open="w-media"><svg class="ico"><use href="#i-media"/></svg><span>Media <u>P</u>layer</span></button>
+    <button type="button" data-open="w-bin"><svg class="ico"><use href="#i-bin"/></svg><span><u>R</u>ecycle Bin</span></button>
+    <hr>
+    <a href="Emery_Reszka_Resume.pdf" target="_blank" rel="noopener"><svg class="ico"><use href="#i-pdf"/></svg><span><u>D</u>ocuments: Resume.pdf</span></a>
+    <button type="button" data-open="w-welcome"><svg class="ico"><use href="#i-flag"/></svg><span><u>H</u>elp: Welcome</span></button>
+    <hr>
+    <a href="index.html"><svg class="ico"><use href="#i-folder"/></svg><span><u>L</u>og Off to the recruiter view</span></a>
+    <button type="button" data-open="d-shutdown"><svg class="ico"><use href="#i-computer"/></svg><span>Sh<u>u</u>t Down...</span></button>
   </div>
-  <div class="win-body">
-    <!-- Mobile vaporwave layout -->
-    <div class="mobile-layout app-body" style="--accent:#ff2dce;--accent2:#7b00d4;">
-      <div class="app-hero" style="--accent:#ff2dce;--accent2:#7b00d4;">
-        <div class="app-hero-num">// channel</div>
-        <div class="app-hero-icon">📺</div>
-        <div class="app-hero-title">YOUTUBE</div>
-        <div class="app-hero-sub">@EmeryReszka</div>
-      </div>
-      <div class="app-section" style="padding-bottom:16px;">
-        <div class="app-yt-player" onclick="window.open('https://www.youtube.com/@EmeryReszka','_blank')">
-          <div class="app-yt-screen">
-            <div class="app-yt-scanlines"></div>
-            <div class="app-yt-play">▶</div>
-            <div class="app-yt-channel">@EmeryReszka</div>
-          </div>
-          <div class="app-yt-bar">📺 Visit Channel →</div>
-        </div>
-      </div>
-      <div class="app-section" id="yt-latest-mobile" style="display:none;padding-bottom:16px;">
-        <div class="app-label">// LATEST UPLOADS</div>
-        <div id="yt-list-mobile"></div>
-      </div>
-      <button class="app-close-btn" onclick="closeWin('win-yt')">✕ Close</button>
-    </div>
-    <!-- Desktop Win95 layout -->
-    <div class="desktop-layout">
-      <div class="retro-player" onclick="window.open('https://www.youtube.com/@EmeryReszka','_blank')">
-        <div class="retro-screen">
-          <div class="retro-scanlines"></div>
-          <div class="retro-play">▶</div>
-          <div class="retro-channel">@EmeryReszka</div>
-        </div>
-        <div class="retro-controls">
-          <span class="retro-label">📺 YouTube Channel</span>
-          <button class="btn95" tabindex="-1">▶ Watch</button>
-        </div>
-      </div>
-      <div id="yt-latest-desktop" style="display:none;">
-        <div class="yt-latest-head">Latest Uploads</div>
-        <div id="yt-list-desktop"></div>
-      </div>
-    </div>
-  </div>
-  <div class="win-resize"></div>
-</div>
+</nav>
 
-<!-- ── Window: Project Alpha (mobile app) ──── -->
-<div class="win mobile-app-win" id="win-proj-alpha">
-  <div class="win-titlebar">
-    <span class="win-title">🎮 Project Alpha</span>
-    <div class="win-controls">
-      <div class="win-btn" onclick="closeWin('win-proj-alpha')">✕</div>
-    </div>
-  </div>
-  <div class="win-body app-body">
-    <div class="app-hero" style="--accent:#ff2dce;--accent2:#7b00d4;">
-      <div class="app-hero-num">001</div>
-      <div class="app-hero-icon">🎮</div>
-      <div class="app-hero-title">PROJECT ALPHA</div>
-      <div class="app-hero-sub">Turn-Based JRPG</div>
-    </div>
-    <div class="app-section">
-      <div class="app-label">ABOUT</div>
-      <p class="app-desc">An ambitious turn-based JRPG in GameMaker Studio 2, featuring my real-life friends as characters — currently on the backburner, but far from forgotten.</p>
-    </div>
-    <div class="app-section">
-      <div class="app-label">SCREENSHOTS</div>
-      <div class="app-screenshots">
-        <img src="img/alpha-1.jpg" alt="Project Alpha screenshot 1" class="app-screenshot">
-        <img src="img/alpha-2.png" alt="Project Alpha screenshot 2" class="app-screenshot">
-        <img src="img/alpha-3.png" alt="Project Alpha screenshot 3" class="app-screenshot">
-      </div>
-    </div>
-    <div class="app-section">
-      <div class="app-label">STACK</div>
-      <div class="app-tags">
-        <span class="app-tag">Game Dev</span>
-        <span class="app-tag">GML</span>
-        <span class="app-tag">GameMaker Studio 2</span>
-      </div>
-    </div>
-    <div class="app-action-row">
-      <button class="app-btn" onclick="window.open('https://gamejolt.com/games/ProjectEmerald/880548','_blank')">🎮 Download on Game Jolt</button>
-    </div>
-    <button class="app-close-btn" onclick="closeWin('win-proj-alpha')">✕ Close</button>
-  </div>
-</div>
-
-<!-- ── Window: PULSE (mobile app) ─────────── -->
-<div class="win mobile-app-win" id="win-proj-pulse">
-  <div class="win-titlebar">
-    <span class="win-title">📡 PULSE</span>
-    <div class="win-controls">
-      <div class="win-btn" onclick="closeWin('win-proj-pulse')">✕</div>
-    </div>
-  </div>
-  <div class="win-body app-body">
-    <div class="app-hero" style="--accent:#00e5ff;--accent2:#ff2dce;">
-      <div class="app-hero-num">002</div>
-      <div class="app-hero-icon">📡</div>
-      <div class="app-hero-title">PULSE</div>
-      <div class="app-hero-sub" style="color:#ff2dce;font-style:italic;">feel ahead</div>
-    </div>
-    <div class="app-section">
-      <div class="app-label">ABOUT</div>
-      <p class="app-desc">A real-time dashboard for detecting abnormalities across stocks, Polymarket prediction bets, and sports betting markets — before the crowd catches on.</p>
-    </div>
-    <div class="app-section">
-      <div class="app-label">SCREENSHOTS</div>
-      <div class="app-screenshots">
-        <img src="img/pulse-1.png" alt="PULSE watchlist" class="app-screenshot">
-        <img src="img/pulse-2.png" alt="PULSE market detail with alert threshold" class="app-screenshot">
-        <img src="img/pulse-3.png" alt="PULSE light mode" class="app-screenshot">
-      </div>
-    </div>
-    <div class="app-section">
-      <div class="app-label">STACK</div>
-      <div class="app-tags">
-        <span class="app-tag">Finance</span>
-        <span class="app-tag">Data</span>
-        <span class="app-tag">Markets</span>
-        <span class="app-tag">Analytics</span>
-      </div>
-    </div>
-    <div class="app-action-row">
-      <button class="app-btn" onclick="window.open('https://pulse-sooty-pi.vercel.app/','_blank')">↗ Open Live Site</button>
-    </div>
-    <button class="app-close-btn" onclick="closeWin('win-proj-pulse')">✕ Close</button>
-  </div>
-</div>
-
-<!-- ── Window: Project Beta (mobile app) ──── -->
-<div class="win mobile-app-win" id="win-proj-beta">
-  <div class="win-titlebar">
-    <span class="win-title">🐍 Project Beta</span>
-    <div class="win-controls">
-      <div class="win-btn" onclick="closeWin('win-proj-beta')">✕</div>
-    </div>
-  </div>
-  <div class="win-body app-body">
-    <div class="app-hero" style="--accent:#7b00d4;--accent2:#00e5ff;">
-      <div class="app-hero-num">003</div>
-      <div class="app-hero-icon">🐍</div>
-      <div class="app-hero-title">PROJECT BETA</div>
-      <div class="app-hero-sub">Roguelike Game</div>
-    </div>
-    <div class="app-section">
-      <div class="app-label">ABOUT</div>
-      <p class="app-desc">A roguelike built with pure Python and Tcod. The current big challenge: crafting a fully immersive procgen world that feels different every single run.</p>
-    </div>
-    <div class="app-section">
-      <div class="app-label">SCREENSHOTS</div>
-      <div class="app-screenshots">
-        <img src="img/beta-1.png" alt="Project Beta screenshot 1" class="app-screenshot">
-        <img src="img/beta-2.png" alt="Project Beta screenshot 2" class="app-screenshot">
-      </div>
-    </div>
-    <div class="app-section">
-      <div class="app-label">STACK</div>
-      <div class="app-tags">
-        <span class="app-tag">Python</span>
-        <span class="app-tag">Tcod</span>
-        <span class="app-tag">Game Dev</span>
-        <span class="app-tag">Procgen</span>
-      </div>
-    </div>
-    <button class="app-close-btn" onclick="closeWin('win-proj-beta')">✕ Close</button>
-  </div>
-</div>
-
-<!-- ── Window: SnipAI (mobile app) ─────── -->
-<div class="win mobile-app-win" id="win-proj-autoanswer">
-  <div class="win-titlebar">
-    <span class="win-title">🔍 SnipAI</span>
-    <div class="win-controls">
-      <div class="win-btn" onclick="closeWin('win-proj-autoanswer')">✕</div>
-    </div>
-  </div>
-  <div class="win-body app-body">
-    <div class="app-hero" style="--accent:#00ffa3;--accent2:#00e5ff;">
-      <div class="app-hero-num">004</div>
-      <div class="app-hero-icon">🔍</div>
-      <div class="app-hero-title">SNIPAI</div>
-      <div class="app-hero-sub">AI Screen-Reader Extension</div>
-    </div>
-    <div class="app-section">
-      <div class="app-label">ABOUT</div>
-      <p class="app-desc">A Chrome extension that watches a region of your browser tab and uses an AI vision model — Claude, GPT, or Gemini — to answer whatever question or problem appears there, live, the moment it changes.</p>
-    </div>
-    <div class="app-section">
-      <div class="app-label">SCREENSHOTS</div>
-      <div class="app-screenshots">
-        <img src="img/autoanswer-1.png" alt="SnipAI banner" class="app-screenshot">
-      </div>
-    </div>
-    <div class="app-section">
-      <div class="app-label">STACK</div>
-      <div class="app-tags">
-        <span class="app-tag">Chrome Extension</span>
-        <span class="app-tag">Manifest V3</span>
-        <span class="app-tag">JavaScript</span>
-        <span class="app-tag">AI Vision</span>
-      </div>
-    </div>
-    <div class="app-action-row">
-      <button class="app-btn" onclick="window.open('https://chromewebstore.google.com/detail/snipai/hdnhmcaekfpinanfkkbdpknhmhgibpkk','_blank')">⬇️ Add to Chrome</button>
-    </div>
-    <button class="app-close-btn" onclick="closeWin('win-proj-autoanswer')">✕ Close</button>
-  </div>
-</div>
-
-<!-- ── Window: WingIt (mobile app) ─────── -->
-<div class="win mobile-app-win" id="win-proj-wingit">
-  <div class="win-titlebar">
-    <span class="win-title">🪽 WingIt</span>
-    <div class="win-controls">
-      <div class="win-btn" onclick="closeWin('win-proj-wingit')">✕</div>
-    </div>
-  </div>
-  <div class="win-body app-body">
-    <div class="app-hero" style="--accent:#FFFC00;--accent2:#c99a00;">
-      <div class="app-hero-num">005</div>
-      <div class="app-hero-icon">🪽</div>
-      <div class="app-hero-title">WINGIT</div>
-      <div class="app-hero-sub" style="color:#FFFC00;font-style:italic;">your texting wingman</div>
-    </div>
-    <div class="app-section">
-      <div class="app-label">ABOUT</div>
-      <p class="app-desc">A cross-platform AI dating-app wingman — web, iOS &amp; Android from a single Expo/React Native codebase. Feed it chat screenshots, or a screen recording scrolled through the conversation, and it reads who said what, learns the other person's energy, and drafts your next reply in their tone. A built-in coach answers questions about a specific match, and "the read" gives you a take on how they — and you — are coming across. Screenshots are read once to draft the reply, never stored; you always send the messages yourself.</p>
-    </div>
-    <div class="app-section">
-      <div class="app-label">SCREENSHOTS</div>
-      <div class="app-screenshots">
-        <img src="img/wingit-draft.png" alt="WingIt drafted reply, circled, with a Copy button" class="app-screenshot">
-        <img src="img/wingit-home.png" alt="WingIt home screen with the matches list" class="app-screenshot">
-        <img src="img/wingit-read.png" alt="WingIt The Read: how Maya comes across and how you come across" class="app-screenshot">
-      </div>
-    </div>
-    <div class="app-section">
-      <div class="app-label">STACK</div>
-      <div class="app-tags">
-        <span class="app-tag">React Native</span>
-        <span class="app-tag">Expo</span>
-        <span class="app-tag">TypeScript</span>
-        <span class="app-tag">Python</span>
-        <span class="app-tag">Claude API</span>
-        <span class="app-tag">Fly.io</span>
-      </div>
-    </div>
-    <div class="app-action-row">
-      <button class="app-btn" style="color:#16161A;text-shadow:none;" onclick="window.open('https://wingit-backend.fly.dev','_blank')">🚀 Try the Live Prototype</button>
-      <button class="app-btn" style="color:#16161A;text-shadow:none;" onclick="window.open('https://github.com/eareszka/WingIt','_blank')">🐙 View on GitHub</button>
-    </div>
-    <button class="app-close-btn" onclick="closeWin('win-proj-wingit')">✕ Close</button>
-  </div>
-</div>
-
-<!-- ── Window: RegionOS (mobile app) ─────── -->
-<div class="win mobile-app-win" id="win-proj-regionos">
-  <div class="win-titlebar">
-    <span class="win-title">🖥️ RegionOS</span>
-    <div class="win-controls">
-      <div class="win-btn" onclick="closeWin('win-proj-regionos')">✕</div>
-    </div>
-  </div>
-  <div class="win-body app-body">
-    <div class="app-hero" style="--accent:#4a9eff;--accent2:#00e5ff;">
-      <div class="app-hero-num">006</div>
-      <div class="app-hero-icon">🖥️</div>
-      <div class="app-hero-title">REGIONOS</div>
-      <div class="app-hero-sub">Live-Preview Desktop Dashboard</div>
-    </div>
-    <div class="app-section">
-      <div class="app-label">ABOUT</div>
-      <p class="app-desc">A live-preview dashboard for your desktop: draw boxes anywhere on screen, and RegionOS keeps each one updating in real time — screen areas, application windows, or websites — even while the source is covered, minimized, or hidden off-screen. A fullscreen mode strips away everything but the grid of live previews. No AI: every bit of it is deterministic computer vision, done entirely locally.</p>
-    </div>
-    <div class="app-section">
-      <div class="app-label">SCREENSHOTS</div>
-      <div class="app-screenshots">
-        <img src="img/regionos-1.png" alt="RegionOS tracking a calculator and Wikipedia live" class="app-screenshot">
-        <img src="img/regionos-2.png" alt="RegionOS fullscreen mode" class="app-screenshot">
-      </div>
-    </div>
-    <div class="app-section">
-      <div class="app-label">STACK</div>
-      <div class="app-tags">
-        <span class="app-tag">Python</span>
-        <span class="app-tag">Win32 API</span>
-        <span class="app-tag">Desktop App</span>
-        <span class="app-tag">Computer Vision</span>
-      </div>
-    </div>
-    <div class="app-action-row">
-      <button class="app-btn" onclick="window.open('https://github.com/eareszka/RegionOS/releases/latest','_blank')">⬇️ Download for Windows</button>
-      <button class="app-btn" onclick="window.open('https://github.com/eareszka/RegionOS','_blank')">🐙 View on GitHub</button>
-    </div>
-    <button class="app-close-btn" onclick="closeWin('win-proj-regionos')">✕ Close</button>
-  </div>
-</div>
-
-</div><!-- /#win-container -->
-
-<!-- ── Start Menu ────────────────────────── -->
-<div id="start-menu">
-  <div class="start-banner">Emery Reszka</div>
-  <div class="start-items">
-    <div class="start-item" onclick="openWin('win-about');closeStartMenu()">💎 <span>About Me</span></div>
-    <div class="start-item" onclick="openWin('win-projects');closeStartMenu()">📁 <span>Projects</span></div>
-    <div class="start-item" onclick="openWin('win-skills');closeStartMenu()">💾 <span>Skills</span></div>
-    <div class="start-item" onclick="openWin('win-contact');closeStartMenu()">📧 <span>Contact</span></div>
-    <div class="start-item" onclick="openWin('win-yt');closeStartMenu()">📺 <span>YouTube</span></div>
-  </div>
-</div>
-
-<!-- ── Taskbar ───────────────────────────── -->
 <div id="taskbar">
-  <button class="btn95" id="start-btn" onclick="toggleStartMenu()">
-    <span class="start-icon">💻</span> Start
-  </button>
-  <div class="taskbar-divider"></div>
-  <div class="taskbar-apps" id="taskbar-apps"></div>
-  <div class="clock" id="clock">00:00</div>
+  <button class="b" id="start" type="button" aria-expanded="false" aria-controls="startmenu"><svg><use href="#i-flag"/></svg>Start</button>
+  <span class="tdiv"></span>
+  <div id="tasks"></div>
+  <div class="tray"><svg><use href="#i-speaker"/></svg><time id="clock">12:00 AM</time></div>
 </div>
 
-<script>
-// ── View More toggle ───────────────────────
-function toggleViewMore(id, btn) {
-  const panel = document.getElementById(id);
-  const open = panel.classList.toggle('open');
-  btn.textContent = open ? '▲ View Less' : '▼ View More';
-}
-
-// ── Clock ──────────────────────────────────
-function updateClock() {
-  const now = new Date();
-  const h = String(now.getHours()).padStart(2,'0');
-  const m = String(now.getMinutes()).padStart(2,'0');
-  document.getElementById('clock').textContent = h + ':' + m;
-}
-updateClock();
-setInterval(updateClock, 10000);
-
-// ── Window management ──────────────────────
-const wins = document.querySelectorAll('.win');
-const taskbarApps = document.getElementById('taskbar-apps');
-
-const winMeta = {
-  'win-about':      { icon: '💎', label: 'About Me' },
-  'win-projects':   { icon: '📁', label: 'Projects' },
-  'win-skills':     { icon: '💾', label: 'Skills.exe' },
-  'win-contact':    { icon: '📧', label: 'Contact' },
-  'win-yt':         { icon: '📺', label: 'YouTube' },
-  'win-proj-alpha': { icon: '🎮', label: 'Project Alpha', mobileOnly: true },
-  'win-proj-pulse': { icon: '📡', label: 'PULSE',         mobileOnly: true },
-  'win-proj-beta':  { icon: '🐍', label: 'Project Beta',  mobileOnly: true },
-  'win-proj-autoanswer': { icon: '🔍', label: 'SnipAI', mobileOnly: true },
-  'win-proj-wingit': { icon: '🪽', label: 'WingIt', mobileOnly: true },
-  'win-proj-regionos': { icon: '🖥️', label: 'RegionOS', mobileOnly: true },
-};
-
-// Taskbar shows only open apps — entries are added on open, removed on close.
-function addTaskbarApp(id) {
-  if (document.getElementById('tb-' + id)) return;
-  const meta = winMeta[id];
-  if (!meta || meta.mobileOnly) return;
-  const win = document.getElementById(id);
-  const btn = document.createElement('button');
-  btn.className = 'btn95 taskbar-app' + (win.classList.contains('active') ? ' active' : '');
-  btn.id = 'tb-' + id;
-  btn.innerHTML = meta.icon + ' ' + meta.label;
-  btn.onclick = () => toggleWin(id);
-  taskbarApps.appendChild(btn);
-}
-
-function removeTaskbarApp(id) {
-  document.getElementById('tb-' + id)?.remove();
-}
-
-function focusWin(id) {
-  wins.forEach(w => {
-    w.classList.remove('active');
-    document.getElementById('tb-' + w.id)?.classList.remove('active');
-  });
-  const win = document.getElementById(id);
-  win.classList.add('active');
-  document.getElementById('tb-' + id)?.classList.add('active');
-}
-
-function openWin(id) {
-  const meta = winMeta[id];
-  if (meta && meta.mobileOnly && !isMobile()) return;
-  const win = document.getElementById(id);
-
-  win.classList.remove('minimized', 'win-closing');
-  addTaskbarApp(id);
-  if (isMobile()) {
-    wins.forEach(w => w.classList.remove('mobile-visible'));
-    win.classList.add('mobile-visible');
-    document.getElementById('desktop').style.display = 'none';
-  }
-  focusWin(id);
-
-  win.classList.add('win-entering');
-  requestAnimationFrame(() => requestAnimationFrame(() => win.classList.remove('win-entering')));
-}
-
-function closeWin(id) {
-  const win = document.getElementById(id);
-  removeTaskbarApp(id);
-  win.classList.add('win-closing');
-
-  const finish = () => {
-    win.classList.remove('win-closing');
-    win.classList.add('minimized');
-    win.classList.remove('mobile-visible');
-    if (isMobile()) document.getElementById('desktop').style.display = '';
-  };
-  const t = setTimeout(finish, 200);
-  win.addEventListener('transitionend', () => { clearTimeout(t); finish(); }, { once: true });
-}
-
-function minimizeWin(id) {
-  const win = document.getElementById(id);
-  document.getElementById('tb-' + id)?.classList.remove('active');
-  win.classList.add('win-closing');
-  const finish = () => { win.classList.remove('win-closing'); win.classList.add('minimized'); };
-  const t = setTimeout(finish, 200);
-  win.addEventListener('transitionend', () => { clearTimeout(t); finish(); }, { once: true });
-}
-
-function toggleWin(id) {
-  const win = document.getElementById(id);
-  if (win.classList.contains('minimized')) {
-    openWin(id);
-  } else if (win.classList.contains('active')) {
-    minimizeWin(id);
-  } else {
-    focusWin(id);
-  }
-}
-
-wins.forEach(win => {
-  win.addEventListener('mousedown', () => focusWin(win.id));
-});
-
-// ── Maximize / Restore ─────────────────────
-const winPrev = {};
-
-function maximizeWin(id) {
-  const win = document.getElementById(id);
-  if (win.classList.contains('maximized')) {
-    const prev = winPrev[id];
-    win.style.left   = prev.left;
-    win.style.top    = prev.top;
-    win.style.width  = prev.width;
-    win.style.height = prev.height;
-    win.classList.remove('maximized');
-  } else {
-    winPrev[id] = {
-      left:   win.style.left   || win.offsetLeft   + 'px',
-      top:    win.style.top    || win.offsetTop    + 'px',
-      width:  win.style.width  || win.offsetWidth  + 'px',
-      height: win.style.height || win.offsetHeight + 'px',
-    };
-    win.style.left   = '0px';
-    win.style.top    = '0px';
-    win.style.width  = window.innerWidth + 'px';
-    win.style.height = (window.innerHeight - 40) + 'px';
-    win.classList.add('maximized');
-  }
-  focusWin(id);
-}
-
-// ── Mobile detection ───────────────────────
-const isMobile = () => window.innerWidth <= 700;
-
-// Start with all windows closed — desktop shows icons only, taskbar empty.
-wins.forEach(w => w.classList.remove('active'));
-wins.forEach(w => w.classList.add('minimized'));
-
-// ── Dragging ───────────────────────────────
-
-document.querySelectorAll('.win-titlebar').forEach(bar => {
-  let dragging = false, ox = 0, oy = 0;
-  const win = bar.closest('.win');
-
-  bar.addEventListener('mousedown', e => {
-    if (isMobile()) return;
-    if (e.target.classList.contains('win-btn')) return;
-    if (win.classList.contains('maximized')) return;
-    dragging = true;
-    ox = e.clientX - win.offsetLeft;
-    oy = e.clientY - win.offsetTop;
-    win.style.transition = 'none';
-    focusWin(win.id);
-    e.preventDefault();
-  });
-
-  document.addEventListener('mousemove', e => {
-    if (!dragging) return;
-    let nx = e.clientX - ox;
-    let ny = e.clientY - oy;
-    nx = Math.max(0, Math.min(nx, window.innerWidth - win.offsetWidth));
-    ny = Math.max(0, Math.min(ny, window.innerHeight - 40 - win.offsetHeight));
-    win.style.left = nx + 'px';
-    win.style.top  = ny + 'px';
-  });
-
-  document.addEventListener('mouseup', () => {
-    if (dragging) win.style.transition = '';
-    dragging = false;
-  });
-});
-
-// ── Resize ─────────────────────────────────
-document.querySelectorAll('.win-resize').forEach(handle => {
-  let resizing = false, startX, startY, startW, startH;
-  const win = handle.closest('.win');
-
-  handle.addEventListener('mousedown', e => {
-    if (isMobile()) return;
-    if (win.classList.contains('maximized')) return;
-    resizing = true;
-    startX = e.clientX; startY = e.clientY;
-    startW = win.offsetWidth; startH = win.offsetHeight;
-    win.style.transition = 'none';
-    focusWin(win.id);
-    e.preventDefault();
-    e.stopPropagation();
-  });
-
-  document.addEventListener('mousemove', e => {
-    if (!resizing) return;
-    const nw = Math.max(240, startW + e.clientX - startX);
-    const nh = Math.max(120, startH + e.clientY - startY);
-    win.style.width  = nw + 'px';
-    win.style.height = nh + 'px';
-  });
-
-  document.addEventListener('mouseup', () => {
-    if (resizing) win.style.transition = '';
-    resizing = false;
-  });
-});
-
-// ── Start menu ─────────────────────────────
-const startMenu = document.getElementById('start-menu');
-function toggleStartMenu() { startMenu.classList.toggle('open'); }
-function closeStartMenu()  { startMenu.classList.remove('open'); }
-
-document.addEventListener('click', e => {
-  if (!startMenu.contains(e.target) && !document.getElementById('start-btn').contains(e.target)) {
-    closeStartMenu();
-  }
-});
-
-// ── Desktop icon click ─────────────────────
-document.querySelectorAll('.icon').forEach(icon => {
-  icon.addEventListener('click', () => {
-    document.querySelectorAll('.icon').forEach(i => i.classList.remove('selected'));
-    icon.classList.add('selected');
-  });
-});
-
-// ── YouTube: 3 latest uploads (via RSS feed) ──
-const YT_FEED = 'https://www.youtube.com/feeds/videos.xml?channel_id=UCECn7n2-gTo-y8TKMrVWSBQ';
-// The feed has no CORS headers, so it goes through a public proxy
-const YT_PROXIES = [
-  u => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u),
-  u => 'https://corsproxy.io/?url=' + encodeURIComponent(u)
-];
-
-async function loadLatestVideos() {
-  for (const proxy of YT_PROXIES) {
-    try {
-      const res = await fetch(proxy(YT_FEED));
-      if (!res.ok) continue;
-      const xml = new DOMParser().parseFromString(await res.text(), 'text/xml');
-      const vids = [...xml.getElementsByTagName('entry')].slice(0, 3).map(e => ({
-        id:    e.getElementsByTagNameNS('*', 'videoId')[0].textContent,
-        title: e.getElementsByTagName('title')[0].textContent,
-        date:  new Date(e.getElementsByTagName('published')[0].textContent)
-      }));
-      if (vids.length) { renderLatestVideos(vids); return; }
-    } catch (err) { /* try next proxy */ }
-  }
-  // All proxies failed — the Visit Channel player stays as the fallback
-}
-
-function renderLatestVideos(vids) {
-  const html = vids.map(v => {
-    const t = document.createElement('div');
-    t.textContent = v.title;
-    const date = v.date.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
-    return `
-      <div class="yt-vid" onclick="window.open('https://www.youtube.com/watch?v=${v.id}','_blank')">
-        <img class="yt-vid-thumb" src="https://i.ytimg.com/vi/${v.id}/mqdefault.jpg" alt="" loading="lazy">
-        <div class="yt-vid-info">
-          <div class="yt-vid-title">${t.innerHTML}</div>
-          <div class="yt-vid-date">${date}</div>
-        </div>
-      </div>`;
-  }).join('');
-  document.getElementById('yt-list-desktop').innerHTML = html;
-  document.getElementById('yt-list-mobile').innerHTML = html;
-  document.getElementById('yt-latest-desktop').style.display = '';
-  document.getElementById('yt-latest-mobile').style.display = '';
-}
-loadLatestVideos();
-</script>
 </body>
 </html>

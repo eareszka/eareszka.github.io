@@ -137,8 +137,7 @@ h1, h2, h3 { text-wrap: balance; }
   min-height: 44px;
 }
 .masthead nav { display: flex; gap: .25rem 1.5rem; }
-.masthead nav a,
-.switch {
+.masthead nav a {
   font-size: var(--t-sm);
   color: var(--mute);
   text-decoration: none;
@@ -159,12 +158,6 @@ h1, h2, h3 { text-wrap: balance; }
 }
 .masthead nav a:hover { color: var(--ink); }
 .masthead nav a:hover::after { transform: scaleX(1); transform-origin: left; }
-.switch {
-  text-decoration: underline;
-  text-decoration-color: var(--rule);
-  text-underline-offset: .3em;
-}
-.switch:hover { color: var(--ink); text-decoration-color: var(--ink); }
 
 /* ── the entry: name, block, heat-sheet row, actions ─────────── */
 .entry {
@@ -710,6 +703,35 @@ h1, h2, h3 { text-wrap: balance; }
 .wall .lines a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; }
 .wall .where { font-size: var(--t-sm); color: var(--mute); margin: .5rem 0 0; }
 
+/* ── the basement: below the pool floor, the page's last word ─ */
+/* An ink plate, like the starting block's, set under the wall: the
+   deepest point of the page, and a quiet door to the games. */
+.basement { background: var(--ink); color: var(--sheet); }
+.basement-in {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(1.75rem, 4vw, 2.5rem) var(--edge);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: clamp(1.25rem, 3vw, 2.75rem);
+}
+.basement h2 {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1.375rem;
+  line-height: 1;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin: 0;
+  padding: .45em .5em .4em;
+  border: 2px solid var(--sheet);
+}
+.basement p { margin: 0; max-width: 58ch; font-size: var(--t-sm); line-height: 1.5; color: var(--sheet); }
+.action--dark { border-color: var(--sheet); color: var(--sheet); --wipe: var(--sheet); white-space: nowrap; }
+.action--dark:hover { color: var(--ink); }
+.action--dark:focus-visible { outline-color: var(--sheet); }
+
 /* a big T-mark on the pool floor behind the close, drawn as you arrive */
 .tmark {
   position: absolute;
@@ -793,7 +815,6 @@ h1, h2, h3 { text-wrap: balance; }
   .masthead nav::-webkit-scrollbar { display: none; }
   .masthead nav a { font-size: var(--t-xs); white-space: nowrap; }
   .masthead nav a:focus-visible { outline-offset: -3px; }
-  .switch { font-size: var(--t-xs); }
 
   .entry { padding-top: 1rem; column-gap: .875rem; }
   .name { font-size: clamp(2.75rem, 14vw, 3.75rem); margin-bottom: .25em; }
@@ -819,6 +840,8 @@ h1, h2, h3 { text-wrap: balance; }
   .wall .act .action { display: flex; width: 100%; font-size: var(--t-sm); padding-inline: .75rem; }
   .wall { padding-bottom: 9rem; }
   .tmark { top: auto; height: 7rem; right: var(--edge); width: 7rem; bottom: 1.25rem; }
+  .basement-in { grid-template-columns: 1fr; row-gap: 1rem; justify-items: start; }
+  .basement .action { width: 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -859,7 +882,7 @@ h1, h2, h3 { text-wrap: balance; }
 @media print {
   body { background: #fff; }
   .rope, .pool::before, .lane::after, .lane::before, .laneline, .tmark,
-  .switch, .masthead nav { display: none !important; }
+  .basement, .masthead nav { display: none !important; }
   .pool, .wall { background: #fff; padding-left: 0; padding-right: 0; }
   .band h2 { transform: none !important; font-size: 2.25rem; }
   .shot { transform: none !important; opacity: 1 !important; }

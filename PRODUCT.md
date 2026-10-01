@@ -34,7 +34,7 @@ What a visitor should remember, in the user's own priorities:
 ## Capabilities and Constraints
 
 - `index.html` + `pro.css`: the recruiter view and main landing page.
-- `desktop.html` + `style.css`: a retro desktop-OS version of the portfolio. It is a **secondary easter egg**: an optional, playful extra that also holds smaller projects (a GameMaker JRPG, a Python/Tcod roguelike). The recruiter view links to it and must never depend on it.
+- `desktop.html` + `style.css` + `basement.js`: **The Basement**, a Windows 98-style desktop where each of Emery's two games (Project Alpha, a GameMaker JRPG; Project Beta, a Python/Tcod roguelike) is its own 2000-era fan site inside a fake Internet Explorer window. It holds games only; the software projects live on the recruiter view. It shows no photo of Emery. It is a **secondary easter egg**: the recruiter view links to it only from an ink strip at the very bottom of the page (and the games aside in the lanes points down to that strip), and must never depend on it. Its hit counter counts only the visitor's own visits (localStorage) and says so; it must never show invented traffic.
 - `privacy.html`: the SnipAI Chrome extension's privacy policy. The Chrome Web Store listing requires it, so it must stay published at that URL.
 - Terminology: the Chrome extension is **SnipAI**. The screenshot `img/autoanswer-1.*` shows an older name, AutoAnswer. The texting app is **WingIt!**.
 

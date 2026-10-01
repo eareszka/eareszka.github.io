@@ -40,18 +40,20 @@
   queue()
 
   // Dock: on once the hero's buttons are gone, off again at the contact
-  // wall, which carries the same two actions.
+  // wall, which carries the same two actions, and below it at the basement.
   const dock = document.querySelector('.dock')
   const heroActions = document.querySelector('.entry .actions')
   const wall = document.querySelector('.wall')
+  const base = document.querySelector('.basement')
   if (dock && heroActions && wall) {
     const seen = new Map()
-    const sync = () => dock.classList.toggle('on', seen.get(heroActions) === false && seen.get(wall) === false)
+    const sync = () => dock.classList.toggle('on', seen.get(heroActions) === false && seen.get(wall) === false && seen.get(base) !== true)
     const dockWatch = new IntersectionObserver(entries => {
       for (const e of entries) seen.set(e.target, e.isIntersecting)
       sync()
     })
     dockWatch.observe(heroActions)
     dockWatch.observe(wall)
+    if (base) dockWatch.observe(base)
   }
 })()

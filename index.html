@@ -22,14 +22,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Courier+Prime:wght@400;700&family=Schibsted+Grotesk:wght@400..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="pro.css?v=2">
-<script src="pro.js?v=2" defer></script>
+<link rel="stylesheet" href="pro.css?v=3">
+<script src="pro.js?v=3" defer></script>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='44' y='8' width='12' height='78' fill='%2300595F'/><rect x='18' y='74' width='64' height='12' fill='%2300595F'/></svg>">
 </head>
 <body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <symbol id="i-down" viewBox="0 0 16 16"><path d="M8 2v10M3.5 7.5 8 12l4.5-4.5M3 14.5h10" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-stairs" viewBox="0 0 16 16"><path d="M1.5 3.5h4v4h4v4h5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
   <symbol id="i-out" viewBox="0 0 16 16"><path d="M5 3h8v8M13 3 3.5 12.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
 </svg>
 
@@ -45,7 +46,6 @@
     <a href="#history">Background</a>
     <a href="#contact">Contact</a>
   </nav>
-  <a class="switch" href="desktop.html">Try the desktop version</a>
 </header>
 
 <main id="top">
@@ -234,8 +234,8 @@
     </ol>
 
     <p class="aside"><span>I've also made a turn-based JRPG in GameMaker Studio 2 and a roguelike in Python with
-      Tcod, both mainly to practice procedural generation. They're on
-      <a href="desktop.html">the desktop version of this site</a>, along with my other projects.</span></p>
+      Tcod, both mainly to practice procedural generation. They're in
+      <a href="#basement">the basement</a>, at the bottom of this page.</span></p>
   </section>
 
   <section class="deck" id="capability" aria-labelledby="cap-h">
@@ -316,6 +316,15 @@
   </div>
   <div class="tmark" aria-hidden="true"></div>
 </footer>
+
+<aside class="basement" id="basement" aria-labelledby="basement-h">
+  <div class="basement-in">
+    <h2 id="basement-h">The basement</h2>
+    <p>The two games I've made, a JRPG in GameMaker and a roguelike in Python, each on its own
+      2000-era fan site inside an old Windows&nbsp;98 desktop.</p>
+    <a class="action action--dark" href="desktop.html">Go down to the basement<svg aria-hidden="true"><use href="#i-stairs"/></svg></a>
+  </div>
+</aside>
 
 <nav class="dock" aria-label="R&eacute;sum&eacute; and email">
   <a class="action action--fill" href="Emery_Reszka_Resume.pdf" download><svg aria-hidden="true"><use href="#i-down"/></svg>R&eacute;sum&eacute;</a>
