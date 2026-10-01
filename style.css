@@ -25,6 +25,10 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 html, body { height: 100%; margin: 0; }
+/* Pinned to the visible screen, so iOS Safari can't rubber-band the whole desktop
+   or tuck the taskbar under its toolbar; only the panes inside windows scroll. */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; overscroll-behavior: none; }
+body { position: fixed; inset: 0; overscroll-behavior: none; touch-action: manipulation; }
 body {
   background: var(--desk);
   color: #000;
@@ -108,8 +112,9 @@ textarea.field { resize: none; font-family: "Courier New", monospace; font-size:
 #boot {
   position: fixed; inset: 0; z-index: 9000;
   background: #000; color: #aaa;
-  font: 14px/1.35 "Lucida Console", "Courier New", monospace;
-  padding: 24px 28px;
+  /* The widest POST line is 56 columns; the text shrinks with the screen so it always fits. */
+  font: min(14px, calc((100vw - 32px) / 36))/1.35 "Lucida Console", "Courier New", monospace;
+  padding: 24px clamp(16px, 4vw, 28px);
   white-space: pre;
   overflow: hidden;
 }
@@ -139,6 +144,9 @@ textarea.field { resize: none; font-family: "Courier New", monospace; font-size:
 }
 @keyframes slide { from { left: -90px; } to { left: 100%; } }
 .boot-skip { position: absolute; right: 16px; bottom: 16px; color: #9a9a9a; font: 12px var(--ui); }
+.boot-skip .tap { display: none; }
+@media (hover: none) { .boot-skip .key { display: none; } .boot-skip .tap { display: inline; } }
+.splash-logo { padding: 0 16px; }
 
 /* ── Off states ─────────────────────────────────────────────── */
 #off {
@@ -251,7 +259,7 @@ textarea.field { resize: none; font-family: "Courier New", monospace; font-size:
 
 .body { flex: 1; min-height: 0; display: flex; flex-direction: column; overflow: auto; }
 .pane {
-  flex: 1; min-height: 0;
+  flex: 1; min-height: 0; overscroll-behavior: contain;
   background: #fff; box-shadow: var(--sunken);
   padding: 2px;
   overflow: auto;
@@ -806,7 +814,7 @@ textarea.field { resize: none; font-family: "Courier New", monospace; font-size:
   .sheet { grid-template-columns: 1fr; }
   .sheet dl, .sheet .portrait { grid-column: auto; grid-row: auto; }
   .sheet .portrait { order: -1; justify-self: center; }
-  .welcome { grid-template-columns: 1fr; }
+  .welcome { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
   .welcome .side { padding: 12px 14px; }
   #s-portal .toplist .st { white-space: normal; }
   .wordart { font-size: clamp(28px, 9vw, 40px); }
@@ -815,6 +823,11 @@ textarea.field { resize: none; font-family: "Courier New", monospace; font-size:
   .files th:nth-child(2), .files td:nth-child(2) { display: none; }
   .sbar .prog { width: 60px; }
   .tools .throb { width: 28px; height: 28px; }
+}
+
+/* iOS zooms the page into any field under 16px and leaves it zoomed; touch screens get 16px fields. */
+@media (pointer: coarse) {
+  .field, .field input, textarea.field, .addr .field input { font-size: 16px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
