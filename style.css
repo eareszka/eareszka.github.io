@@ -191,7 +191,7 @@ textarea.field { resize: none; font-family: "Courier New", monospace; font-size:
 
 /* Back to the recruiter view: a bevelled shortcut pinned top right. */
 .to-pro {
-  position: absolute; top: 8px; right: 10px; z-index: 50;
+  position: absolute; top: 8px; right: 10px; z-index: 5; /* above the desktop, behind every window */
   display: inline-flex; align-items: center; gap: 6px;
   font: inherit; color: #000; text-decoration: none;
   background: var(--face); box-shadow: var(--raised);
@@ -211,6 +211,8 @@ textarea.field { resize: none; font-family: "Courier New", monospace; font-size:
   z-index: 10;
 }
 .win[hidden] { display: none; }
+/* No window outgrows the screen above the taskbar; whatever no longer fits scrolls inside it. */
+.win { max-width: 100%; max-height: calc(100% - var(--taskbar)); }
 .win.active { z-index: 20; }
 .win.dialog { z-index: 30; }
 .win.dialog.active { z-index: 40; }
@@ -247,7 +249,7 @@ textarea.field { resize: none; font-family: "Courier New", monospace; font-size:
 .menu button:hover, .menu button:focus-visible { background: var(--navy); color: #fff; outline: none; }
 .menu hr { border: 0; height: 2px; margin: 3px 2px; box-shadow: var(--groove); }
 
-.body { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.body { flex: 1; min-height: 0; display: flex; flex-direction: column; overflow: auto; }
 .pane {
   flex: 1; min-height: 0;
   background: #fff; box-shadow: var(--sunken);
@@ -335,7 +337,7 @@ textarea.field { resize: none; font-family: "Courier New", monospace; font-size:
 .tabs { display: flex; padding: 6px 6px 0; gap: 0; flex: none; }
 .tab { font: inherit; background: var(--face); border: 0; box-shadow: inset 1px 1px #fff, inset -1px 0 #808080, inset 2px 0 #dfdfdf; padding: 3px 10px 4px; margin-bottom: -1px; }
 .tab[aria-selected="true"] { box-shadow: inset 1px 1px #fff, inset -1px 0 #000, inset 2px 0 #dfdfdf, inset -2px 0 #808080; padding: 2px 12px 5px; position: relative; z-index: 1; }
-.sheet { margin: 0 6px; box-shadow: inset 1px 1px #fff, inset -1px -1px #000, inset -2px -2px #808080; padding: 14px 16px; display: grid; grid-template-columns: 1fr; gap: 6px 14px; align-content: start; user-select: text; flex: 1; }
+.sheet { margin: 0 6px; box-shadow: inset 1px 1px #fff, inset -1px -1px #000, inset -2px -2px #808080; padding: 14px 16px; display: grid; grid-template-columns: 1fr; gap: 6px 14px; align-content: start; user-select: text; flex: 1; min-height: 0; overflow: auto; }
 .sheet dl { margin: 0; grid-column: 1; grid-row: 1; }
 .sheet dt { margin-top: 10px; font-weight: 400; }
 .sheet dt:first-child { margin-top: 0; }
@@ -366,13 +368,30 @@ textarea.field { resize: none; font-family: "Courier New", monospace; font-size:
 
 /* ── Media player ───────────────────────────────────────────── */
 #w-media { width: min(400px, calc(100vw - 24px)); left: 420px; top: 120px; }
+/* The player is laid out by its own window width, so a maximized window and a
+   phone get the same treatment: narrow, a 16:9 screen over the playlist;
+   wide, the screen fills the window and the playlist stands down the right. */
+#w-media .body { container-type: inline-size; }
 .screen {
   background: #000; color: #fff;
-  height: 190px; display: grid; place-items: center; text-align: center;
+  aspect-ratio: 16 / 9; flex: none; display: grid; place-items: center; text-align: center;
   box-shadow: var(--sunken); margin: 2px; cursor: pointer; border: 0; width: calc(100% - 4px); font: inherit;
+}
+#w-media .mp-layout { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+#w-media .playlist { flex: 1 1 auto; min-height: 0; }
+@container (min-width: 640px) {
+  #w-media .mp-layout { display: grid; grid-template-columns: 1fr minmax(240px, 30%); grid-template-rows: 1fr auto; height: 100%; }
+  #w-media .screen { grid-area: 1 / 1; aspect-ratio: auto; width: auto; height: auto; min-height: 0; }
+  #w-media .mp-controls { grid-area: 2 / 1; }
+  #w-media .playlist { grid-area: 1 / 2 / 3 / 3; max-height: none; margin: 2px 2px 2px 4px; }
+  #w-media .playlist img { width: 96px; height: 54px; }
 }
 .screen, .screen:visited, .screen:hover { color: #fff; text-decoration: none; }
 .screen:focus-visible { outline: 1px dotted #fff; outline-offset: -6px; }
+.screen.video { display: block; padding: 2px; cursor: default; }
+.screen[hidden] { display: none; }
+.screen.video iframe { display: block; width: 100%; height: 100%; border: 0; }
+.playlist li a[aria-current="true"] { background: var(--navy); color: #fff; }
 .screen .play { width: 0; height: 0; border: 22px solid transparent; border-left: 34px solid #00c000; border-right: 0; margin: 0 auto 10px; }
 .screen b { display: block; font-size: 12px; }
 .screen small { display: block; color: #aaa; margin-top: 4px; }
@@ -380,7 +399,7 @@ textarea.field { resize: none; font-family: "Courier New", monospace; font-size:
 .mp-controls .b { min-width: 0; padding: 2px 8px; }
 .mp-controls .track { flex: 1; height: 10px; box-shadow: var(--sunken); background: #fff; position: relative; margin: 0 6px; }
 .mp-controls .track::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 34%; background: var(--navy); }
-.playlist { margin: 0; padding: 2px; list-style: none; background: #fff; box-shadow: var(--sunken); max-height: 190px; overflow: auto; }
+.playlist { margin: 0; padding: 2px; list-style: none; background: #fff; box-shadow: var(--sunken); overflow: auto; }
 .playlist li a { display: flex; gap: 8px; align-items: center; padding: 3px; color: #000; text-decoration: none; }
 .playlist li a:hover, .playlist li a:focus-visible { background: var(--navy); color: #fff; outline: none; }
 .playlist img { width: 64px; height: 36px; object-fit: cover; border: 1px solid #000; }
@@ -393,12 +412,14 @@ textarea.field { resize: none; font-family: "Courier New", monospace; font-size:
 .files { width: 100%; border-collapse: collapse; font: inherit; user-select: text; }
 .files th { text-align: left; font-weight: 400; background: var(--face); box-shadow: var(--raised); padding: 3px 6px; position: sticky; top: 0; }
 .files td { padding: 3px 6px; white-space: nowrap; vertical-align: middle; }
+.files td:last-child { white-space: normal; min-width: 110px; }
 .files td:first-child { display: flex; gap: 6px; align-items: center; }
 .files tr:hover td { background: var(--navy); color: #fff; }
 
 /* ── Welcome ────────────────────────────────────────────────── */
 #w-welcome { width: min(520px, calc(100vw - 24px)); left: 220px; top: 80px; }
-.welcome { display: grid; grid-template-columns: 150px 1fr; min-height: 260px; }
+/* The pane scrolls on a short screen so the buttons below it stay put. */
+.welcome { display: grid; grid-template-columns: 150px 1fr; flex: 1 1 260px; min-height: 0; overflow: auto; }
 .welcome .side { background: linear-gradient(180deg, var(--navy), var(--navy2)); color: #fff; padding: 18px 14px; }
 .welcome .side h2 { font: 700 20px/1.15 var(--ui); margin: 0 0 6px; }
 .welcome .side p { margin: 0; color: #fff; }
@@ -620,7 +641,7 @@ textarea.field { resize: none; font-family: "Courier New", monospace; font-size:
 #s-regionos .bar .sitenav a, #s-regionos .bar a { color: #fff; }
 #s-snipai .sitenav a { color: #00ff41; }
 #s-alpha .sitenav a { color: #ffcc66; }
-#s-beta .sitenav a { color: #fff; }
+:is(#s-beta, #s-beta-dev) .sitenav a { color: #fff; }
 .sitenav .box { border: 2px solid; padding: 6px 8px; margin-bottom: 10px; }
 .sitenav .box b { display: block; margin-bottom: 4px; text-transform: uppercase; }
 .webmaster { text-align: center; font: 11px/1.4 Verdana, Arial, sans-serif; margin: 10px 0; }
@@ -732,20 +753,26 @@ textarea.field { resize: none; font-family: "Courier New", monospace; font-size:
 #s-alpha .shots a { border-color: #ffd700; background: #000; }
 #s-alpha .b88 { border-color: #ffd700; background: #10104a; color: #ffd700; }
 
-#s-beta { background: #000; color: #c0c0c0; font: 13px/1.4 "Courier New", Courier, monospace; --wa-fill: #fff; --wa-line: #444; --wa-shade: #666; }
-#s-beta a:not(.dl-real) { color: #fff; }
-#s-beta a:not(.dl-real):visited { color: #aaa; }
-#s-beta a:not(.dl-real):hover { color: #ff0; }
-#s-beta pre.map { margin: 0 0 10px; font: 13px/1.15 "Courier New", monospace; color: #888; overflow: auto; }
-#s-beta pre.map b { color: #fff; font-weight: 400; }
-#s-beta pre.map i { color: #ff0; font-style: normal; }
-#s-beta pre.map u { color: #f44; text-decoration: none; }
-#s-beta h2 { font: 700 13px/1.3 "Courier New", monospace; color: #fff; margin: 14px 0 6px; text-transform: uppercase; }
-#s-beta h2::before { content: "== "; } #s-beta h2::after { content: " =="; }
-#s-beta .spec, #s-beta .hard, #s-beta .ring, #s-beta .foot, #s-beta .sitenav .box { border-color: #888; }
-#s-beta .shots a { border-color: #888; background: #000; }
-#s-beta .b88 { border-color: #888; background: #1a1a1a; color: #fff; }
-#s-beta a.dl-real.quiet, #s-beta a.dl-real.quiet:visited, #s-beta a.dl-real.quiet:hover { background: #222; color: #fff; border-color: #888; }
+:is(#s-beta, #s-beta-dev) { background: #000; color: #c0c0c0; font: 13px/1.4 "Courier New", Courier, monospace; --wa-fill: #fff; --wa-line: #444; --wa-shade: #666; }
+:is(#s-beta, #s-beta-dev) a:not(.dl-real) { color: #fff; }
+:is(#s-beta, #s-beta-dev) a:not(.dl-real):visited { color: #aaa; }
+:is(#s-beta, #s-beta-dev) a:not(.dl-real):hover { color: #ff0; }
+:is(#s-beta, #s-beta-dev) pre.map { margin: 0 0 10px; font: 13px/1.15 "Courier New", monospace; color: #888; overflow: auto; }
+:is(#s-beta, #s-beta-dev) pre.map b { color: #fff; font-weight: 400; }
+:is(#s-beta, #s-beta-dev) pre.map i { color: #ff0; font-style: normal; }
+:is(#s-beta, #s-beta-dev) pre.map u { color: #f44; text-decoration: none; }
+:is(#s-beta, #s-beta-dev) h2 { font: 700 13px/1.3 "Courier New", monospace; color: #fff; margin: 14px 0 6px; text-transform: uppercase; }
+:is(#s-beta, #s-beta-dev) h2::before { content: "== "; } :is(#s-beta, #s-beta-dev) h2::after { content: " =="; }
+:is(#s-beta, #s-beta-dev) .spec, :is(#s-beta, #s-beta-dev) .hard, :is(#s-beta, #s-beta-dev) .ring, :is(#s-beta, #s-beta-dev) .foot, :is(#s-beta, #s-beta-dev) .sitenav .box { border-color: #888; }
+:is(#s-beta, #s-beta-dev) .shots a { border-color: #888; background: #000; }
+:is(#s-beta, #s-beta-dev) .b88 { border-color: #888; background: #1a1a1a; color: #fff; }
+:is(#s-beta, #s-beta-dev) a.dl-real.quiet, :is(#s-beta, #s-beta-dev) a.dl-real.quiet:visited, :is(#s-beta, #s-beta-dev) a.dl-real.quiet:hover { background: #222; color: #fff; border-color: #888; }
+/* Dev log: one full-width shot per entry, then the problem and how it was found. */
+#s-beta-dev .devlog section { border-top: 1px dashed #444; padding-top: 4px; margin-top: 14px; }
+#s-beta-dev .devshot { display: block; }
+#s-beta-dev .devshot a { display: block; max-width: 520px; }
+#s-beta-dev .devshot img { width: 100%; height: auto; }
+#s-beta-dev .hard p { font-size: 13px; line-height: 1.45; }
 
 #s-links { background: #fff; }
 #s-links h2 { font: 700 18px/1.3 "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive; color: #000080; margin: 10px 0 6px; }
@@ -759,8 +786,8 @@ textarea.field { resize: none; font-family: "Courier New", monospace; font-size:
 #s-404 hr { border-top: 1px solid #c0c0c0; }
 
 /* ── Phones ─────────────────────────────────────────────────── */
-@media (max-width: 700px) {
-  #desktop { display: grid; grid-template-columns: repeat(4, 1fr); justify-items: center; align-content: start; gap: 8px 0; padding: 14px 4px 8px; }
+@media (max-width: 700px), (max-height: 500px) {
+  #desktop { display: grid; grid-template-columns: repeat(auto-fill, minmax(76px, 1fr)); justify-items: center; align-content: start; gap: 8px 0; padding: 14px 4px 8px; }
   /* On phones the shortcut lives in the taskbar, where the clock was, so it never covers a window. */
   .to-pro { top: auto; bottom: 3px; right: 3px; z-index: 101; padding: 2px 8px 2px 5px; min-height: 22px; }
   .tray { display: none; }
@@ -785,6 +812,7 @@ textarea.field { resize: none; font-family: "Courier New", monospace; font-size:
   .wordart { font-size: clamp(28px, 9vw, 40px); }
   #startmenu { width: min(260px, calc(100vw - 4px)); }
   #s-beta pre.map { font-size: 9.5px; line-height: 1.1; }
+  .files th:nth-child(2), .files td:nth-child(2) { display: none; }
   .sbar .prog { width: 60px; }
   .tools .throb { width: 28px; height: 28px; }
 }

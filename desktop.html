@@ -7,8 +7,8 @@
 <meta name="description" content="Emery Reszka's games on an old basement PC: a Windows 98 desktop with each game as its own 2000-era download site.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#008080">
-<link rel="stylesheet" href="style.css?v=9">
-<script src="basement.js?v=9" defer></script>
+<link rel="stylesheet" href="style.css?v=17">
+<script src="basement.js?v=16" defer></script>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'><rect width='16' height='16' fill='%23008080'/><rect x='2' y='3' width='12' height='2' fill='%23000080'/><rect x='2' y='5' width='12' height='8' fill='%23c0c0c0'/><rect x='4' y='7' width='8' height='4' fill='%23fff'/></svg>">
 </head>
 <body>
@@ -193,7 +193,7 @@
             </aside>
             <main>
               <h2>Welcome to my homepage!!!</h2>
-              <p class="intro">I'm Emery Reszka. I study Computer Science at Florida Gulf Coast University and graduate in May 2027. This is where I keep the games I've made: a JRPG in GameMaker and a roguelike in Python, both mostly to practice procedural generation. Every button on these pages goes to the real thing, except the flashing ones, which go to an error box.</p>
+              <p class="intro">I'm Emery Reszka. I study Computer Science at Florida Gulf Coast University and graduate in May 2027. This is where I keep the games I've made: a JRPG in GameMaker and a top-down RPG in C++, both mostly to practice procedural generation. Every button on these pages goes to the real thing, except the flashing ones, which go to an error box.</p>
               <h2>The games</h2>
               <div class="featured">
                 <section class="game" aria-labelledby="fg-alpha">
@@ -209,14 +209,14 @@
                 </section>
                 <section class="game" aria-labelledby="fg-beta">
                   <h3 id="fg-beta"><a href="#beta">Project Beta</a> <span class="new" aria-label="In progress"><svg><use href="#i-star"/></svg><b>WIP!</b></span></h3>
-                  <a class="thumb" href="#beta"><img src="img/beta-1.png" width="1332" height="999" loading="lazy" alt="Project Beta: a generated dungeon level"></a>
-                  <p>A roguelike in Python with Tcod, where every run generates a new world.</p>
+                  <a class="thumb" href="#beta"><img src="img/beta-town.png" width="1408" height="960" loading="lazy" alt="Project Beta: the starting town, with a road, a pond and forest"></a>
+                  <p>A top-down RPG in C++ and SDL2 that generates a whole new world from every seed.</p>
                   <table class="spec">
-                    <tr><th>Library</th><td>Python + Tcod</td></tr>
+                    <tr><th>Language</th><td>C++17 + SDL2</td></tr>
                     <tr><th>Status</th><td>In progress</td></tr>
                     <tr><th>Get it</th><td>Not yet</td></tr>
                   </table>
-                  <p class="enter"><a href="#beta">Enter the dungeon &raquo;</a></p>
+                  <p class="enter"><a href="#beta">Enter the dungeon &raquo;</a> &middot; <a href="#beta-dev">Dev log</a></p>
                 </section>
               </div>
               <h2>News</h2>
@@ -289,7 +289,7 @@
       </article>
 
       <!-- Project Beta -->
-      <article class="site" id="s-beta" data-url="http://emeryzone.basement/games/beta.htm" data-title="Project Beta (roguelike)">
+      <article class="site" id="s-beta" data-url="http://emeryzone.basement/games/beta.htm" data-title="Project Beta (C++ RPG)">
         <div class="wrap">
 <pre class="map" aria-hidden="true">########################        #############
 #......................#        #...........#
@@ -302,45 +302,129 @@
     ######################.............#
                          ##############</pre>
           <h1><span class="wordart straight">Project Beta</span></h1>
-          <p class="tagline">a roguelike in Python with Tcod</p>
-          <div class="uc"><svg><use href="#i-hat"/></svg><span>Under construction. Every run is different; so is every build.</span><svg><use href="#i-hat"/></svg></div>
+          <p class="tagline">a top-down RPG in C++ with SDL2</p>
+          <div class="uc"><svg><use href="#i-hat"/></svg><span>Under construction. Every seed is a different world; so is every build.</span><svg><use href="#i-hat"/></svg></div>
           <div class="cols">
             <aside class="sitenav" aria-label="Site navigation">
               <div class="box"><b>[beta]</b>
                 <ul>
                   <li><a href="#portal">&laquo; Back to the Zone</a></li>
                   <li><a href="#s-beta-shots">Screenshots</a></li>
+                  <li><a href="#beta-dev">Dev log</a></li>
                   <li><a href="#alpha">My other game</a></li>
                   <li><button type="button" data-open="w-mail">Mail</button></li>
                 </ul>
               </div>
               <div class="box"><b>Hit counter</b><span class="counter" data-counter aria-hidden="true"></span><p class="counter-note">Visitor <span data-counter-n>1</span>. Counted here, on your machine.</p></div>
-              <div class="b88s"><span class="b88">Python + Tcod</span><span class="b88">Procgen</span></div>
+              <div class="b88s"><span class="b88">C++ / SDL2</span><span class="b88">Procgen</span></div>
             </aside>
             <main>
               <h2>About</h2>
-              <p>A roguelike built with Python and Tcod, made mainly to practice procedural generation. The current problem is making a generated world that feels different every single run instead of the same corridors in a new order.</p>
+              <p>A top-down RPG I'm writing in C++17 with SDL2, with no engine. Every seed generates a 3000 by 3000 tile world: biomes, rivers, cliffs, fifteen settlements joined by roads, and nine kinds of dungeon. Fights are bullet-hell battles. I started it in April 2026 to practice procedural generation.</p>
+              <p>What went wrong along the way, and how I found it, is in the <a href="#beta-dev">dev log</a>.</p>
               <h2>Download</h2>
-              <p>Not yet. It isn't done. When it is, the button will be here and it will be green.</p>
+              <p>Not yet. It isn't done. When it is, the button will be here and it will be green. The source is public.</p>
+              <div class="dl-row">
+                <a class="dl-real quiet" href="https://github.com/eareszka/C-game" target="_blank" rel="noopener" data-file="Project Beta source code" data-from="github.com" data-info="The repository on GitHub: the game, the world generator and the tools I test it with.">Read the source</a>
+              </div>
               <button type="button" class="ad red" data-msg="No. There is no beta of Project Beta yet. When there is, it will be a green button, and it will say where it goes.">DOWNLOAD BETA v99.9 <svg class="arrow"><use href="#i-down"/></svg><small>leaked build!!!</small></button>
               <div id="s-beta-shots">
                 <h2>Screenshots</h2>
                 <div class="shots">
-                  <a href="img/beta-1.png"><img class="wide" src="img/beta-1.png" width="1332" height="999" loading="lazy" alt="Project Beta: a generated dungeon level with the player, enemies and a message log"></a>
-                  <a href="img/beta-2.png"><img class="wide" src="img/beta-2.png" width="1332" height="993" loading="lazy" alt="Project Beta: another generated level"></a>
+                  <a href="img/beta-town.png"><img class="wide" src="img/beta-town.png" width="1408" height="960" loading="lazy" alt="Project Beta: the starting town, with a road, a pond and forest"></a>
+                  <a href="img/beta-cliffs.png"><img class="wide" src="img/beta-cliffs.png" width="1408" height="960" loading="lazy" alt="Project Beta: cliffs and plateaus on a snowfield"></a>
+                  <a href="img/beta-cave.png"><img class="wide" src="img/beta-cave.png" width="1408" height="960" loading="lazy" alt="Project Beta: a cave dungeon with an enemy and a piece of loot"></a>
                 </div>
                 <p class="shot-note">Click a picture to see it full size.</p>
               </div>
               <table class="spec">
-                <tr><th>Language</th><td>Python</td></tr>
-                <tr><th>Library</th><td>Tcod</td></tr>
-                <tr><th>Genre</th><td>Roguelike</td></tr>
+                <tr><th>Language</th><td>C++17</td></tr>
+                <tr><th>Library</th><td>SDL2 + SDL2_image</td></tr>
+                <tr><th>Genre</th><td>Top-down RPG</td></tr>
+                <tr><th>World</th><td>3000 &times; 3000 tiles, generated from a seed</td></tr>
                 <tr><th>Status</th><td>In progress</td></tr>
               </table>
               <div class="ring"><b>The Basement Webring</b><nav aria-label="Webring"><a href="#alpha" data-ring="prev">&laquo; Previous</a> <a href="#portal" data-ring="rand">Random</a> <a href="#links" data-ring="next">Next &raquo;</a> <a href="#portal">List sites</a></nav></div>
             </main>
           </div>
           <div class="foot"><p class="lastupd">Last updated: 9/27/2026 (this page). The game changes every run and every build.</p><p>You descend. <a href="#portal">Back to the Zone</a>.</p></div>
+        </div>
+      </article>
+
+      <!-- Project Beta: dev log. Entries are drafted from the commit history; Emery to confirm the wording of each. -->
+      <article class="site" id="s-beta-dev" data-url="http://emeryzone.basement/games/beta_dev.htm" data-title="Project Beta - dev log">
+        <div class="wrap">
+          <h1><span class="wordart straight">Dev Log</span></h1>
+          <p class="tagline">Project Beta: what broke, and how I found out why</p>
+          <div class="cols">
+            <aside class="sitenav" aria-label="Site navigation">
+              <div class="box"><b>[dev log]</b>
+                <ul>
+                  <li><a href="#beta">&laquo; Back to Beta</a></li>
+                  <li><a href="#dev-camera">The camera</a></li>
+                  <li><a href="#dev-cliffs">Cliffs</a></li>
+                  <li><a href="#dev-wrap">The wrapping world</a></li>
+                  <li><a href="#dev-speed">16 seconds</a></li>
+                  <li><a href="#dev-towns">Ghost towns</a></li>
+                  <li><a href="#dev-chasers">Stacked enemies</a></li>
+                </ul>
+              </div>
+              <div class="b88s"><span class="b88">C++ / SDL2</span><span class="b88">No engine</span></div>
+            </aside>
+            <main class="devlog">
+              <p>Newest first. Every number here was measured, mostly by small tools I wrote to render or count the world without opening the game. Pictures come from those same tools.</p>
+
+              <!-- draft: Emery to confirm -->
+              <section id="dev-camera">
+                <h2>Sep 30: Dashes crawling over the ground</h2>
+                <p>Fullscreen, thin dark dashes appeared across the grass and moved as I walked. Windowed they never showed up. Later, at zooms like 0.75x, the player wobbled by a pixel and the tile seams shimmered while scrolling.</p>
+                <div class="hard"><h3>How I found it</h3><p>Fullscreen the frame was scaled by 2.25, so tile edges landed on quarter pixels and sometimes sampled the row of the neighbouring sprite in the tile sheet. I matched the bad rows pixel for pixel to the tree art above the grass. The fix was to draw each frame at 1:1 and scale it once. The wobble came from float rounding at fractional zooms, so the camera now keeps its position in whole screen pixels.</p></div>
+              </section>
+
+              <!-- draft: Emery to confirm -->
+              <section id="dev-cliffs">
+                <h2>Aug 10 to Sep 29: Cliffs, four times</h2>
+                <div class="shots devshot"><a href="img/beta-cliffs.png"><img src="img/beta-cliffs.png" width="1408" height="960" loading="lazy" alt="Cliffs and plateaus on a snowfield, built from stamped landforms"></a></div>
+                <p>The cliffs started as flat brown tiles, then a nine-slice, then a set of drawing rules copied from how MOTHER&nbsp;1 draws its cliffs. Each version broke somewhere new: corners halfway down a face, ground sealed inside walls, pillars nobody could reach.</p>
+                <div class="hard"><h3>What finally worked</h3><p>Stop drawing cliffs by rule. The world now stamps whole landforms: big ones spliced from the full MOTHER&nbsp;1 overworld at seams where every 2&times;2 block of sprites already exists in that map, small ones grown from my own island drawings with wave function collapse.</p></div>
+              </section>
+
+              <!-- draft: Emery to confirm -->
+              <section id="dev-wrap">
+                <h2>Sep 27: A world that wraps</h2>
+                <div class="shots devshot"><a href="img/beta-map.png"><img src="img/beta-map.png" width="3000" height="3000" loading="lazy" alt="The whole world of seed 387, one pixel per tile: rivers in navy, roads in blue, towns in yellow, the wasteland in brown"></a></div>
+                <p>I joined the map's edges so you can walk off one side and come back on the other. The edges met, but the land didn't: every noise pattern, smoothing filter and river still treated the edge as an edge, so the ground stopped dead at the seam.</p>
+                <div class="hard"><h3>The hard part</h3><p>Every stage of generation had to treat the joined axis as a circle, from the coastline smoothing to the rivers stepping across. Then the biome mix had drifted, so I retuned it until eight test seeds were within a point of the old worlds (sand 4.3% against 4.6%). A census tool checks the seam's two edges against every other pair of neighbouring lines.</p></div>
+                <p class="shot-note">Above: the whole world, one pixel to the tile. Fifteen settlements and the roads joining them.</p>
+              </section>
+
+              <!-- draft: Emery to confirm -->
+              <section id="dev-speed">
+                <h2>Aug 14: Sixteen seconds to build a world</h2>
+                <p>The player waits while the world generates, and it took 15.6 seconds.</p>
+                <div class="hard"><h3>How I fixed it</h3><p>I timed every stage first. One pass asked "is there snow within fifty tiles?" for every desert tile, a 101&times;101 scan each time; it now runs once for the whole map. A smoothing filter recounted its 49-tile window for every tile, 17 times over 9 million tiles; it now slides the window instead. 15.6 seconds became 2.9, and a hash of all nine million tiles proved each change built the exact same world.</p></div>
+              </section>
+
+              <!-- draft: Emery to confirm -->
+              <section id="dev-towns">
+                <h2>Aug 9: Towns in the middle of nowhere</h2>
+                <div class="shots devshot"><a href="img/beta-town.png"><img src="img/beta-town.png" width="1408" height="960" loading="lazy" alt="The starting town, with a road, a pond and forest"></a></div>
+                <p>Moats, winding paths and buildings kept showing up out in the wilderness, with working doors into real interiors that nobody had placed.</p>
+                <div class="hard"><h3>How I found it</h3><p>Reading the code didn't find it; my first theory was wrong. So I made the generator snapshot the map after each of its two dozen stages and diffed them. The town stage was reading two empty town layouts that were declared one row tall, so the loop read about 97&nbsp;KB past a 624-byte array, straight into the real starting town's layout, shifted by a row. That's why the junk looked hand-made.</p></div>
+              </section>
+
+              <!-- draft: Emery to confirm -->
+              <section id="dev-chasers">
+                <h2>Aug 7: Enemies stacking on each other</h2>
+                <div class="shots devshot"><a href="img/beta-cave.png"><img src="img/beta-cave.png" width="1408" height="960" loading="lazy" alt="A cave dungeon with an enemy (red) and a piece of loot (gold)"></a></div>
+                <p>Enemies chasing you through a cave merged into one sprite. My separation pass pushed overlapping pairs apart twice per frame, and it still wasn't enough.</p>
+                <div class="hard"><h3>How I measured it</h3><p>A stress test over 900 frames: in a one-tile corridor the closest two enemies sat 0.42 pixels apart, against a 14-pixel sprite. Each sweep only moves a push one link along a queue, so I sweep until nothing overlaps (at most 32 times). Closest approach went to about 15 pixels in every test, with zero overlapping frames.</p></div>
+              </section>
+
+              <div class="ring"><b>The Basement Webring</b><nav aria-label="Webring"><a href="#alpha" data-ring="prev">&laquo; Previous</a> <a href="#portal" data-ring="rand">Random</a> <a href="#links" data-ring="next">Next &raquo;</a> <a href="#portal">List sites</a></nav></div>
+            </main>
+          </div>
+          <div class="foot"><p class="lastupd">Last updated: 10/1/2026. The source for all of this is on <a href="https://github.com/eareszka/C-game" target="_blank" rel="noopener">GitHub</a>.</p><p><a href="#beta">Back to Beta</a> &middot; <a href="#portal">Back to the Zone</a></p></div>
         </div>
       </article>
 
@@ -393,7 +477,7 @@
   <header class="tbar"><svg class="ico16"><use href="#i-computer"/></svg><h2 class="ttl" id="w-sys-t">System Properties</h2></header>
   <div class="body">
     <div class="tabs" role="tablist"><button class="tab" role="tab" aria-selected="true">General</button><button class="tab" role="tab" aria-selected="false" disabled>Device Manager</button><button class="tab" role="tab" aria-selected="false" disabled>Performance</button></div>
-    <div class="sheet">
+    <div class="sheet scroll">
       <dl>
         <dt>System:</dt>
         <dd>The Basement 98<br>Second Edition</dd>
@@ -484,15 +568,18 @@ SCHOOL AND JOBS
   <header class="tbar"><svg class="ico16"><use href="#i-media"/></svg><h2 class="ttl" id="w-media-t">Media Player - @EmeryReszka</h2></header>
   <div class="mbar" data-mbar></div>
   <div class="body">
+    <div class="mp-layout">
     <a class="screen" href="https://www.youtube.com/@EmeryReszka" target="_blank" rel="noopener"><span><span class="play" aria-hidden="true"></span><b>@EmeryReszka on YouTube</b><small>Click to open the channel</small></span></a>
+    <div class="screen video" data-screen hidden></div>
     <div class="mp-controls">
       <button class="b" type="button" data-media="play" aria-label="Play">&#9654;</button>
-      <button class="b" type="button" disabled aria-label="Pause">&#10074;&#10074;</button>
-      <button class="b" type="button" disabled aria-label="Stop">&#9632;</button>
+      <button class="b" type="button" data-media="pause" disabled aria-label="Pause">&#10074;&#10074;</button>
+      <button class="b" type="button" data-media="stop" disabled aria-label="Stop">&#9632;</button>
       <span class="track" aria-hidden="true"></span>
       <svg class="ico16"><use href="#i-speaker"/></svg>
     </div>
-    <ul class="playlist scroll" data-playlist><li class="hint">Loading the three latest uploads&hellip;</li></ul>
+    <ul class="playlist scroll" data-playlist></ul>
+    </div>
   </div>
 </section>
 
@@ -526,7 +613,7 @@ SCHOOL AND JOBS
 <section class="win" id="w-welcome" role="dialog" aria-labelledby="w-welcome-t" hidden data-icon="i-flag" data-controls="close">
   <header class="tbar"><svg class="ico16"><use href="#i-flag"/></svg><h2 class="ttl" id="w-welcome-t">Welcome</h2></header>
   <div class="body">
-    <div class="welcome">
+    <div class="welcome scroll">
       <div class="side"><h2>Welcome to The Basement</h2><p>The old computer where I keep my projects.</p></div>
       <div class="main">
         <h3>Everything on this desktop works.</h3>

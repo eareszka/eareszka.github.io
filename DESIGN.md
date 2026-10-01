@@ -353,7 +353,7 @@ Two palettes: the flat Windows 98 system set for the shell, and one small loud p
 ### Tertiary (per site)
 - **Portal**: cream confetti ground (#FFFFE8 with red, blue, gold and green dots), navy headings and table heads (#000080), "best viewed" red (#B00000), red WordArt (#FF0000 over #7A0000), rainbow WordArt on the banner.
 - **Project Alpha**: starfield navy (#000033), off-white text (#EEEEEE), gold accent (#FFD700) on borders, headings and WordArt, links #FFCC66, visited #D9A3FF.
-- **Project Beta**: black (#000000), silver text (#C0C0C0), white accent, grey borders (#888888), yellow hover (#FFFF00), ASCII map in #888 with white walls, yellow player and red monster (#FF4444).
+- **Project Beta** (C++ / SDL2 top-down RPG) and its **dev log** sub-page (`#s-beta-dev`, `beta_dev.htm`, same palette): black (#000000), silver text (#C0C0C0), white accent, grey borders (#888888), yellow hover (#FFFF00), ASCII map in #888 with white walls, yellow player and red monster (#FF4444).
 - **Links**: white page, navy Comic Sans headings, blue WordArt (#0000FF over #000080).
 - **404**: the IE "page cannot be displayed" page: white, Arial, heading #0000A0, a #C0C0C0 rule.
 
@@ -396,11 +396,11 @@ Two palettes: the flat Windows 98 system set for the shell, and one small loud p
 
 ## Layout
 
-The desktop is the viewport minus a 28px taskbar. Desktop icons are 76px wide and flow in a column down the left (flex column, wrapping into a second column if needed), with a bevelled "Back to the recruiter view" shortcut pinned top right (8px / 10px). Windows are absolutely positioned and cascade from fixed offsets: IE at 90 / 18 up to 940 x 760 (capped to the viewport minus 32 / 64), System Properties 430px wide at 260 / 70, Notepad 500 x 420 at 320 / 90, Outlook Express 520 x 440 at 200 / 60, Media Player 400px at 420 / 120, Recycle Bin 460 x 320 at 360 / 140, Welcome 520px at 220 / 80, Image Preview 720 x 620 at 140 / 30. Dialogs are 420px wide, centred at 40% height. Windows are draggable by their title bar, resizable from a 14px grip, and maximise to the desktop. The IE window is toolbar (48px buttons with labels, 34px throbber well), address bar, pane, then a status bar with message, 120px progress well and 130px zone.
+The desktop is the viewport minus a 28px taskbar. Desktop icons are 76px wide and flow in a column down the left (flex column, wrapping into a second column if needed), with a bevelled "Back to the recruiter view" shortcut pinned top right (8px / 10px). Windows are absolutely positioned and cascade from fixed offsets: IE at 90 / 18 up to 940 x 760 (capped to the viewport minus 32 / 64), System Properties 430px wide at 260 / 70, Notepad 500 x 420 at 320 / 90, Outlook Express 520 x 440 at 200 / 60, Media Player 400px at 420 / 120 (laid out by its own width: under 640px a 16:9 screen over the playlist, from 640px, i.e. maximized or a landscape phone, the screen fills the window with the playlist as a full-height column on the right; videos play in the screen through the youtube-nocookie embed), Recycle Bin 460 x 320 at 360 / 140, Welcome 520px at 220 / 80, Image Preview 720 x 620 at 140 / 30. Dialogs are 420px wide, centred at 40% height. Windows are draggable by their title bar, resizable from a 14px grip, and maximise to the desktop. The IE window is toolbar (48px buttons with labels, 34px throbber well), address bar, pane, then a status bar with message, 120px progress well and 130px zone.
 
 Inside the browser every site is a `.wrap` up to 780px with 8px / 10px / 14px padding, and a two-column `.cols` grid: 150px sidebar and fluid body (160px on the portal). The portal's body leads with two featured-game boxes side by side (one column under 700px): a navy title bar, a 16:10 screenshot thumbnail in a 2px black frame, one line, a three-row facts table and an "Enter" link. The 404 page is a 620px left-aligned column with 18px / 26px padding.
 
-Below 700px the desktop becomes a 4-column icon grid (8px row gap, 14px top padding); every non-dialog window fills the screen and loses its resize grip and maximise button; toolbar buttons drop their labels and the address label hides; the tray and clock hide and the recruiter-view shortcut moves into the taskbar at bottom right, with the task list reserving 118px for it; site columns stack to one; WordArt shrinks; the progress well narrows to 60px and the throbber to 28px; the Start menu caps at 260px.
+No window is ever taller than the screen above the taskbar or wider than the screen; when one is capped, its content pane scrolls and its button row stays in view. Phone mode is below 700px wide or 500px tall (landscape phones), one query shared by `style.css` and `basement.js`. In phone mode the desktop becomes an icon grid of 76px-minimum columns (four on a portrait phone; 8px row gap, 14px top padding); the Recycle Bin drops its Original location column; every non-dialog window fills the screen and loses its resize grip and maximise button; toolbar buttons drop their labels and the address label hides; the tray and clock hide and the recruiter-view shortcut moves into the taskbar at bottom right, with the task list reserving 118px for it; site columns stack to one; WordArt shrinks; the progress well narrows to 60px and the throbber to 28px; the Start menu caps at 260px.
 
 Shell rhythm is 1 / 2 / 3 / 4 / 6 / 8 / 12px: 1px bevel lines, 2px pane and menu padding, 3px window padding, 4px control padding, 6px dialog button gaps, 8px site gutters, 12px dialog padding. Buttons are 75 x 23px minimum; taskbar tasks are 160px (110px on phones); Start-menu items are 32px tall.
 
@@ -487,6 +487,9 @@ Wrapped row of 130px-tall images (110px for `.wide`) in white mats with a 2px bl
 ### Webring Box
 3px double border, centred Verdana 12px, uppercase 13px title "The Basement Webring", and a nav of Previous / Random / Next / List sites, each an in-page link to the next site in a fixed order.
 
+### Dev Log Entry
+Project Beta's dev log is a sub-page of its site, not a webring stop (its ring links walk as Beta). Entries run newest first: an `== DATE: TITLE ==` heading, one full-width screenshot up to 520px (opens full size in Image Preview), a plain paragraph saying what went wrong, then a "the hard part" box saying how it was found or measured. Numbers are the ones measured at the time; nothing is estimated.
+
 ### Site Nav
 Verdana 700 12px list with a `»` glyph before each item, links underlined in the site's link colour, wrapped in a 2px solid `.box` with an uppercase title. Holds Home, the site's sections and the hit counter box.
 
@@ -509,7 +512,7 @@ Verdana 700 12px list with a `»` glyph before each item, links underlined in th
 - **Do** animate in `steps()` and skip the boot, zoom and flying pages under reduced motion.
 - **Do** keep the period sizes (Tahoma 11px, Verdana 9px badges, 11px notes) and draw every icon as crisp SVG at 32px or 16px.
 - **Do** give every new site its own ground, link colours, heading face and WordArt colours, and its own webring box, counter, last-updated line and facts table.
-- **Do** keep a way back to the recruiter view visible: the top-right shortcut on desktop, the taskbar button on phones, and Log Off in the Start menu.
+- **Do** keep a way back to the recruiter view visible: the top-right shortcut on desktop (it sits behind windows so it never covers their title-bar buttons), the taskbar button on phones, and Log Off in the Start menu.
 
 ### Don't:
 - **Don't** add soft shadows, blur, rounded corners, alpha tints or hover lightening to the shell.

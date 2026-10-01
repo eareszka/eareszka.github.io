@@ -5,7 +5,7 @@
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const phone = () => innerWidth <= 700;
+  const phone = () => matchMedia('(max-width: 700px), (max-height: 500px)').matches; // same query as the phone block in style.css
   const TASKBAR = 28;
   const store = {
     get(k) { try { return localStorage.getItem(k); } catch { return null; } },
@@ -482,7 +482,7 @@
   pane.addEventListener('click', e => {
     const r = e.target.closest('[data-ring]'); if (!r) return;
     e.preventDefault(); e.stopImmediatePropagation();
-    const cur = RING.indexOf(hist[hidx]); const n = RING.length;
+    const cur = RING.indexOf(hist[hidx].split('-')[0]); const n = RING.length; // a sub-page (beta-dev) rings as its site
     let next;
     if (r.dataset.ring === 'prev') next = RING[(cur - 1 + n) % n];
     else if (r.dataset.ring === 'next') next = RING[(cur + 1) % n];
@@ -524,6 +524,26 @@
   const list = $('[data-playlist]');
   const FEED = 'https://www.youtube.com/feeds/videos.xml?channel_id=UCECn7n2-gTo-y8TKMrVWSBQ';
   const PROXIES = [u => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u), u => 'https://corsproxy.io/?url=' + encodeURIComponent(u)];
+  // The latest uploads as of Oct 2026, so the player works at once and without the
+  // proxies; the feed only replaces them if something newer has been posted.
+  const KNOWN = [
+    { id: 'hWUnvZ4FpI0', title: 'Geoguessr NO MOVING Challenge', date: new Date('2022-08-24T12:00') },
+    { id: 'pprcjlPzTK8', title: '24 HOUR ISLAND SURVIVAL CHALLENGE', date: new Date('2022-08-18T12:00') },
+    { id: 'oCWNff38Wsk', title: 'Geoguessr 10 SECONDS Per Round CHALLENGE #shorts', date: new Date('2022-03-06T12:00') },
+  ];
+  function render(vids) {
+    list.innerHTML = '';
+    vids.forEach(v => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = `https://www.youtube.com/watch?v=${v.id}`; a.target = '_blank'; a.rel = 'noopener'; a.dataset.vid = v.id;
+      const im = document.createElement('img'); im.src = `https://i.ytimg.com/vi/${v.id}/mqdefault.jpg`; im.alt = ''; im.loading = 'lazy';
+      const t = document.createElement('span'); t.textContent = v.title;
+      const d = document.createElement('small'); d.textContent = v.date.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+      t.append(d); a.append(im, t); li.append(a); list.append(li);
+    });
+  }
+  render(KNOWN);
   let feedLoaded = false;
   async function loadFeed() {
     if (feedLoaded) return; feedLoaded = true;
@@ -536,24 +556,45 @@
           title: en.getElementsByTagName('title')[0].textContent,
           date: new Date(en.getElementsByTagName('published')[0].textContent),
         }));
-        if (!vids.length) continue;
-        list.innerHTML = '';
-        vids.forEach(v => {
-          const li = document.createElement('li');
-          const a = document.createElement('a');
-          a.href = `https://www.youtube.com/watch?v=${v.id}`; a.target = '_blank'; a.rel = 'noopener';
-          const im = document.createElement('img'); im.src = `https://i.ytimg.com/vi/${v.id}/mqdefault.jpg`; im.alt = ''; im.loading = 'lazy';
-          const t = document.createElement('span'); t.textContent = v.title;
-          const d = document.createElement('small'); d.textContent = v.date.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
-          t.append(d); a.append(im, t); li.append(a); list.append(li);
-        });
+        // Swapping the list under a playing video would lose its highlight.
+        if (vids.length && vids[0].id !== KNOWN[0].id && screen.hidden) render(vids);
         return;
       } catch { /* try the next proxy */ }
     }
-    list.innerHTML = '<li class="hint">Couldn\'t read the channel feed. Click the screen to open the channel.</li>';
   }
   $('#w-media').addEventListener('win:open', loadFeed);
-  $('[data-media="play"]').addEventListener('click', () => window.open('https://www.youtube.com/@EmeryReszka', '_blank', 'noopener'));
+  // Plays in the window's own screen, through YouTube's privacy-enhanced embed.
+  const idle = $('#w-media a.screen'), screen = $('[data-screen]');
+  const mBtn = k => $(`[data-media="${k}"]`);
+  let paused = false;
+  function play(id) {
+    $$('a[data-vid]', list).forEach(a => a.setAttribute('aria-current', String(a.dataset.vid === id)));
+    screen.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&enablejsapi=1" title="YouTube video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+    idle.hidden = true; screen.hidden = false; paused = false;
+    mBtn('pause').disabled = mBtn('stop').disabled = false;
+  }
+  function stop() {
+    screen.innerHTML = ''; screen.hidden = true; idle.hidden = false;
+    mBtn('pause').disabled = mBtn('stop').disabled = true;
+    $$('a[data-vid]', list).forEach(a => a.removeAttribute('aria-current'));
+  }
+  list.addEventListener('click', e => {
+    const a = e.target.closest('a[data-vid]');
+    if (a && !e.ctrlKey && !e.metaKey && !e.shiftKey) { e.preventDefault(); play(a.dataset.vid); }
+  });
+  mBtn('play').addEventListener('click', () => {
+    const f = $('iframe', screen);
+    if (f && paused) { f.contentWindow.postMessage('{"event":"command","func":"playVideo","args":[]}', '*'); paused = false; return; }
+    const first = $('a[data-vid]', list);
+    if (first) play(first.dataset.vid);
+    else window.open('https://www.youtube.com/@EmeryReszka', '_blank', 'noopener');
+  });
+  mBtn('pause').addEventListener('click', () => {
+    const f = $('iframe', screen); if (!f) return;
+    f.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":[]}', '*'); paused = true;
+  });
+  mBtn('stop').addEventListener('click', stop);
+  $('#w-media').addEventListener('win:close', stop);
 
   /* ── Welcome ───────────────────────────────────────────────── */
   const welcomeToggle = $('[data-welcome-toggle]');
