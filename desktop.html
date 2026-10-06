@@ -361,6 +361,9 @@
               <div class="box"><b>[dev log]</b>
                 <ul>
                   <li><a href="#beta">&laquo; Back to Beta</a></li>
+                  <li><a href="#dev-crafting">Crafting</a></li>
+                  <li><a href="#dev-depth">Walking behind things</a></li>
+                  <li><a href="#dev-enemies">Enemy sprites</a></li>
                   <li><a href="#dev-camera">The camera</a></li>
                   <li><a href="#dev-cliffs">Cliffs</a></li>
                   <li><a href="#dev-wrap">The wrapping world</a></li>
@@ -373,6 +376,31 @@
             </aside>
             <main class="devlog">
               <p>Newest first. Every number here was measured, mostly by small tools I wrote to render or count the world without opening the game. Pictures come from those same tools.</p>
+
+              <!-- draft: Emery to confirm -->
+              <section id="dev-crafting">
+                <h2>Oct 6: Crafting, and a raft off the first island</h2>
+                <p>Weapons are now made, not found. Each one is a shape plus an ore: the shape decides how it swings or fires, the ore decides its damage, colour and what it can harvest. A TAB menu lists what you carry, what you can make and what each recipe still needs. Special parts come from the ruins, stonehenge and the catacombs.</p>
+                <div class="hard"><h3>The opening</h3><p>You start on an island ringed by water. To leave you build a raft from wood, vine taken from a Treesqueak and the raft book, and it sails straight until it hits land. The two dungeons on the starting island only hold the weakest enemies and never link to each other, and the graveyard's way down stays hidden until you break its gravestone. A small checker tool, <code>craftcheck</code>, confirms every recipe can actually be finished from what the world gives you.</p></div>
+              </section>
+
+              <!-- draft: Emery to confirm -->
+              <section id="dev-depth">
+                <h2>Oct 4: Walking behind a church</h2>
+                <div class="shots devshot"><a href="img/beta-church.png"><img src="img/beta-church.png" width="1408" height="960" loading="lazy" alt="A ruined church at the back of a walled graveyard full of gravestones"></a></div>
+                <p>Every dungeon entrance got its own building: ruins, a mausoleum, an oasis, pyramids, stonehenge, a dead giant oak and a ruined church at the back of the catacombs. They looked right until you walked near them. Tile collision made you bump into empty air around a roof, and the player was drawn either fully in front of a building or fully behind it.</p>
+                <div class="hard"><h3>How I fixed it</h3><p>Each building now reports two layers for every pixel: whether it's solid, and which ground row it stands on. The feet only collide with real footprints, so you can walk right up to a wall and behind a spire. Everything is drawn under the player first, then any pixel whose ground line is nearer than the player's feet is laid back over them. The same rule lets the oak's branches cover trees behind it. A doorway carves a short passage into the building, so you can only go in through the front, never from behind.</p></div>
+                <div class="shots devshot"><a href="img/beta-pyramid.png"><img src="img/beta-pyramid.png" width="1408" height="960" loading="lazy" alt="A stepped stone pyramid with a doorway at the top of its stairs"></a></div>
+                <p class="shot-note">Above: a step pyramid. On sand the same entrance becomes an Egyptian one.</p>
+              </section>
+
+              <!-- draft: Emery to confirm -->
+              <section id="dev-enemies">
+                <h2>Oct 2 to Oct 4: Every enemy gets a face</h2>
+                <div class="shots devshot"><a href="img/beta-enemies.png"><img src="img/beta-enemies.png" width="1474" height="206" loading="lazy" alt="A row of pixel art enemies: a small rodent, a red winged creature, a lake serpent, a giant antlion, a coiled snake with an elephant head and more"></a></div>
+                <p>Battles used to show a green box. Now each enemy has a sprite sheet: eight directions, each with its own idle animation, based on the creature's description in <i>A Book of Creatures</i>. It turns to face you and its hitbox scales with the sprite.</p>
+                <div class="hard"><h3>How they're made</h3><p>Small enemies are drawn as text grids; bigger ones, with many parts, come from small Python generators sharing a library of shapes. Aseprite paints the frames, and the build checks the exported sheet pixel by pixel against what was drawn. The biggest creatures get five or eight idle frames instead of three, so the battle code now reads a frame count per sheet.</p></div>
+              </section>
 
               <!-- draft: Emery to confirm -->
               <section id="dev-camera">
@@ -424,7 +452,7 @@
               <div class="ring"><b>The Basement Webring</b><nav aria-label="Webring"><a href="#alpha" data-ring="prev">&laquo; Previous</a> <a href="#portal" data-ring="rand">Random</a> <a href="#links" data-ring="next">Next &raquo;</a> <a href="#portal">List sites</a></nav></div>
             </main>
           </div>
-          <div class="foot"><p class="lastupd">Last updated: 10/1/2026. The source for all of this is on <a href="https://github.com/eareszka/C-game" target="_blank" rel="noopener">GitHub</a>.</p><p><a href="#beta">Back to Beta</a> &middot; <a href="#portal">Back to the Zone</a></p></div>
+          <div class="foot"><p class="lastupd">Last updated: 10/6/2026. The source for all of this is on <a href="https://github.com/eareszka/C-game" target="_blank" rel="noopener">GitHub</a>.</p><p><a href="#beta">Back to Beta</a> &middot; <a href="#portal">Back to the Zone</a></p></div>
         </div>
       </article>
 
