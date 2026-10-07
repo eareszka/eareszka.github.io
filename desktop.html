@@ -361,6 +361,7 @@
               <div class="box"><b>[dev log]</b>
                 <ul>
                   <li><a href="#beta">&laquo; Back to Beta</a></li>
+                  <li><a href="#dev-patterns">Bullet patterns</a></li>
                   <li><a href="#dev-crafting">Crafting</a></li>
                   <li><a href="#dev-depth">Walking behind things</a></li>
                   <li><a href="#dev-enemies">Enemy sprites</a></li>
@@ -376,6 +377,17 @@
             </aside>
             <main class="devlog">
               <p>Newest first. Every number here was measured, mostly by small tools I wrote to render or count the world without opening the game. Pictures come from those same tools.</p>
+
+              <!-- draft: Emery to confirm -->
+              <section id="dev-patterns">
+                <h2>Oct 7: Bullet patterns, EXP and the dungeons' outsides</h2>
+                <p>Enemies 04 to 12, from Lili to Ebigane, each got their own bullet pattern. New kinds of bullet came with them: mines that wait before they go off, boomerangs that come back, and shots that speed up or slow down. Volleys are fired in shapes too: blossoms, eyes, leopard spots and pentagrams. Some enemies fire on a breath frame of their idle animation, so you can read the attack coming.</p>
+                <div class="hard"><h3>Scoring a fight</h3><p>A hit now costs a whole bar of health and is clearly shown, and you can switch weapons mid-fight. EXP is a score of the fight: hits landed, bullets grazed and enemies defeated all count, and mining pays some too. Enough of it levels you up.</p></div>
+                <div class="shots devshot"><a href="img/beta-graveyard.png"><img src="img/beta-graveyard.png" width="1408" height="960" loading="lazy" alt="A fenced graveyard with rows of gravestones and a small mausoleum at the back"></a></div>
+                <p>Every dungeon now looks like where you came in. Ruins, pyramids and barrows have their own walls inside, doors and ladders lead between floors, and houses and the book shop have interiors.</p>
+                <div class="shots devshot"><a href="img/beta-stonehenge.png"><img src="img/beta-stonehenge.png" width="1408" height="960" loading="lazy" alt="A ring of standing stones around a stairway down, between a forest and a snowfield"></a></div>
+                <p class="shot-note">Above: a graveyard's mausoleum, and stonehenge with its stairway down. The gravestones and the fence can both be broken.</p>
+              </section>
 
               <!-- draft: Emery to confirm -->
               <section id="dev-crafting">
@@ -452,7 +464,7 @@
               <div class="ring"><b>The Basement Webring</b><nav aria-label="Webring"><a href="#alpha" data-ring="prev">&laquo; Previous</a> <a href="#portal" data-ring="rand">Random</a> <a href="#links" data-ring="next">Next &raquo;</a> <a href="#portal">List sites</a></nav></div>
             </main>
           </div>
-          <div class="foot"><p class="lastupd">Last updated: 10/6/2026. The source for all of this is on <a href="https://github.com/eareszka/C-game" target="_blank" rel="noopener">GitHub</a>.</p><p><a href="#beta">Back to Beta</a> &middot; <a href="#portal">Back to the Zone</a></p></div>
+          <div class="foot"><p class="lastupd">Last updated: 10/7/2026. The source for all of this is on <a href="https://github.com/eareszka/C-game" target="_blank" rel="noopener">GitHub</a>.</p><p><a href="#beta">Back to Beta</a> &middot; <a href="#portal">Back to the Zone</a></p></div>
         </div>
       </article>
 
