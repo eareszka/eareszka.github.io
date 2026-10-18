@@ -361,6 +361,8 @@
               <div class="box"><b>[dev log]</b>
                 <ul>
                   <li><a href="#beta">&laquo; Back to Beta</a></li>
+                  <li><a href="#dev-npcs">The townspeople</a></li>
+                  <li><a href="#dev-menus">Menus and HUD</a></li>
                   <li><a href="#dev-patterns">Bullet patterns</a></li>
                   <li><a href="#dev-crafting">Crafting</a></li>
                   <li><a href="#dev-depth">Walking behind things</a></li>
@@ -379,6 +381,26 @@
               <p>Newest first. Every number here was measured, mostly by small tools I wrote to render or count the world without opening the game. Pictures come from those same tools.</p>
 
               <!-- draft: Emery to confirm -->
+              <section id="dev-npcs">
+                <h2>Oct 17: A town that keeps its own hours</h2>
+                <div class="shots devshot"><a href="img/beta-npcs.png"><img src="img/beta-npcs.png" width="776" height="272" loading="lazy" alt="A lineup of 34 small pixel art townspeople facing forward, among them a sailor, a baker, a doctor, a grandmother and a woodcutter"></a></div>
+                <p>The first town has people in it now, and they have somewhere to be. The woodcutter walks to the nearest standing tree, chops it from the side, moves on when it falls, and goes home to bed at night. The mother cooks for an hour, then queues at the book shop behind the grandmother and walks home. The fisher, the courier and the gardener each have their own day, and at night most of them go to bed.</p>
+                <div class="shots devshot"><a href="img/beta-npc-day.png"><img src="img/beta-npc-day.png" width="1288" height="968" loading="lazy" alt="Four scenes: the woodcutter chopping at the edge of a forest, the gardener watering a tree by the road, a queue at the book shop desk, and two townspeople asleep in their beds"></a></div>
+                <div class="hard"><h3>One clock for everything</h3><p>The world runs on a single clock, a 30-minute day that stops in menus, conversations and battles, so nobody walks off while you're reading. Routines share one pathfinder that prefers the trails. Each routine has its own headless check that plays through the day, confirming that nobody walks through a wall, that everyone turns up where they should, and that saving mid-errand and loading puts them back where they were.</p></div>
+                <div class="shots devshot"><a href="img/beta-npc-talk.png"><img src="img/beta-npc-talk.png" width="640" height="480" loading="lazy" alt="Talking to the book shop clerk: a speech box reading 'Just restocking shelfs, need anything?' with three answers to pick from"></a></div>
+                <p class="shot-note">Above: the woodcutter, the gardener, a queue at the book shop and two sleepers, then a conversation. People turn to face you when you talk, and some let you choose what to say.</p>
+              </section>
+
+              <!-- draft: Emery to confirm -->
+              <section id="dev-menus">
+                <h2>Oct 15 to 17: Menus and the HUD</h2>
+                <div class="shots devshot"><a href="img/beta-menus.png"><img src="img/beta-menus.png" width="1288" height="968" loading="lazy" alt="Four menu screens: the item list, a weapon recipe with its upgrades and costs, the book shop selling a scythe book for 500 gold, and the rewards after a battle with an icon for each item"></a></div>
+                <p>The TAB menu, the book shop and the end of a battle all share one look now: the game's own cursor, a blinking arrow when a list goes on, and an icon beside every item. A recipe shows what it upgrades and what it still costs as a row of icons joined by plus signs. Things you make once and things you use up sit in separate columns, so a long list stays readable.</p>
+                <div class="shots devshot"><a href="img/beta-hud.png"><img src="img/beta-hud.png" width="1288" height="480" loading="lazy" alt="Two screens side by side: walking outside the starting house with health, level and EXP at the top, and a boss fight against Olgoi-Khorkhoi with its name and health bar at the top right"></a></div>
+                <p class="shot-note">Above: health, level and EXP stay at the top while you explore, and a boss adds its own name and health bar. Unlike the rest of this log, the menu and HUD shots are captured from the running game.</p>
+              </section>
+
+              <!-- draft: Emery to confirm -->
               <section id="dev-patterns">
                 <h2>Oct 7: Bullet patterns, EXP and the dungeons' outsides</h2>
                 <p>Enemies 04 to 12, from Lili to Ebigane, each got their own bullet pattern. New kinds of bullet came with them: mines that wait before they go off, boomerangs that come back, and shots that speed up or slow down. Volleys are fired in shapes too: blossoms, eyes, leopard spots and pentagrams. Some enemies fire on a breath frame of their idle animation, so you can read the attack coming.</p>
@@ -387,8 +409,9 @@
                 <p>Every dungeon now looks like where you came in. Ruins, pyramids and barrows have their own walls inside, doors and ladders lead between floors, and houses and the book shop have interiors.</p>
                 <div class="shots devshot"><a href="img/beta-house.png"><img src="img/beta-house.png" width="960" height="512" loading="lazy" alt="Inside the starting house: a red brick back wall with two windows, a plank floor, a chest of drawers and a low bed, with the door on the left wall"></a></div>
                 <div class="shots devshot"><a href="img/beta-bookshop.png"><img src="img/beta-bookshop.png" width="960" height="512" loading="lazy" alt="Inside the book shop: a wall of shelves full of red and blue books, a low counter and two small bookcases on a plank floor"></a></div>
+                <div class="shots devshot"><a href="img/beta-houses.png"><img src="img/beta-houses.png" width="968" height="520" loading="lazy" alt="Four more house interiors, each with its own brick and wall colours: a bedroom, a kitchen with a counter and stove, a sitting room with a green sofa, rug and bookcase, and a room with a red sofa and a bed"></a></div>
                 <div class="shots devshot"><a href="img/beta-stonehenge.png"><img src="img/beta-stonehenge.png" width="1408" height="960" loading="lazy" alt="A ring of standing stones around a stairway down, between a forest and a snowfield"></a></div>
-                <p class="shot-note">Above: a graveyard's mausoleum, the inside of the starting house and the book shop, and stonehenge with its stairway down. The gravestones and the fence can both be broken.</p>
+                <p class="shot-note">Above: a graveyard's mausoleum, the inside of the starting house, the book shop and four of the other houses, and stonehenge with its stairway down. The gravestones and the fence can both be broken.</p>
               </section>
 
               <!-- draft: Emery to confirm -->
@@ -466,7 +489,7 @@
               <div class="ring"><b>The Basement Webring</b><nav aria-label="Webring"><a href="#alpha" data-ring="prev">&laquo; Previous</a> <a href="#portal" data-ring="rand">Random</a> <a href="#links" data-ring="next">Next &raquo;</a> <a href="#portal">List sites</a></nav></div>
             </main>
           </div>
-          <div class="foot"><p class="lastupd">Last updated: 10/7/2026. The source for all of this is on <a href="https://github.com/eareszka/C-game" target="_blank" rel="noopener">GitHub</a>.</p><p><a href="#beta">Back to Beta</a> &middot; <a href="#portal">Back to the Zone</a></p></div>
+          <div class="foot"><p class="lastupd">Last updated: 10/17/2026. The source for all of this is on <a href="https://github.com/eareszka/C-game" target="_blank" rel="noopener">GitHub</a>.</p><p><a href="#beta">Back to Beta</a> &middot; <a href="#portal">Back to the Zone</a></p></div>
         </div>
       </article>
 
