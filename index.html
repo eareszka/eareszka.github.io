@@ -91,7 +91,7 @@
       <a class="action action--fill" href="Emery_Reszka_Resume.pdf" download><svg aria-hidden="true"><use href="#i-down"/></svg>Download r&eacute;sum&eacute; (PDF)</a>
       <a class="action action--wide" href="mailto:EmeryReszka@outlook.com?subject=Software%20engineering%20role%20-%20via%20eareszka.github.io">Email me</a>
       <a class="action action--quiet" href="https://github.com/eareszka" target="_blank" rel="noopener">GitHub</a>
-      <a class="action action--quiet" href="https://www.linkedin.com/in/emery-reszka-a18336251/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="action action--quiet" href="https://www.linkedin.com/in/emery-reszka/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
 
     <p class="blurb">Two of the projects below are live, one is on the Chrome Web Store, and one has a
@@ -115,11 +115,13 @@
             describes how each side is coming across.</p>
           <p class="hard">The model's wrong answers sound as confident as its right ones, so most of the work
             went into prompts: tightening them until replies came back in a format the interface could depend
-            on, and deciding what to show when they didn't. Screenshots are deleted after processing, so there
-            is no saved set of conversations to test a prompt change against.</p>
+            on, and deciding what to show when they didn't. Screenshots are deleted after processing, so I
+            built my own test set: 60 synthetic chat screens with exact transcripts. On it, a self-hosted
+            model running on my own GPU read who said what correctly 98.8% of the time, against 87% for
+            Claude Haiku, at half the latency.</p>
           <ul class="stack">
             <li>React Native</li><li>Expo</li><li>TypeScript</li><li>Python</li>
-            <li>Claude API</li><li>Prompt engineering</li><li>Fly.io</li><li>REST APIs</li>
+            <li>Claude API</li><li>Ollama</li><li>PyTorch</li><li>Prompt engineering</li><li>Fly.io</li>
           </ul>
           <p class="go"><a href="https://wingit-backend.fly.dev" target="_blank" rel="noopener">Open the live app<svg aria-hidden="true"><use href="#i-out"/></svg></a></p>
         </div>
@@ -136,14 +138,16 @@
         <span class="lane-no" aria-hidden="true">2</span>
         <div class="lane-body">
           <h3>Pulse</h3>
-          <p class="what">A dashboard that tracks several unrelated markets at once. Live since January 2026.</p>
-          <p>It puts stock prices, Polymarket prediction markets, and sports betting lines on one screen and
-            flags a market that moves when the other sources don't.</p>
+          <p class="what">A watchlist that alerts you when a market moves. Live since January 2026.</p>
+          <p>Paste a Polymarket or Kalshi link or a stock ticker and set a threshold. Pulse polls it every
+            45 seconds and pushes an alert to your phone or browser the moment it moves past that line.</p>
           <p class="hard">Most of the work was on the data. Sources disagree with each other, fields
-            disappear without notice, and rate limits cut polls off partway through. I still can't always
-            tell a real spike from a bad row that got through.</p>
+            disappear without notice, and rate limits cut polls off partway through. Polls run with a
+            concurrency limit and fetch each market once no matter how many people track it, so a cycle
+            stays the same length as the list grows.</p>
           <ul class="stack">
-            <li>Python</li><li>Multi-source aggregation</li><li>REST APIs</li><li>JSON</li><li>Vercel</li>
+            <li>JavaScript</li><li>Node.js</li><li>Express</li><li>PostgreSQL</li><li>Supabase</li>
+            <li>Web Push</li><li>Fly.io</li><li>Vercel</li>
           </ul>
           <p class="go"><a href="https://pulse-sooty-pi.vercel.app/" target="_blank" rel="noopener">Open the live dashboard<svg aria-hidden="true"><use href="#i-out"/></svg></a></p>
         </div>
@@ -212,19 +216,43 @@
         <p class="pad"><span class="sr">Status: </span><span>Web Store</span></p>
       </li>
 
-      <li class="lane lane--text" data-scroll>
+      <li class="lane" data-scroll>
         <span class="lane-no" aria-hidden="true">5</span>
         <div class="lane-body">
-          <h3>Campus event management system</h3>
-          <p class="what">A Django application built by a team on sprint cycles, where I owned registration and waitlists.</p>
-          <p>Accounts and roles, event registration, waitlists, and attendance tracking, built for one
-            organization rather than the public. Frontend and backend were split between separate groups.</p>
-          <p class="hard">Waitlists took longer than I expected. Storing each person's position as a number
-            makes reads cheap, but one cancellation in the middle means updating every row after it.
-            Role-based access touched the same rows: an organizer and a student looking at the same
-            registration are allowed to see different fields.</p>
+          <h3>Four Castle Chronicles</h3>
+          <p class="what">A top-down RPG in about 63,000 lines of C++17 and SDL2, built solo.</p>
+          <p>Every world is generated from a seed: a 9-million-tile overworld with coasts, cliffs, towns,
+            and dungeons, the same world on every machine for the same seed. Battles, crafting, and
+            townspeople with daily routines sit on top of it.</p>
+          <p class="hard">World generation took 24 seconds unoptimized. Compiler optimization brought it to
+            4, and I hashed every tile on four seeds before and after to prove the world hadn't changed.
+            About 20 headless tools check spawns, battles, crafting, and story progression without opening
+            the game.</p>
           <ul class="stack">
-            <li>Django</li><li>Python</li><li>SQL</li><li>Authentication</li><li>Role-based access</li><li>Agile sprints</li>
+            <li>C++17</li><li>SDL2</li><li>Make</li><li>Procedural generation</li><li>Python tooling</li>
+          </ul>
+          <p class="go"><a href="https://github.com/eareszka/C-game" target="_blank" rel="noopener">Read the source<svg aria-hidden="true"><use href="#i-out"/></svg></a></p>
+        </div>
+        <picture class="shot shot--wide">
+          <img src="img/beta-town.png" width="1408" height="960" style="image-rendering: pixelated"
+               loading="lazy" decoding="async"
+               alt="Four Castle Chronicles: a pixel-art overworld with two houses beside a dirt road, a pond and a river, and rows of trees.">
+        </picture>
+        <p class="pad"><span class="sr">Status: </span><span>Beta</span><small>Apr 2026</small></p>
+      </li>
+
+      <li class="lane lane--text" data-scroll>
+        <span class="lane-no" aria-hidden="true">6</span>
+        <div class="lane-body">
+          <h3>Campus event management system</h3>
+          <p class="what">A Django application built by a team for a software engineering course, where I designed the data model.</p>
+          <p>Accounts with admin, organizer, and student roles; events with venues, categories, and a
+            capacity; and registrations that move between registered, waitlisted, cancelled, and attended.</p>
+          <p class="hard">Most of the design was deciding what the database stores and what it counts. A
+            registration's status is stored, but how many seats are taken is counted from those rows, so the
+            two can never disagree.</p>
+          <ul class="stack">
+            <li>Django</li><li>Python</li><li>SQL</li><li>Data modeling</li><li>Role-based access</li>
           </ul>
           <p class="go"><a href="https://github.com/eareszka/campus-event-mgmt" target="_blank" rel="noopener">Read the source<svg aria-hidden="true"><use href="#i-out"/></svg></a></p>
         </div>
@@ -233,9 +261,8 @@
 
     </ol>
 
-    <p class="aside"><span>I've also made a turn-based JRPG in GameMaker Studio 2 and a top-down RPG in C++ with
-      SDL2, both mainly to practice procedural generation. They're in
-      <a href="#basement">the basement</a>, at the bottom of this page.</span></p>
+    <p class="aside"><span>I've also made a turn-based JRPG in GameMaker Studio 2. It and the dev log for
+      Four Castle Chronicles are in <a href="#basement">the basement</a>, at the bottom of this page.</span></p>
   </section>
 
   <section class="deck" id="capability" aria-labelledby="cap-h">
@@ -243,12 +270,12 @@
     <dl class="caps">
       <div>
         <dt>Languages</dt>
-        <dd>Python, Java, C, TypeScript, JavaScript, SQL, R, HTML</dd>
+        <dd>Python, TypeScript, JavaScript, Java, C++, SQL, HTML/CSS</dd>
       </div>
       <div>
         <dt>Frameworks and tools</dt>
-        <dd>Django, React Native with Expo, PyTorch, SDL2, PyInstaller, Git, Linux under WSL, Win32 API,
-          REST APIs, JSON</dd>
+        <dd>React Native with Expo, Node.js, Django, PyTorch, SDL2, Claude API, Ollama, Docker, Fly.io,
+          Supabase, Git, Linux, Win32 API, PyInstaller</dd>
       </div>
       <div>
         <dt>Concepts and practice</dt>
@@ -310,7 +337,7 @@
     </p>
     <p class="lines">
       <a href="https://github.com/eareszka" target="_blank" rel="noopener">github.com/eareszka</a>
-      <a href="https://www.linkedin.com/in/emery-reszka-a18336251/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/emery-reszka/" target="_blank" rel="noopener">LinkedIn</a>
     </p>
     <p class="where">Osprey, Florida. I'll relocate anywhere in the state.</p>
   </div>
