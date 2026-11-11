@@ -94,7 +94,7 @@
       <a class="action action--quiet" href="https://www.linkedin.com/in/emery-reszka/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
 
-    <p class="blurb">Two of the projects below are live, one is on the Chrome Web Store, and one has a
+    <p class="blurb">Three of the projects below are live, one is on the Chrome Web Store, and one has a
       Windows release you can download.</p>
 
     <div class="laneline" aria-hidden="true"></div>
@@ -107,6 +107,39 @@
 
       <li class="lane" data-scroll>
         <span class="lane-no" aria-hidden="true">1</span>
+        <div class="lane-body">
+          <h3>Pay My Bill</h3>
+          <p class="what">A web app where people post small everyday needs, like a utility bill or a game they want, and other people chip in. Live since November 2026.</p>
+          <p>You post what you need, up to $1,000. People give by card through Stripe or straight to your
+            Cash App, Venmo, or PayPal, and the app never holds the money. Givers earn levels, badges, and
+            spots on leaderboards that rank people helped instead of dollars, and a funded post owes its
+            givers an update on how it went.</p>
+          <p class="hard">I ran it like a team product: a written spec with success metrics, a short record
+            for each major decision, one-week sprints from a backlog of user stories, and 538 automated
+            tests that every change has to pass before it merges. Payments were the hardest part. Stripe
+            wouldn't accept my first design without a review of who covers losses, so I rebuilt checkout on
+            Stripe's newer account model, where Stripe covers them, and kept the pay-app links as a
+            fallback.</p>
+          <ul class="stack">
+            <li>Python</li><li>Flask</li><li>SQLAlchemy</li><li>PostgreSQL</li><li>Stripe Connect</li>
+            <li>PWA</li><li>Render</li><li>GitHub Actions</li>
+          </ul>
+          <p class="go">
+            <a href="https://pay-my-bill-staging.onrender.com/" target="_blank" rel="noopener">Open the live app<svg aria-hidden="true"><use href="#i-out"/></svg></a>
+            <a href="https://github.com/eareszka/pay-my-bill/tree/main/docs" target="_blank" rel="noopener">Read the spec and decisions<svg aria-hidden="true"><use href="#i-out"/></svg></a>
+          </p>
+        </div>
+        <picture class="shot">
+          <source srcset="img/paymybill-1.webp" type="image/webp">
+          <img class="shot--tall" src="img/paymybill-1.png" width="640" height="1388"
+               loading="lazy" decoding="async"
+               alt="Pay My Bill on a phone, filled with sample data: a post card asking for a board game for game night, five of sixty-four dollars raised, a Chip in button, a Next arrow showing one of ten posts, and tabs for All, Needs and Wants.">
+        </picture>
+        <p class="pad"><span class="sr">Status: </span><span>Live</span><small>Nov 2026</small></p>
+      </li>
+
+      <li class="lane" data-scroll>
+        <span class="lane-no" aria-hidden="true">2</span>
         <div class="lane-body">
           <h3>WingIt!</h3>
           <p class="what">An AI texting assistant for web, iOS, and Android, built from one codebase.</p>
@@ -135,7 +168,7 @@
       </li>
 
       <li class="lane" data-scroll>
-        <span class="lane-no" aria-hidden="true">2</span>
+        <span class="lane-no" aria-hidden="true">3</span>
         <div class="lane-body">
           <h3>Pulse</h3>
           <p class="what">A watchlist that alerts you when a market moves. Live since January 2026.</p>
@@ -161,7 +194,7 @@
       </li>
 
       <li class="lane" data-scroll>
-        <span class="lane-no" aria-hidden="true">3</span>
+        <span class="lane-no" aria-hidden="true">4</span>
         <div class="lane-body">
           <h3>RegionOS</h3>
           <p class="what">A Windows tool that shows live previews of any region of your screen. Version 0.1.0 came out in July 2026.</p>
@@ -190,7 +223,7 @@
       </li>
 
       <li class="lane" data-scroll>
-        <span class="lane-no" aria-hidden="true">4</span>
+        <span class="lane-no" aria-hidden="true">5</span>
         <div class="lane-body">
           <h3>SnipAI</h3>
           <p class="what">A Chrome extension that re-reads part of a browser tab whenever it changes.</p>
@@ -217,7 +250,7 @@
       </li>
 
       <li class="lane" data-scroll>
-        <span class="lane-no" aria-hidden="true">5</span>
+        <span class="lane-no" aria-hidden="true">6</span>
         <div class="lane-body">
           <h3>Four Castle Chronicles</h3>
           <p class="what">A top-down RPG in about 63,000 lines of C++17 and SDL2, built solo.</p>
@@ -242,7 +275,7 @@
       </li>
 
       <li class="lane lane--text" data-scroll>
-        <span class="lane-no" aria-hidden="true">6</span>
+        <span class="lane-no" aria-hidden="true">7</span>
         <div class="lane-body">
           <h3>Campus event management system</h3>
           <p class="what">A Django application built by a team for a software engineering course, where I designed the data model.</p>
@@ -274,13 +307,13 @@
       </div>
       <div>
         <dt>Frameworks and tools</dt>
-        <dd>React Native with Expo, Node.js, Django, PyTorch, SDL2, Claude API, Ollama, Docker, Fly.io,
-          Supabase, Git, Linux, Win32 API, PyInstaller</dd>
+        <dd>React Native with Expo, Node.js, Django, Flask, SQLAlchemy, PyTorch, SDL2, Claude API, Ollama,
+          Stripe, PostgreSQL, Docker, Fly.io, Supabase, Git, Linux, Win32 API, PyInstaller</dd>
       </div>
       <div>
         <dt>Concepts and practice</dt>
         <dd>Object-oriented programming, data structures and algorithms, computer vision, integrating LLM
-          APIs, prompt engineering, Agile sprints</dd>
+          APIs, prompt engineering, Agile sprints, writing product specs and user stories</dd>
       </div>
     </dl>
   </section>

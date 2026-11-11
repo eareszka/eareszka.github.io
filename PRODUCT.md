@@ -20,9 +20,9 @@ A personal job-search site for Emery Reszka, a Computer Science student at Flori
 
 What a visitor should remember, in the user's own priorities:
 
-- **Ships working software.** The projects are public and usable: two live web apps, a Chrome Web Store listing and a downloadable Windows release, not just coursework.
+- **Ships working software.** The projects are public and usable: three live web apps, a Chrome Web Store listing and a downloadable Windows release, not just coursework.
 - **Discipline and work ethic.** Four seasons of NCAA Division I swimming (20–40 hours a week) alongside a full course load, plus a UPS preloader job during the school year.
-- **Builds live-data tools.** A recurring pattern across RegionOS, Pulse and SnipAI: software that watches a screen, a market or a page and reacts when it changes. It does not describe every project (WingIt, the campus event system), so state it as a pattern and not as "everything I build".
+- **Builds live-data tools.** A recurring pattern across RegionOS, Pulse and SnipAI: software that watches a screen, a market or a page and reacts when it changes. It does not describe every project (Pay My Bill, WingIt, the campus event system), so state it as a pattern and not as "everything I build".
 - **Candid about hard problems.** Each project says plainly what was hard and what still doesn't work.
 
 ## Operating Context
@@ -46,8 +46,8 @@ What a visitor should remember, in the user's own priorities:
 ## Evidence on Hand
 
 - Résumé: `Emery_Reszka_Resume.pdf`.
-- Project screenshots in `img/` (PNG plus WebP for the ones shown on the recruiter view). Known gaps: the SnipAI image is a title card rather than a screenshot, and the RegionOS shot doesn't fully show what their descriptions claim. Replacing them needs new captures.
-- Live links: WingIt (wingit-backend.fly.dev), Pulse (pulse-sooty-pi.vercel.app), SnipAI on the Chrome Web Store, RegionOS v0.1.0 release on GitHub, campus event system repo.
+- Project screenshots in `img/` (PNG plus WebP for the ones shown on the recruiter view). `img/paymybill-1.*` was captured from a local run filled with the app's fake seed data, never from the live feed, which shows real people's posts. Known gaps: the SnipAI image is a title card rather than a screenshot, and the RegionOS shot doesn't fully show what their descriptions claim. Replacing them needs new captures.
+- Live links: Pay My Bill (pay-my-bill-staging.onrender.com; spec and decision records at github.com/eareszka/pay-my-bill/tree/main/docs), WingIt (wingit-backend.fly.dev), Pulse (pulse-sooty-pi.vercel.app), SnipAI on the Chrome Web Store, RegionOS v0.1.0 release on GitHub, campus event system repo.
 - Facts: B.S. Computer Science at FGCU, expected May 2027. UW–Milwaukee coursework September 2022 to May 2026. Based in Osprey, Florida, will relocate within the state. U.S. citizen, no sponsorship needed.
 - None exist, and future work must not invent them: testimonials, references, GPA, awards, usage numbers or user counts for any project, or employer endorsements.
 
