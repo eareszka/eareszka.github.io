@@ -116,7 +116,9 @@
             givers an update on how it went.</p>
           <p class="hard">I ran it like a team product: a written spec with success metrics, a short record
             for each major decision, one-week sprints from a backlog of user stories, and 538 automated
-            tests that every change has to pass before it merges. Payments were the hardest part. Stripe
+            tests that every change has to pass before it merges. I directed AI coding agents (Claude Code
+            and Codex) on each story and reviewed every pull request myself: 89 merged across 7 sprints in
+            16 days. Payments were the hardest part. Stripe
             wouldn't accept my first design without a review of who covers losses, so I rebuilt checkout on
             Stripe's newer account model, where Stripe covers them, and kept the pay-app links as a
             fallback.</p>
@@ -142,16 +144,18 @@
         <span class="lane-no" aria-hidden="true">2</span>
         <div class="lane-body">
           <h3>WingIt!</h3>
-          <p class="what">An AI texting assistant for web, iOS, and Android, built from one codebase.</p>
+          <p class="what">An AI texting assistant for web, iOS, and Android, built from one codebase and submitted to the App Store.</p>
           <p>You upload a screenshot of a conversation. It works out who said what and drafts a reply in the
             other person's tone. A coach answers questions about that thread, and a mode called The Read
             describes how each side is coming across.</p>
           <p class="hard">The model's wrong answers sound as confident as its right ones, so most of the work
             went into prompts: tightening them until replies came back in a format the interface could depend
             on, and deciding what to show when they didn't. Screenshots are deleted after processing, so I
-            built my own test set: 60 synthetic chat screens with exact transcripts. On it, a self-hosted
-            model running on my own GPU read who said what correctly 98.8% of the time, against 87% for
-            Claude Haiku, at half the latency.</p>
+            built my own test set: 60 synthetic chat screens with exact transcripts. To cut API costs and
+            keep people's chats off third-party servers, I wanted to move the backend from Claude to a
+            self-hosted model on my own GPU, and I only switched once the test set backed it: the
+            self-hosted model read who said what correctly 98.8% of the time, against 87% for Claude Haiku,
+            at half the latency. Claude stays on as the fallback.</p>
           <ul class="stack">
             <li>React Native</li><li>Expo</li><li>TypeScript</li><li>Python</li>
             <li>Claude API</li><li>Ollama</li><li>PyTorch</li><li>Prompt engineering</li><li>Fly.io</li>
@@ -169,32 +173,6 @@
 
       <li class="lane" data-scroll>
         <span class="lane-no" aria-hidden="true">3</span>
-        <div class="lane-body">
-          <h3>Pulse</h3>
-          <p class="what">A watchlist that alerts you when a market moves. Live since January 2026.</p>
-          <p>Paste a Polymarket or Kalshi link or a stock ticker and set a threshold. Pulse polls it every
-            45 seconds and pushes an alert to your phone or browser the moment it moves past that line.</p>
-          <p class="hard">Most of the work was on the data. Sources disagree with each other, fields
-            disappear without notice, and rate limits cut polls off partway through. Polls run with a
-            concurrency limit and fetch each market once no matter how many people track it, so a cycle
-            stays the same length as the list grows.</p>
-          <ul class="stack">
-            <li>JavaScript</li><li>Node.js</li><li>Express</li><li>PostgreSQL</li><li>Supabase</li>
-            <li>Web Push</li><li>Fly.io</li><li>Vercel</li>
-          </ul>
-          <p class="go"><a href="https://pulse-sooty-pi.vercel.app/" target="_blank" rel="noopener">Open the live dashboard<svg aria-hidden="true"><use href="#i-out"/></svg></a></p>
-        </div>
-        <picture class="shot">
-          <source srcset="img/pulse-1.webp" type="image/webp">
-          <img class="shot--tall" src="img/pulse-1.png" width="640" height="1388"
-               loading="lazy" decoding="async"
-               alt="Pulse on a phone-width screen: a watchlist of three of five slots mixing a Polymarket question, a Kalshi market and NVDA stock, each with its current value and how close it is to triggering an alert, above a list of recent buzzes.">
-        </picture>
-        <p class="pad"><span class="sr">Status: </span><span>Live</span><small>Jan 2026</small></p>
-      </li>
-
-      <li class="lane" data-scroll>
-        <span class="lane-no" aria-hidden="true">4</span>
         <div class="lane-body">
           <h3>RegionOS</h3>
           <p class="what">A Windows tool that shows live previews of any region of your screen. Version 0.1.0 came out in July 2026.</p>
@@ -223,7 +201,7 @@
       </li>
 
       <li class="lane" data-scroll>
-        <span class="lane-no" aria-hidden="true">5</span>
+        <span class="lane-no" aria-hidden="true">4</span>
         <div class="lane-body">
           <h3>SnipAI</h3>
           <p class="what">A Chrome extension that re-reads part of a browser tab whenever it changes.</p>
@@ -247,6 +225,32 @@
                alt="A title card for SnipAI, shown under the name AutoAnswer: AI answers what's on your screen, tagged Chrome extension, AI vision and JavaScript, over the names Claude, OpenAI and Gemini.">
         </picture>
         <p class="pad"><span class="sr">Status: </span><span>Web Store</span></p>
+      </li>
+
+      <li class="lane" data-scroll>
+        <span class="lane-no" aria-hidden="true">5</span>
+        <div class="lane-body">
+          <h3>Pulse</h3>
+          <p class="what">A watchlist that alerts you when a market moves. Live since January 2026.</p>
+          <p>Paste a Polymarket or Kalshi link or a stock ticker and set a threshold. Pulse polls it every
+            45 seconds and pushes an alert to your phone or browser the moment it moves past that line.</p>
+          <p class="hard">Most of the work was on the data. Sources disagree with each other, fields
+            disappear without notice, and rate limits cut polls off partway through. Polls run with a
+            concurrency limit and fetch each market once no matter how many people track it, so a cycle
+            stays the same length as the list grows.</p>
+          <ul class="stack">
+            <li>JavaScript</li><li>Node.js</li><li>Express</li><li>PostgreSQL</li><li>Supabase</li>
+            <li>Web Push</li><li>Fly.io</li><li>Vercel</li>
+          </ul>
+          <p class="go"><a href="https://pulse-sooty-pi.vercel.app/" target="_blank" rel="noopener">Open the live dashboard<svg aria-hidden="true"><use href="#i-out"/></svg></a></p>
+        </div>
+        <picture class="shot">
+          <source srcset="img/pulse-1.webp" type="image/webp">
+          <img class="shot--tall" src="img/pulse-1.png" width="640" height="1388"
+               loading="lazy" decoding="async"
+               alt="Pulse on a phone-width screen: a watchlist of three of five slots mixing a Polymarket question, a Kalshi market and NVDA stock, each with its current value and how close it is to triggering an alert, above a list of recent buzzes.">
+        </picture>
+        <p class="pad"><span class="sr">Status: </span><span>Live</span><small>Jan 2026</small></p>
       </li>
 
       <li class="lane" data-scroll>
@@ -278,18 +282,23 @@
         <span class="lane-no" aria-hidden="true">7</span>
         <div class="lane-body">
           <h3>Campus event management system</h3>
-          <p class="what">A Django application built by a team for a software engineering course, where I designed the data model.</p>
-          <p>Accounts with admin, organizer, and student roles; events with venues, categories, and a
-            capacity; and registrations that move between registered, waitlisted, cancelled, and attended.</p>
+          <p class="what">A Django application for a software engineering course, built by a team of four that I led.</p>
+          <p>Students find and register for campus events, and organizers manage capacity. Accounts have
+            admin, organizer, and student roles; events have venues, categories, and a capacity; and
+            registrations move between registered, waitlisted, cancelled, and attended. Admins approve
+            events before they go up.</p>
+          <p>I split the work into tasks on a Trello board and ran weekly check-ins to track progress and
+            unblock teammates. To keep us on pace for the deadline, I took on most of the front end and back
+            end myself, and we delivered on time.</p>
           <p class="hard">Most of the design was deciding what the database stores and what it counts. A
             registration's status is stored, but how many seats are taken is counted from those rows, so the
             two can never disagree.</p>
           <ul class="stack">
-            <li>Django</li><li>Python</li><li>SQL</li><li>Data modeling</li><li>Role-based access</li>
+            <li>Django</li><li>Python</li><li>HTML/CSS</li><li>SQL</li><li>Data modeling</li><li>Role-based access</li><li>Team lead</li>
           </ul>
           <p class="go"><a href="https://github.com/eareszka/campus-event-mgmt" target="_blank" rel="noopener">Read the source<svg aria-hidden="true"><use href="#i-out"/></svg></a></p>
         </div>
-        <p class="pad"><span class="sr">Status: </span><span>Source</span></p>
+        <p class="pad"><span class="sr">Status: </span><span>Source</span><small>Nov 2025</small></p>
       </li>
 
     </ol>
@@ -307,8 +316,24 @@
       </div>
       <div>
         <dt>Frameworks and tools</dt>
-        <dd>React Native with Expo, Node.js, Django, Flask, SQLAlchemy, PyTorch, SDL2, Claude API, Ollama,
-          Stripe, PostgreSQL, Docker, Fly.io, Supabase, Git, Linux, Win32 API, PyInstaller</dd>
+        <dd>React Native with Expo, Node.js, Django, Flask, SQLAlchemy, PyTorch, SDL2, Stripe Connect,
+          PostgreSQL (Neon, Supabase), Docker, Fly.io, Render, Git, GitHub Actions, Trello, Win32 API,
+          PyInstaller</dd>
+      </div>
+      <div>
+        <dt>AI and LLMs</dt>
+        <dd>Claude API, Ollama, QLoRA fine-tuning with Unsloth and TRL, and a home GPU server running Ollama
+          behind a Cloudflare Tunnel</dd>
+      </div>
+      <div>
+        <dt>AI-assisted development</dt>
+        <dd>Claude Code and Codex, running agents in parallel with herdr, one branch per task, agents reviewing
+          each other's code, and my approval on every merge</dd>
+      </div>
+      <div>
+        <dt>Linux</dt>
+        <dd>Ubuntu on WSL2 for CUDA training and Docker tooling that Windows can't run, and containers on
+          Fly.io and Render</dd>
       </div>
       <div>
         <dt>Concepts and practice</dt>
@@ -328,28 +353,33 @@
       <li>
         <h3>University of Wisconsin&ndash;Milwaukee, School of Engineering</h3>
         <p class="when">Computer Science coursework, September 2022 to May 2026, before transferring to FGCU</p>
+        <ul>
+          <li>Data Structures and Algorithms (Java), Algorithm Design and Analysis, Software Engineering</li>
+        </ul>
       </li>
       <li class="swim">
         <h3>NCAA Division I swimmer, UW&ndash;Milwaukee Athletics</h3>
         <p class="when">September 2022 to May 2026</p>
         <ul>
-          <li>Twenty to forty hours a week of training and competition alongside a full course load, for four
-            seasons</li>
+          <li>Four seasons on a four-year athletic scholarship</li>
+          <li>Twenty to forty hours a week of training and competition alongside a full course load</li>
         </ul>
       </li>
       <li>
-        <h3>Aquatics staff, IMG Academy, Bradenton</h3>
+        <h3>Aquatics staff member, IMG Academy, Bradenton</h3>
         <p class="when">June to August 2026</p>
         <ul>
-          <li>Supervised swimmers and kept the pool areas safe for student athletes and campers</li>
-          <li>Enforced facility rules face to face and stayed ready for a water emergency</li>
+          <li>Took ownership of guard rotations and staffing for 50 to 150 campers and student athletes at
+            once in a tight pool area</li>
+          <li>Rebalanced coverage as group sizes changed, so no section went unwatched</li>
         </ul>
       </li>
       <li>
         <h3>Preloader, UPS, Elm Grove</h3>
         <p class="when">September 2023 to May 2025</p>
         <ul>
-          <li>Loaded packages onto delivery trucks in route order before the drivers headed out</li>
+          <li>Loaded delivery trucks in route order at a hub moving 20,000 to 30,000 packages each morning,
+            getting them ready for dispatch</li>
           <li>Worked during the school year, around classes and Division I training</li>
         </ul>
       </li>
